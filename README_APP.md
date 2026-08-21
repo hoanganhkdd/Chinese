@@ -16,6 +16,7 @@ App ghi nhớ & học tiếng Trung, **ưu tiên luyện nghe và từ vựng**.
 
 | Mục | Mô tả |
 |---|---|
+| 🔢 **Đếm số lần học/nghe** | Mỗi từ có badge **🔊×n** (số lần nghe) và **📖×n** (số lần học). Trang Từ vựng & Nghe liên tục **sắp xếp theo tần suất** (ít nhất → nhiều) để ưu tiên từ chưa quen. |
 | 📅 **Hôm nay học gì** | Trang chủ có lộ trình hằng ngày: **chuỗi streak 🔥**, mục tiêu thẻ/ngày (thanh tiến độ), và danh sách việc cần làm hôm nay (ôn thẻ đến hạn, học từ mới, luyện nghe) — bấm là vào thẳng. |
 | 🧠 **Ôn tập ghi nhớ (SRS)** | Lặp lại ngắt quãng (SM-2). **Thống kê Khó/Đang học/Dễ/Thuộc/Mới**. 3 chế độ kiểm tra: 🎧 nhận biết (nghe→đoán), ✍️ viết hán tự, 🎤 nói hán tự (chấm phát âm qua micro). Lọc ưu tiên từ Khó. |
 | 🎧 **Luyện nghe** | 7 chế độ: nghe→chọn nghĩa/hán tự, nghe câu→đáp án, **🔁 nghe liên tục** (playlist rảnh tay), **📖 ghép câu chuyện** từ nhóm từ (+ nút tạo truyện bằng AI), **✍️ nghe→viết**, **🎤 nghe→nói lại**. |
@@ -46,5 +47,15 @@ Mọi từ/câu đều có nút **🌐 Youglish** — mở cửa sổ nghe **ng�
 
 ## Tệp
 - `index.html`, `styles.css`, `app.js` — mã nguồn app
-- `appdata.js` — toàn bộ dữ liệu đã trích xuất (nhúng sẵn)
-- `data.json` — dữ liệu dạng JSON thuần (để tham khảo/tái sử dụng)
+- `appdata.js` — toàn bộ dữ liệu đã trích xuất (nhúng sẵn) — **bản canonical đang chạy**
+- `data.json` — dữ liệu dạng JSON thuần
+- `build.py` — sinh lại dữ liệu từ file HSK seed (xuất `appdata.generated.js`, không ghi đè bản chạy)
+- `sw.js` — service worker **network-first** (luôn lấy bản mới khi online; CDN cache-first)
+- `manifest.webmanifest`, `icon-*.png` — PWA
+- `netlify.toml`, `render.yaml`, `dist/_redirects` — cấu hình deploy
+- `dist/` — thư mục gọn chỉ chứa file cần deploy (kéo–thả lên Netlify)
+
+## Deploy
+- **GitHub:** https://github.com/hoanganhkdd/Chinese (nhánh `main`)
+- **Netlify:** kéo–thả thư mục `dist/` vào project, hoặc kết nối repo (publish `dist`).
+- **GitHub Pages / Render:** dùng `render.yaml` hoặc bật Pages từ nhánh `main`.
