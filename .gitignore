@@ -1,0 +1,11 @@
+# Backups & caches
+*_backup*.xlsx
+HA_char_cache.json
+__pycache__/
+*.pyc
+appdata.generated.js
+.DS_Store
+Thumbs.db
+
+# Scratch / temp
+Tao video Chinenese/

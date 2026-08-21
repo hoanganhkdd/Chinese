@@ -1,0 +1,16 @@
+{
+  "name": "Học Tiếng Trung HSK",
+  "short_name": "HSK 汉语",
+  "description": "App ghi nhớ & học tiếng Trung: từ vựng, luyện nghe, âm bồi, chiết tự, nhập video.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1220",
+  "theme_color": "#d7263d",
+  "lang": "vi",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

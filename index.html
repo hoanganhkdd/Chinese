@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>汉语 · Học Tiếng Trung HSK</title>
+<meta name="theme-color" content="#d7263d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HSK 汉语">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand">
+      <span class="logo">汉</span>
+      <div>
+        <div class="brand-title">Học Tiếng Trung</div>
+        <div class="brand-sub">HSK · Thương mại · Khẩu ngữ</div>
+      </div>
+    </div>
+    <nav id="nav"></nav>
+    <div class="side-foot">
+      <button id="themeBtn" class="ghost-btn">🌓 Giao diện</button>
+      <div class="side-note">Tiến độ lưu trên máy bạn</div>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header id="topbar">
+      <button id="menuBtn" class="icon-btn">☰</button>
+      <div id="pageTitle">Tổng quan</div>
+      <div class="spacer"></div>
+      <input id="globalSearch" type="search" placeholder="🔎 Tìm hán tự / pinyin / nghĩa...">
+    </header>
+    <section id="view"></section>
+  </main>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-card" id="modalCard"></div>
+</div>
+
+<div id="playerBar" class="hidden"></div>
+
+<script src="appdata.js"></script>
+<script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+</script>
+</body>
+</html>

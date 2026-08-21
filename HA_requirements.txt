@@ -1,0 +1,8 @@
+# HA.py — Dependencies
+# Install with:  pip install -r HA_requirements.txt
+
+youtube-transcript-api>=0.6.2
+jieba>=0.42.1
+pypinyin>=0.50.0
+openpyxl>=3.1.0
+requests>=2.31.0
