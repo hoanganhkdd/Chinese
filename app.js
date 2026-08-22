@@ -19,6 +19,13 @@ progress.streak = progress.streak || {count:0, best:0, lastDate:""};
 progress.goal = progress.goal || {reviews:20, newWords:10};
 progress.playCount = progress.playCount || {};   // han -> số lần nghe/phát
 progress.studyCount = progress.studyCount || {}; // han -> số lần học (ôn/kiểm tra/viết)
+progress.history = progress.history || {};       // "YYYY-MM-DD" -> {reviews,listens,newLearned,sent}
+progress.sentSrs = progress.sentSrs || {};       // câu(han) -> {ef,interval,due,reps,lapses}
+progress.dailyList = progress.dailyList || {date:"", words:[], sents:[]};
+if(!progress.settings) progress.settings = {};
+if(progress.settings.reminderOn==null) progress.settings.reminderOn=false;
+if(!progress.settings.reminderTime) progress.settings.reminderTime="08:00";
+progress.settings.reminderLast = progress.settings.reminderLast||"";
 function save(){ localStorage.setItem(STORE, JSON.stringify(progress)); }
 let _saveT; function saveSoon(){ clearTimeout(_saveT); _saveT=setTimeout(save,800); }
 function bumpPlay(han){ if(!han)return; progress.playCount[han]=(progress.playCount[han]||0)+1; saveSoon(); }
@@ -34,13 +41,53 @@ function bumpDaily(kind){
   if(kind==="review") progress.daily.reviews++;
   else if(kind==="listen") progress.daily.listens++;
   else if(kind==="new") progress.daily.newLearned++;
-  const t=todayStr(), st=progress.streak;
+  const t=todayStr();
+  const h=progress.history[t]||(progress.history[t]={reviews:0,listens:0,newLearned:0,sent:0});
+  if(kind==="review") h.reviews++;
+  else if(kind==="listen") h.listens++;
+  else if(kind==="new") h.newLearned++;
+  else if(kind==="sent") h.sent++;
+  const st=progress.streak;
   if(st.lastDate!==t){
     const y=new Date(Date.now()-86400000).toISOString().slice(0,10);
     st.count = (st.lastDate===y)? (st.count||0)+1 : 1;
     st.lastDate=t; st.best=Math.max(st.best||0, st.count);
   }
   save();
+}
+
+/* ---------- Nhắc ôn tập theo giờ ---------- */
+function notify(title, body){
+  if('Notification' in window && Notification.permission==='granted'){
+    try{ new Notification(title,{body, icon:'icon-192.png'}); return; }catch(e){}
+  }
+  toast(title+" — "+body);
+}
+function checkReminder(){
+  const s=progress.settings; if(!s.reminderOn) return;
+  const today=todayStr();
+  if(s.reminderLast===today) return;
+  const hhmm=new Date().toTimeString().slice(0,5);
+  if(hhmm>=s.reminderTime){
+    s.reminderLast=today; save();
+    const due=srsCounts().due + sentCounts().due;
+    notify("⏰ Đến giờ ôn tiếng Trung", due>0?`Bạn có ${due} thẻ/câu cần ôn hôm nay.`:"Học vài từ mới hôm nay nhé!");
+  }
+}
+
+/* ---------- Danh sách cố định hôm nay (100 từ + 100 câu) ---------- */
+function ensureDailyList(){
+  const t=todayStr();
+  if(progress.dailyList.date===t && progress.dailyList.words.length) return progress.dailyList;
+  const vocab=allVocab().slice();
+  // ưu tiên chưa thuộc + ít học
+  vocab.sort((a,b)=>{ const la=progress.learned[a.han]?1:0, lb=progress.learned[b.han]?1:0;
+    if(la!==lb) return la-lb; return (progress.studyCount[a.han]||0)-(progress.studyCount[b.han]||0); });
+  const words=vocab.slice(0,100).map(v=>v.han);
+  const idx=shuffle(D.sentences.map((_,i)=>i)).slice(0,100);
+  progress.dailyList={date:t, words, sents:idx};
+  save();
+  return progress.dailyList;
 }
 
 /* ---------- Unified vocab pool (built-in + user-added) ---------- */
@@ -297,6 +344,60 @@ function srsCounts(){
   return {due,learning,mature,newc};
 }
 
+/* ---------- SRS engine cho CÂU (sentSrs) ---------- */
+// pool câu: câu nguồn + câu ví dụ của từ trong thư viện
+function sentencePool(){
+  const arr = D.sentences.map(s=>({han:s.han, meaning:s.meaning, src:s.source||"Câu nguồn"}));
+  D.vocab.forEach(v=>{ if(v.example) arr.push({han:v.example, meaning:(v.examplePinyin||"").replace(/\n/g," "), src:"Ví dụ HSK"}); });
+  progress.myWords.forEach(w=>{ if(w.example) arr.push({han:w.example, meaning:w.vi||"", src:"Ví dụ của tôi"}); });
+  return arr;
+}
+function sentInit(k){ if(!progress.sentSrs[k]) progress.sentSrs[k]={ef:2.5,interval:0,due:today0(),reps:0,lapses:0}; }
+function sentReview(k, grade){
+  sentInit(k); const s=progress.sentSrs[k];
+  if(grade<3){ s.reps=0; s.interval=0; s.due=today0(); s.lapses=(s.lapses||0)+1; }
+  else{ s.reps++; s.interval = s.reps===1?1 : s.reps===2?3 : Math.round(s.interval*s.ef);
+    s.ef=Math.max(1.3, s.ef+(0.1-(5-grade)*(0.08+(5-grade)*0.02))); s.due=today0()+s.interval*DAY_MS; }
+  save(); bumpDaily("sent");
+}
+function sentCounts(){
+  const now=today0(), pool=sentencePool(); let due=0,newc=0,learning=0,mature=0;
+  pool.forEach(x=>{ const s=progress.sentSrs[x.han];
+    if(!s) newc++; else if(s.due<=now) due++; else if(s.interval>=21) mature++; else learning++; });
+  return {due,newc,learning,mature,total:pool.length};
+}
+
+/* ---------- Bộ thủ (radicals) ---------- */
+const RADICALS = {
+  "氵":{hv:"THỦY",m:"nước",ex:"河 海 湖 江 洗 汉 酒 没 游 清"}, "扌":{hv:"THỦ",m:"tay",ex:"打 拿 找 提 把 推 拉 接 换 掉"},
+  "口":{hv:"KHẨU",m:"miệng",ex:"吃 喝 叫 吗 名 听 唱 问 员 和"}, "亻":{hv:"NHÂN",m:"người",ex:"你 他 们 什 件 住 位 但 做 假"},
+  "人":{hv:"NHÂN",m:"người",ex:"人 从 众 今 会 全 介"}, "女":{hv:"NỮ",m:"phụ nữ",ex:"她 妈 好 姐 妹 婚 娘 要 安"},
+  "心":{hv:"TÂM",m:"tim, lòng",ex:"想 念 感 意 思 息 忘 急"}, "忄":{hv:"TÂM",m:"tim, cảm xúc",ex:"忙 快 慢 怕 情 惯 懂"},
+  "日":{hv:"NHẬT",m:"mặt trời, ngày",ex:"明 时 昨 早 星 春 是 晚 暖"}, "月":{hv:"NGUYỆT",m:"trăng / thịt",ex:"服 期 朋 有 能 脸 胖 脚"},
+  "木":{hv:"MỘC",m:"cây, gỗ",ex:"林 树 桌 椅 校 样 机 果 条"}, "火":{hv:"HỎA",m:"lửa",ex:"烧 烤 灯 炒 烟 灾"},
+  "灬":{hv:"HỎA",m:"lửa (chân)",ex:"点 热 然 照 熊"}, "土":{hv:"THỔ",m:"đất",ex:"地 场 城 坐 块 圾 增"},
+  "金":{hv:"KIM",m:"kim loại",ex:"金 鑫"}, "钅":{hv:"KIM",m:"kim loại",ex:"钱 银 铁 错 钟 镇 铅"},
+  "言":{hv:"NGÔN",m:"lời nói",ex:"警 誉"}, "讠":{hv:"NGÔN",m:"lời nói",ex:"说 话 语 请 谢 课 认 识 读 谁"},
+  "食":{hv:"THỰC",m:"ăn",ex:"餐"}, "饣":{hv:"THỰC",m:"ăn",ex:"饭 饿 馆 饱 饺 饮"},
+  "走":{hv:"TẨU",m:"đi, chạy",ex:"起 越 超 趣"}, "辶":{hv:"SƯỚC",m:"bước đi",ex:"这 边 过 进 远 近 送 通 道 迎"},
+  "车":{hv:"XA",m:"xe",ex:"轮 转 软 较 辆"}, "门":{hv:"MÔN",m:"cửa",ex:"们 问 间 闻 闹 闭"},
+  "目":{hv:"MỤC",m:"mắt",ex:"看 眼 睡 睛 眠 瞌"}, "耳":{hv:"NHĨ",m:"tai",ex:"听 取 聊 职 聪"},
+  "手":{hv:"THỦ",m:"tay",ex:"手 拿 掌 拳"}, "足":{hv:"TÚC",m:"chân",ex:"跑 跳 路 踢 跟 距"},
+  "力":{hv:"LỰC",m:"sức mạnh",ex:"办 加 动 助 努 男 劳"}, "刀":{hv:"ĐAO",m:"dao",ex:"分 切 召"}, "刂":{hv:"ĐAO",m:"dao",ex:"到 前 别 刻 剧 利"},
+  "大":{hv:"ĐẠI",m:"to lớn",ex:"天 太 头 夹 奖"}, "小":{hv:"TIỂU",m:"nhỏ",ex:"少 尖 尘"},
+  "山":{hv:"SƠN",m:"núi",ex:"岁 岛 峰 岭"}, "石":{hv:"THẠCH",m:"đá",ex:"矿 码 硬 碰 确 碗"}, "王":{hv:"VƯƠNG",m:"vua, ngọc",ex:"玩 现 球 环 理 珍"},
+  "田":{hv:"ĐIỀN",m:"ruộng",ex:"男 界 留 略 番"}, "禾":{hv:"HÒA",m:"lúa",ex:"和 秋 种 科 秒 税"}, "米":{hv:"MỄ",m:"gạo",ex:"料 粉 精 糖 粥"},
+  "衣":{hv:"Y",m:"áo",ex:"表 装 裂"}, "衤":{hv:"Y",m:"áo",ex:"衬 补 被 裤 袜"},
+  "纟":{hv:"MỊCH",m:"sợi tơ",ex:"红 给 经 线 纸 结 组 练"}, "贝":{hv:"BỐI",m:"tiền, quý",ex:"贵 费 买 卖 财 货 赢 贷"},
+  "雨":{hv:"VŨ",m:"mưa",ex:"雪 需 雷 零 雾 震"}, "宀":{hv:"MIÊN",m:"mái nhà",ex:"家 客 完 宝 定 安 室 宿 容"},
+  "广":{hv:"NGHIỄM",m:"mái hiên",ex:"店 床 座 应 底 度"}, "疒":{hv:"NẠCH",m:"bệnh",ex:"病 疼 痛 疯 瘦 疫"},
+  "犭":{hv:"KHUYỂN",m:"thú",ex:"猫 狗 猪 狮 独 猴"}, "鸟":{hv:"ĐIỂU",m:"chim",ex:"鸡 鸭 鹅 鸦"},
+  "鱼":{hv:"NGƯ",m:"cá",ex:"鲜 鲨 鲤"}, "虫":{hv:"TRÙNG",m:"sâu bọ",ex:"蚊 蛇 蜂 虾 蝶"},
+  "艹":{hv:"THẢO",m:"cỏ, cây",ex:"花 草 茶 菜 药 苦 苹 落 蓝"}, "竹":{hv:"TRÚC",m:"tre",ex:"笑 笔 笨 答 篮 简 筷"},
+  "彳":{hv:"XÍCH",m:"bước chân trái",ex:"很 得 往 律 徐 街"}, "阝":{hv:"PHỤ/ẤP",m:"gò đất / làng",ex:"院 阳 除 队 都 部 陪"},
+  "页":{hv:"HIỆT",m:"đầu, trang",ex:"顶 顺 须 顾 领 颜 题"}
+};
+
 /* ---------- Toast ---------- */
 let toastT;
 function toast(msg){
@@ -311,12 +412,14 @@ function toast(msg){
 const PAGES = [
   {id:"home",   ico:"🏠", name:"Tổng quan"},
   {id:"srs",    ico:"🧠", name:"Ôn tập ghi nhớ"},
+  {id:"sentsrs",ico:"📖", name:"Ôn câu ví dụ"},
   {id:"listen", ico:"🎧", name:"Luyện nghe"},
   {id:"vocab",  ico:"📚", name:"Từ vựng HSK", badge:D.vocab.length},
   {id:"flash",  ico:"🎴", name:"Flashcard"},
   {id:"write",  ico:"✍️", name:"Luyện viết"},
   {id:"quiz",   ico:"📝", name:"Kiểm tra"},
   {id:"hanzi",  ico:"🧩", name:"Chiết tự"},
+  {id:"radicals",ico:"🌿", name:"Bộ thủ"},
   {id:"video",  ico:"➕", name:"Thêm nguồn từ"},
   {id:"library",ico:"📇", name:"Thư viện keyword"},
   {id:"phrases",ico:"🗣️", name:"Khẩu ngữ", badge:D.phrases.length},
@@ -518,6 +621,17 @@ RENDER.home = () => {
       </div>
     </div>
 
+    <div class="panel">
+      <h3>🗓️ Danh sách cố định hôm nay</h3>
+      <p class="sub">100 từ + 100 câu được chọn tự động, giữ nguyên cả ngày (sang ngày mới tự đổi). Ưu tiên từ chưa thuộc / ít học.</p>
+      <div class="toolbar">
+        <button class="btn primary" id="dlLearn">🧠 Học 100 từ</button>
+        <button class="btn" id="dlListen">🎧 Nghe 100 từ</button>
+        <button class="btn" id="dlSent">📖 Ôn 100 câu</button>
+        <button class="btn" id="dlView">👁 Xem danh sách</button>
+      </div>
+    </div>
+
     <div class="stat-grid">
       <div class="stat"><div class="n">${allVocab().length}</div><div class="l">Tổng từ vựng</div></div>
       <div class="stat"><div class="n">${learned}</div><div class="l">Từ đã thuộc ✓</div></div>
@@ -546,11 +660,28 @@ RENDER.home = () => {
   $$("[data-jump]").forEach(b=>b.onclick=()=>go(b.dataset.jump));
   $$(".today-task").forEach(t=>t.onclick=()=>go(t.dataset.go));
   $("#goalSave").onclick=()=>{ progress.goal={reviews:parseInt($("#goalRev").value)||20, newWords:parseInt($("#goalNew").value)||10}; save(); toast("Đã lưu mục tiêu"); RENDER.home(); };
+  const dList=ensureDailyList();
+  const dlWords=()=>dList.words.map(h=>findWord(h)).filter(Boolean);
+  $("#dlLearn").onclick=()=>{ dailyStudyList=dlWords(); go("srs"); toast("Học danh sách hôm nay ở chế độ Nhận biết"); };
+  $("#dlListen").onclick=()=>Player.start(dlWords().map(v=>({han:v.han,sub:v.vi,vi:v.vi})),{pauseMs:1000});
+  $("#dlSent").onclick=()=>{ dailySentList=dList.sents.map(i=>D.sentences[i]).filter(Boolean); go("sentsrs"); toast("Ôn 100 câu hôm nay"); };
+  $("#dlView").onclick=()=>{
+    $("#modalCard").innerHTML=`<button class="close-x" onclick="closeModal()">×</button>
+      <h3 style="margin:0 0 8px">🗓️ Danh sách hôm nay (${dList.date})</h3>
+      <div class="toolbar"><button class="btn sm" onclick="Player.start(window._dlPlay,{pauseMs:1000})">▶ Nghe cả 100 từ</button></div>
+      <div class="lab" style="margin-top:10px">100 TỪ</div>
+      <div class="cards-grid">${dlWords().slice(0,100).map(v=>`<div class="vcard" onclick="speak('${esc(v.han)}')"><div class="han" style="font-size:26px">${esc(v.han)}</div><div class="pin">${esc(v.pinyin||toPinyin(v.han))}</div><div class="vi">${esc(v.vi||"")}</div></div>`).join("")}</div>
+      <div class="lab" style="margin-top:14px">100 CÂU</div>
+      ${dList.sents.slice(0,100).map(i=>{const s=D.sentences[i]; return s?`<div class="sent-line"><span class="han-cell" style="font-size:16px">${esc(s.han)}</span> <button class="mini" onclick="speak('${esc(s.han)}')">🔊</button><div class="pin-cell" style="font-size:12px">${esc(toPinyin(s.han))}</div></div>`:"";}).join("")}`;
+    window._dlPlay=dlWords().map(v=>({han:v.han,sub:v.vi,vi:v.vi}));
+    $("#modal").classList.remove("hidden");
+  };
   $$("[data-lvl]").forEach(c=>c.onclick=()=>{ vocabFilter.level=c.dataset.lvl; go("vocab"); });
 };
 
 /* ---------- SRS review page (ghi nhớ) ---------- */
 let srsQueue=[], srsShown=false, srsSessionDone=0, srsMode="recognize", srsChecked=false;
+let dailyStudyList=null, dailySentList=null;
 RENDER.srs = () => {
   const c = srsCounts(), cc = srsCatCounts();
   $("#view").innerHTML = `
@@ -588,8 +719,14 @@ RENDER.srs = () => {
   $$(".chip[data-m]").forEach(ch=>ch.onclick=()=>{srsMode=ch.dataset.m; RENDER.srs();});
   $("#srsStart").onclick = startSrs;
   $("#srsArea").innerHTML = `<p class="sub" style="text-align:center">Chọn chế độ &amp; nhấn <b>Bắt đầu ôn</b>.</p>`;
+  if(dailyStudyList && dailyStudyList.length) startSrs();
 };
 function startSrs(){
+  if(dailyStudyList && dailyStudyList.length){
+    dailyStudyList.forEach(v=>srsInit(v.han));
+    srsQueue=dailyStudyList.slice(); dailyStudyList=null; srsShown=false; srsSessionDone=0; srsChecked=false;
+    drawSrs(); return;
+  }
   const lvl=$("#srsLevel").value, focus=$("#srsFocus").value;
   const nNew=parseInt($("#srsNew").value)||0;
   let pool;
@@ -1596,14 +1733,15 @@ function renderStaging(){
       <span class="count-pill" id="stgCount">${chk} được chọn · ${staging.items.filter(i=>!i.vi).length} thiếu nghĩa</span>
     </div>
     <div class="table-wrap" style="box-shadow:none;max-height:50vh"><table><thead><tr>
-      <th></th><th>Tần suất</th><th>Hán tự</th><th>Pinyin</th><th>Âm bồi</th><th>Nghĩa tiếng Việt</th><th>Nghe</th>
+      <th></th><th>Tần suất</th><th>Hán tự</th><th>Pinyin</th><th>Âm bồi</th><th>Loại từ</th><th>Nghĩa tiếng Việt</th><th>Nghe</th>
     </tr></thead><tbody id="stgBody">
       ${staging.items.map((it,i)=>`<tr>
         <td><input type="checkbox" class="stgChk" data-i="${i}" ${it.checked?"checked":""}></td>
         <td><b>${it.freq}</b></td>
-        <td class="han-cell">${esc(it.han)}</td>
+        <td class="han-cell">${esc(it.han)}${it.example?`<div class="sub" style="font-size:10px">vd: ${esc(it.example)}</div>`:""}</td>
         <td class="pin-cell">${esc(it.pinyin)}</td>
         <td style="color:var(--warn)">${esc(amBoiForHan(it.han))}</td>
+        <td class="sub" style="font-size:11px">${esc(it.pos||"")}</td>
         <td><input class="txt stgVi" data-i="${i}" value="${esc(it.vi||"")}" placeholder="nhập nghĩa..." style="font-size:12.5px;padding:4px 6px;width:100%"></td>
         <td style="white-space:nowrap"><button class="mini stgListen" data-i="${i}" title="Nghe Trung + Việt">🔊🇻🇳</button>
           <button class="mini" onclick="openYouglish('${esc(it.han)}')">🌐</button></td>
@@ -1627,7 +1765,7 @@ function renderStaging(){
   $("#stgPlay").onclick=()=>Player.start(staging.items.filter(i=>i.checked).map(i=>({han:i.han,sub:i.vi||i.pinyin,vi:i.vi})),{pauseMs:1100, bilingual:true});
   $("#stgConfirm").onclick=()=>{
     const chosen=staging.items.filter(i=>i.checked); let n=0;
-    chosen.forEach(i=>{ if(addMyWord({han:i.han,pinyin:i.pinyin,vi:i.vi||i.pinyin,source:staging.source})) n++; });
+    chosen.forEach(i=>{ if(addMyWord({han:i.han,pinyin:i.pinyin,vi:i.vi||i.pinyin,pos:i.pos||"",example:i.example||"",source:staging.source})) n++; });
     toast(`Đã đưa ${n} từ vào Thư viện keyword`); staging=null; renderStaging();
     const b=[...document.querySelectorAll('.nav-item')].find(x=>x.dataset.page==='library'); // refresh badge later
   };
@@ -1660,12 +1798,14 @@ async function translateStaging(){
   const btn=$("#stgTrans"); if(btn){btn.textContent="✨ Đang dịch…"; btn.disabled=true;}
   try{
     const list=missing.map(i=>i.han).join("\n");
-    const prompt=`Dịch nghĩa tiếng Việt NGẮN GỌN cho từng từ tiếng Trung dưới đây. Trả về mỗi dòng đúng dạng "汉字=nghĩa", không thêm gì khác:\n${list}`;
-    const out=await openaiChat([{role:"user",content:prompt}],{max_tokens:900,temperature:0.3});
+    const prompt=`Với mỗi từ tiếng Trung dưới đây, cho biết loại từ và nghĩa tiếng Việt ngắn gọn, kèm 1 câu ví dụ ngắn (chữ Hán). Trả về mỗi từ đúng 1 dòng dạng "汉字 = loại_từ | nghĩa | ví_dụ_hán", không thêm gì khác. Loại từ dùng: danh từ/động từ/tính từ/trạng từ/lượng từ/đại từ/liên từ/giới từ/trợ từ.\n${list}`;
+    const out=await openaiChat([{role:"user",content:prompt}],{max_tokens:1200,temperature:0.3});
     const map={};
-    out.split(/\n/).forEach(l=>{ const m=l.match(/^\s*([\u4e00-\u9fff]+)\s*[=:：]\s*(.+?)\s*$/); if(m) map[m[1]]=m[2]; });
-    let n=0; staging.items.forEach(it=>{ if(!it.vi && map[it.han]){ it.vi=map[it.han]; n++; } });
-    toast(`Đã dịch ${n} từ`); renderStaging();
+    out.split(/\n/).forEach(l=>{ const m=l.match(/^\s*([一-鿿]+)\s*[=:：]\s*(.+)$/); if(!m) return;
+      const parts=m[2].split("|").map(x=>x.trim());
+      map[m[1]]={pos:parts[0]||"", vi:parts[1]||parts[0]||"", ex:parts[2]||""}; });
+    let n=0; staging.items.forEach(it=>{ const g=map[it.han]; if(g){ if(!it.vi){it.vi=g.vi;n++;} it.pos=g.pos; it.example=g.ex; } });
+    toast(`Đã dịch ${n} từ (kèm loại từ + ví dụ)`); renderStaging();
   }catch(e){ toast("Lỗi dịch: "+e.message); if(btn){btn.textContent="✨ Dịch nghĩa còn thiếu (AI)"; btn.disabled=false;} }
 }
 function drawRooms(){
@@ -1735,6 +1875,17 @@ RENDER.settings = () => {
   $("#view").innerHTML=`
     <h2 class="section-h">⚙️ Cài đặt</h2>
     <div class="panel">
+      <h3>⏰ Nhắc ôn tập hằng ngày</h3>
+      <p class="sub">Bật để app nhắc bạn ôn vào giờ cố định (khi app đang mở). Sẽ nhắc bù nếu mở app sau giờ đó.</p>
+      <div class="toolbar">
+        <label class="chip ${s.reminderOn?'active':''}" id="setRemOn">${s.reminderOn?'🔔 Đang bật':'🔕 Đang tắt'}</label>
+        <label class="sub">Giờ nhắc <input class="txt" id="setRemTime" type="time" value="${esc(s.reminderTime||'08:00')}" style="width:120px"></label>
+        <button class="btn" id="setRemPerm">Cho phép thông báo</button>
+        <button class="btn" id="setRemTest">Thử nhắc ngay</button>
+      </div>
+      <div id="setRemStatus" class="sub" style="margin-top:6px"></div>
+    </div>
+    <div class="panel">
       <h3>✨ ChatGPT API (tạo truyện bằng AI)</h3>
       <p class="sub">Nhập API key OpenAI của bạn để dùng tính năng tạo truyện. Key <b>chỉ lưu trên máy bạn</b> (localStorage), gọi thẳng tới OpenAI, không gửi đi đâu khác. Lấy key tại <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a>.</p>
       <div class="toolbar">
@@ -1766,6 +1917,13 @@ RENDER.settings = () => {
       </div>
       <p class="sub" style="margin-top:8px">💡 Sao lưu định kỳ để không mất tiến độ nếu xóa dữ liệu trình duyệt. (App tĩnh không có server nên chưa tự đồng bộ thời gian thực.)</p>
     </div>`;
+  const remStatus=()=>{ const p=('Notification' in window)?Notification.permission:'unsupported';
+    $("#setRemStatus").textContent = p==='granted'?'✓ Thông báo đã được cho phép.':p==='denied'?'✗ Thông báo bị chặn — bật lại trong cài đặt trình duyệt.':'Chưa cấp quyền thông báo (sẽ hiện nhắc dạng banner trong app).'; };
+  remStatus();
+  $("#setRemOn").onclick=e=>{ s.reminderOn=!s.reminderOn; save(); e.target.classList.toggle('active',s.reminderOn); e.target.textContent=s.reminderOn?'🔔 Đang bật':'🔕 Đang tắt'; if(s.reminderOn&&'Notification'in window&&Notification.permission==='default') Notification.requestPermission().then(remStatus); };
+  $("#setRemTime").onchange=e=>{ s.reminderTime=e.target.value||'08:00'; s.reminderLast=''; save(); toast('Đã đặt giờ nhắc '+s.reminderTime); };
+  $("#setRemPerm").onclick=()=>{ if('Notification'in window) Notification.requestPermission().then(remStatus); else toast('Trình duyệt không hỗ trợ thông báo'); };
+  $("#setRemTest").onclick=()=>{ notify('⏰ Nhắc ôn tiếng Trung', 'Đây là thông báo thử — bạn có '+(srsCounts().due+sentCounts().due)+' mục cần ôn.'); };
   $("#setSaveKey").onclick=()=>{ s.openaiKey=$("#setKey").value.trim(); s.model=$("#setModel").value; save(); toast("Đã lưu"); };
   $("#setTest").onclick=async()=>{ s.openaiKey=$("#setKey").value.trim(); s.model=$("#setModel").value; save();
     $("#setKeyStatus").textContent="Đang kiểm tra…";
@@ -1828,6 +1986,161 @@ RENDER.hanzi = () => {
   $("#hzFilter").oninput=drawGrid; drawGrid();
 };
 
+/* ---------- Ôn câu ví dụ (SRS trên câu) ---------- */
+let sentQueue=[], sentShown=false, sentDone=0;
+RENDER.sentsrs = () => {
+  const c=sentCounts();
+  $("#view").innerHTML=`
+    <h2 class="section-h">📖 Ôn câu ví dụ</h2>
+    <p class="sub">Lặp lại ngắt quãng trên cả câu (câu nguồn + câu ví dụ). Nghe → hiểu → tự chấm.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="n" style="color:var(--warn)">${c.due}</div><div class="l">Câu đến hạn</div></div>
+      <div class="stat"><div class="n" style="color:var(--accent)">${c.newc}</div><div class="l">Câu mới</div></div>
+      <div class="stat"><div class="n">${c.learning}</div><div class="l">Đang học</div></div>
+      <div class="stat"><div class="n" style="color:var(--ok)">${c.mature}</div><div class="l">Nhớ lâu</div></div>
+    </div>
+    <div class="toolbar center-narrow" style="justify-content:center">
+      <label class="sub">Số câu mới/phiên <input class="txt" id="ssNew" type="number" value="10" min="0" max="50" style="width:66px"></label>
+      <button class="btn primary" id="ssStart">Bắt đầu ôn câu</button>
+    </div>
+    <div class="progress-bar"><i id="ssProg"></i></div>
+    <div id="ssArea"><p class="sub" style="text-align:center">Nhấn Bắt đầu để vào phiên.</p></div>`;
+  const startSent=()=>{
+    if(dailySentList && dailySentList.length){
+      const items=dailySentList.map(s=>({han:s.han, meaning:s.meaning, src:s.source||"Câu hôm nay"}));
+      items.forEach(x=>sentInit(x.han));
+      sentQueue=items.slice(); dailySentList=null; sentShown=false; sentDone=0; drawSent(); return;
+    }
+    const nNew=parseInt($("#ssNew").value)||0, now=today0(), pool=sentencePool();
+    let due=pool.filter(x=>{const s=progress.sentSrs[x.han];return s&&s.due<=now;});
+    let news=pool.filter(x=>!progress.sentSrs[x.han]).slice(0,nNew);
+    news.forEach(x=>sentInit(x.han));
+    sentQueue=shuffle(due.concat(news)).slice(0,60); sentShown=false; sentDone=0;
+    if(!sentQueue.length){ $("#ssArea").innerHTML=`<div class="panel" style="text-align:center"><h3>🎉 Không còn câu cần ôn!</h3></div>`; return; }
+    drawSent();
+  };
+  $("#ssStart").onclick=startSent;
+  if(dailySentList && dailySentList.length) startSent();
+};
+function drawSent(){
+  if(!sentQueue.length){ $("#ssProg").style.width="100%";
+    $("#ssArea").innerHTML=`<div class="panel" style="text-align:center"><h3>✅ Xong phiên!</h3><p class="sub">Đã ôn ${sentDone} câu.</p><button class="btn primary" onclick="RENDER.sentsrs()">Về trang ôn câu</button></div>`; return; }
+  const x=sentQueue[0], total=sentDone+sentQueue.length;
+  $("#ssProg").style.width=(sentDone/total*100)+"%";
+  $("#ssArea").innerHTML=`
+    <div class="center-narrow">
+      <div class="panel" style="text-align:center">
+        <div class="quiz-q">🎧 Nghe câu — hiểu rồi lật xem đáp án · còn ${sentQueue.length} câu</div>
+        <div class="detail-han" style="font-size:34px;margin:10px 0">${esc(x.han)}</div>
+        <div id="ssBack" class="${sentShown?'':'hidden'}">
+          <div class="pin-cell">${esc(toPinyin(x.han))}</div>
+          <div class="amboi-line" style="justify-content:center">🗣️ ${esc(amBoiForHan(x.han))}</div>
+          <div style="margin-top:6px">${esc(x.meaning||"")}</div>
+          <div class="sub" style="font-size:11px">Nguồn: ${esc(x.src||"")}</div>
+        </div>
+        <div class="flash-controls" style="margin-top:12px">
+          <button class="btn" onclick="speak('${esc(x.han)}')">🔊 Nghe</button>
+          <button class="btn" onclick="speakBilingual('${esc(x.han)}', ${JSON.stringify(x.meaning||"").replace(/</g,'\\u003c')})">🇻🇳 Trung+Việt</button>
+          ${sentShown?`<button class="btn" style="border-color:var(--brand)" data-g="0">Quên</button>
+            <button class="btn" data-g="3">Khó</button>
+            <button class="btn primary" data-g="4">Nhớ</button>
+            <button class="btn" style="border-color:var(--ok)" data-g="5">Dễ</button>`
+            :`<button class="btn primary" id="ssFlip">Lật</button>`}
+        </div>
+      </div>
+    </div>`;
+  speak(x.han);
+  if($("#ssFlip")) $("#ssFlip").onclick=()=>{sentShown=true; drawSent();};
+  $$("[data-g]").forEach(b=>b.onclick=()=>{ const g=parseInt(b.dataset.g); sentReview(x.han,g); sentQueue.shift(); if(g<3)sentQueue.push(x); else sentDone++; sentShown=false; drawSent(); });
+}
+
+/* ---------- Bộ thủ (radicals) ---------- */
+RENDER.radicals = () => {
+  $("#view").innerHTML=`
+    <h2 class="section-h">🌿 Bộ thủ &amp; cấu tạo chữ</h2>
+    <p class="sub">Bộ thủ là "gốc nghĩa" của chữ Hán — nắm bộ thủ giúp đoán nghĩa &amp; nhớ mặt chữ. Nhấn 1 bộ để xem các chữ liên quan trong kho.</p>
+    <div class="panel">
+      <div class="toolbar">
+        <input class="txt" id="radIn" style="flex:1;min-width:200px" placeholder="Tra 1 chữ để tìm bộ thủ liên quan (vd 你, 河, 妈)...">
+        <button class="btn primary" id="radGo">Tra</button>
+      </div>
+      <div id="radOut" style="margin-top:8px"></div>
+    </div>
+    <div class="panel">
+      <h3>Danh sách bộ thủ thường gặp (${Object.keys(RADICALS).length})</h3>
+      <div class="cards-grid" id="radGrid"></div>
+    </div>`;
+  const analyze=()=>{
+    const t=($("#radIn").value||"").trim(); if(!t){ $("#radOut").innerHTML=""; return; }
+    const ch=[...t][0];
+    const found=Object.keys(RADICALS).filter(r=> r!==ch && (ch.includes(r) || (RADICALS[r].ex||"").split(/\s+/).includes(ch)));
+    const info=D.chars[ch];
+    $("#radOut").innerHTML=`
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <span class="han-cell" style="font-size:34px">${esc(ch)}</span>
+        <span class="pin-cell">${esc(D.charPinyin[ch]||"")}</span>
+        <span style="color:var(--warn)">🗣️ ${esc(amBoiSyllable(D.charPinyin[ch]||""))}</span>
+        ${info?`<span><b>${esc(info.hv)}</b> · ${esc(info.g)}</span>`:""}
+        <button class="mini" onclick="speak('${esc(ch)}')">🔊</button>
+      </div>
+      <div style="margin-top:8px"><b>Bộ thủ nhận diện:</b> ${found.length?found.map(r=>`<span class="chip rad-chip" data-r="${esc(r)}">${esc(r)} · ${esc(RADICALS[r].hv)} (${esc(RADICALS[r].m)})</span>`).join(" "):'<span class="sub">Không khớp bộ thủ nào trong danh sách (chữ có thể là bộ thủ độc lập).</span>'}</div>
+      ${charBreakdownHTML(ch)}`;
+    $$(".rad-chip",$("#radOut")).forEach(c=>c.onclick=()=>showRadical(c.dataset.r));
+  };
+  $("#radGo").onclick=analyze; $("#radIn").onkeydown=e=>{if(e.key==="Enter")analyze();};
+  $("#radGrid").innerHTML=Object.entries(RADICALS).map(([r,i])=>`
+    <div class="vcard rad-card" data-r="${esc(r)}">
+      <div class="han">${esc(r)}</div>
+      <div class="vi"><b>${esc(i.hv)}</b></div>
+      <div class="topic">${esc(i.m)}</div>
+    </div>`).join("");
+  $$(".rad-card").forEach(c=>c.onclick=()=>showRadical(c.dataset.r));
+};
+function showRadical(r){
+  const info=RADICALS[r];
+  // chữ ví dụ mang bộ này (danh sách curated), kèm pinyin/nghĩa nếu có trong kho
+  const exChars=(info.ex||"").split(/\s+/).filter(Boolean);
+  const cardFor=(ch)=>{ const w=findWord(ch)||{han:ch}; const ci=D.chars[ch];
+    return `<div class="vcard" onclick="speak('${esc(ch)}')">
+      <div class="han" style="font-size:26px">${esc(ch)}</div>
+      <div class="pin">${esc(D.charPinyin[ch]||"")} · <span style="color:var(--warn)">${esc(amBoiSyllable(D.charPinyin[ch]||""))}</span></div>
+      <div class="vi">${esc((ci&&ci.hv?ci.hv+" — ":"")+(w.vi||(ci&&ci.g)||""))}</div></div>`; };
+  const words=allVocab().filter(v=>v.han.length>1 && [...v.han].some(c=>exChars.includes(c))).slice(0,30);
+  $("#modalCard").innerHTML=`
+    <button class="close-x" onclick="closeModal()">×</button>
+    <div class="detail-han">${esc(r)}</div>
+    <div class="detail-pin">${esc(info.hv)} · ${esc(info.m)}</div>
+    ${exChars.length?`<div class="detail-row"><div class="lab">Chữ mang bộ ${esc(r)} (${exChars.length})</div>
+      <div class="cards-grid">${exChars.map(cardFor).join("")}</div></div>`:""}
+    ${words.length?`<div class="detail-row"><div class="lab">Từ trong kho có chứa các chữ này</div>
+      <div class="cards-grid">${words.map(v=>`<div class="vcard" onclick="speak('${esc(v.han)}')">
+        <div class="han" style="font-size:24px">${esc(v.han)}</div><div class="pin">${esc(v.pinyin||toPinyin(v.han))}</div>
+        <div class="vi">${esc(v.vi||"")}</div></div>`).join("")}</div></div>`:""}`;
+  $("#modal").classList.remove("hidden");
+}
+
+/* biểu đồ cột 14 ngày (ôn tập · từ mới · ôn câu) */
+function chart14HTML(){
+  const days=[]; for(let i=13;i>=0;i--){ const d=new Date(Date.now()-i*DAY_MS); days.push(d.toISOString().slice(0,10)); }
+  const data=days.map(d=>progress.history[d]||{reviews:0,newLearned:0,sent:0});
+  const max=Math.max(1, ...data.map(h=>Math.max(h.reviews,h.newLearned,h.sent)));
+  const H=110, W=Math.max(320, days.length*40);
+  let bars="";
+  data.forEach((h,i)=>{
+    const x=i*(W/days.length)+6, bw=(W/days.length)/4;
+    const b=(v,off,col)=>`<rect x="${(x+off).toFixed(1)}" y="${(H-v/max*H).toFixed(1)}" width="${bw.toFixed(1)}" height="${(v/max*H).toFixed(1)}" fill="${col}" rx="1.5"/>`;
+    bars+=b(h.reviews,0,"var(--brand)")+b(h.newLearned,bw+1,"var(--accent)")+b(h.sent,2*bw+2,"var(--ok)");
+    if(i%2===0) bars+=`<text x="${(x+bw).toFixed(1)}" y="${H+12}" font-size="8" fill="var(--muted)" text-anchor="middle">${days[i].slice(5)}</text>`;
+  });
+  const total=data.reduce((a,h)=>({r:a.r+h.reviews,n:a.n+h.newLearned,s:a.s+h.sent}),{r:0,n:0,s:0});
+  return `<div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H+18}" width="100%" style="min-width:${W}px;max-width:640px">${bars}</svg></div>
+    <div class="chips" style="margin-top:8px">
+      <span class="chip" style="background:var(--brand);color:#fff">■ Ôn tập: ${total.r}</span>
+      <span class="chip" style="background:var(--accent);color:#fff">■ Từ mới: ${total.n}</span>
+      <span class="chip" style="background:var(--ok);color:#fff">■ Ôn câu: ${total.s}</span>
+    </div>`;
+}
+
 /* ---------- Stats ---------- */
 RENDER.stats = () => {
   const byLevel={}, byTopic={};
@@ -1852,6 +2165,7 @@ RENDER.stats = () => {
       <div class="stat"><div class="n">${progress.listenStats.correct}/${progress.listenStats.total||0}</div><div class="l">Điểm luyện nghe</div></div>
       <div class="stat"><div class="n">${progress.myWords.length}</div><div class="l">Từ tự thêm 🎬</div></div>
     </div>
+    <div class="panel"><h3>📊 Tiến độ 14 ngày</h3>${chart14HTML()}</div>
     <div class="panel"><h3>Từ vựng theo cấp độ</h3>${bar(byLevel)}</div>
     <div class="panel"><h3>Từ vựng theo chủ đề</h3>${bar(byTopic)}</div>
     <div class="panel"><h3>Nguồn tài liệu (số câu/mục trích xuất)</h3>
@@ -1867,7 +2181,7 @@ RENDER.stats = () => {
     const blob=new Blob([JSON.stringify(progress,null,2)],{type:"application/json"});
     const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="tien-do-hsk.json"; a.click();
   };
-  $("#resetBtn").onclick=()=>{ if(confirm("Xóa toàn bộ tiến độ học (kể cả từ tự thêm & Room)? Cài đặt (API key, giọng) được giữ lại.")){ const keep=progress.settings; progress={learned:{},srs:{},quizStats:{correct:0,total:0},listenStats:{correct:0,total:0},myWords:[],rooms:[],settings:keep,daily:{date:"",reviews:0,listens:0,newLearned:0},streak:{count:0,best:0,lastDate:""},goal:{reviews:20,newWords:10}}; save(); RENDER.stats(); toast("Đã đặt lại"); } };
+  $("#resetBtn").onclick=()=>{ if(confirm("Xóa toàn bộ tiến độ học (kể cả từ tự thêm & Room)? Cài đặt (API key, giọng) được giữ lại.")){ const keep=progress.settings; progress={learned:{},srs:{},quizStats:{correct:0,total:0},listenStats:{correct:0,total:0},myWords:[],rooms:[],settings:keep,daily:{date:"",reviews:0,listens:0,newLearned:0},streak:{count:0,best:0,lastDate:""},goal:{reviews:20,newWords:10},playCount:{},studyCount:{},history:{},sentSrs:{},dailyList:{date:"",words:[],sents:[]}}; save(); RENDER.stats(); toast("Đã đặt lại"); } };
 };
 
 /* ---------- Utils ---------- */
@@ -1898,3 +2212,5 @@ initTheme();
 buildNav();
 go(location.hash.slice(1) && PAGES.some(p=>p.id===location.hash.slice(1)) ? location.hash.slice(1) : "home");
 window.closeModal=closeModal; window.speak=speak; window.toggleLearned=toggleLearned; window.toast=toast; window.RENDER=RENDER; window.openYouglish=openYouglish;
+setTimeout(checkReminder, 4000);           // nhắc bù khi mở app sau giờ
+setInterval(checkReminder, 60000);         // kiểm tra mỗi phút

@@ -17,7 +17,12 @@ App ghi nhớ & học tiếng Trung, **ưu tiên luyện nghe và từ vựng**.
 | Mục | Mô tả |
 |---|---|
 | 🔢 **Đếm số lần học/nghe** | Mỗi từ có badge **🔊×n** (số lần nghe) và **📖×n** (số lần học). Trang Từ vựng & Nghe liên tục **sắp xếp theo tần suất** (ít nhất → nhiều) để ưu tiên từ chưa quen. |
-| 📅 **Hôm nay học gì** | Trang chủ có lộ trình hằng ngày: **chuỗi streak 🔥**, mục tiêu thẻ/ngày (thanh tiến độ), và danh sách việc cần làm hôm nay (ôn thẻ đến hạn, học từ mới, luyện nghe) — bấm là vào thẳng. |
+| 📅 **Hôm nay học gì** | Trang chủ có lộ trình hằng ngày: **chuỗi streak 🔥**, mục tiêu thẻ/ngày (thanh tiến độ), việc cần làm hôm nay, và **Danh sách cố định 100 từ + 100 câu** (chọn tự động, giữ nguyên cả ngày; nút Học/Nghe/Ôn câu/Xem). |
+| 📖 **Ôn câu ví dụ** | SRS lặp lại ngắt quãng trên **cả câu** (câu nguồn + câu ví dụ): nghe → hiểu → tự chấm Quên/Khó/Nhớ/Dễ. |
+| 🌿 **Bộ thủ** | Tra 1 chữ → bộ thủ + âm Hán-Việt + nghĩa gốc + chữ liên quan; duyệt ~56 bộ thủ thường gặp kèm chữ ví dụ. |
+| ⏰ **Nhắc ôn theo giờ** | Đặt giờ nhắc (mặc định 08:00) → thông báo trình duyệt khi đến giờ; nhắc bù khi mở app sau giờ (⚙️ Cài đặt). |
+| 📊 **Biểu đồ 14 ngày** | Thống kê hiển thị cột 14 ngày: ôn tập · từ mới · ôn câu. |
+| 🌐 **Tra nghĩa tự động** | Trong Room tạm: Google Translate (không cần key) → MyMemory dự phòng; hoặc AI kèm **loại từ + câu ví dụ**. |
 | 🧠 **Ôn tập ghi nhớ (SRS)** | Lặp lại ngắt quãng (SM-2). **Thống kê Khó/Đang học/Dễ/Thuộc/Mới**. 3 chế độ kiểm tra: 🎧 nhận biết (nghe→đoán), ✍️ viết hán tự, 🎤 nói hán tự (chấm phát âm qua micro). Lọc ưu tiên từ Khó. |
 | 🎧 **Luyện nghe** | 7 chế độ: nghe→chọn nghĩa/hán tự, nghe câu→đáp án, **🔁 nghe liên tục** (playlist rảnh tay), **📖 ghép câu chuyện** từ nhóm từ (+ nút tạo truyện bằng AI), **✍️ nghe→viết**, **🎤 nghe→nói lại**. |
 | ➕ **Thêm nguồn từ** | Nạp từ **5 nguồn**: đoạn text · YouTube (xem + dán phụ đề) · Reel Facebook · **file PDF** (đọc chữ) · **hình ảnh (OCR)**. Từ được đưa vào **Room tạm** để lọc trùng + lọc cơ bản (độ dài, hư từ), bạn duyệt bằng checkbox rồi **xác nhận vào Thư viện keyword** hoặc lưu thành Room. |
