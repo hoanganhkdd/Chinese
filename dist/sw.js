@@ -1,5 +1,5 @@
 /* Service worker — NETWORK-FIRST cho file cùng nguồn, CACHE-FIRST cho CDN */
-const CACHE = "hsk-app-v12";
+const CACHE = "hsk-app-v13";
 const CDN_CACHE = "hsk-cdn-v1";
 const ASSETS = [
   "./", "./index.html", "./styles.css", "./app.js", "./appdata.js",
