@@ -143,6 +143,7 @@ tr:hover td{background:var(--panel2)}
 .opt{display:block;width:100%;text-align:left;padding:13px 16px;margin:8px 0;border:1px solid var(--line);
   border-radius:12px;background:var(--panel);cursor:pointer;font-size:15px;color:var(--ink)}
 .opt:hover{border-color:var(--brand)}
+.opt.chosen{background:var(--panel2);border-color:var(--accent)}
 .opt.correct{background:rgba(22,163,74,.15);border-color:var(--ok)}
 .opt.wrong{background:rgba(215,38,61,.15);border-color:var(--brand)}
 .center-narrow{max-width:640px;margin:0 auto}

@@ -23,6 +23,7 @@ progress.history = progress.history || {};       // "YYYY-MM-DD" -> {reviews,lis
 progress.sentSrs = progress.sentSrs || {};       // câu(han) -> {ef,interval,due,reps,lapses}
 progress.dailyList = progress.dailyList || {date:"", words:[], sents:[]};
 progress.links = progress.links || [];           // [{title,url,type,note,tag,date}] tài liệu/link nhanh
+progress.examBest = progress.examBest || 0;      // % cao nhất bài thi thử
 if(!progress.settings) progress.settings = {};
 if(progress.settings.reminderOn==null) progress.settings.reminderOn=false;
 if(!progress.settings.reminderTime) progress.settings.reminderTime="08:00";
@@ -419,6 +420,7 @@ const PAGES = [
   {id:"flash",  ico:"🎴", name:"Flashcard"},
   {id:"write",  ico:"✍️", name:"Luyện viết"},
   {id:"quiz",   ico:"📝", name:"Kiểm tra"},
+  {id:"exam",   ico:"🎯", name:"Thi thử"},
   {id:"hanzi",  ico:"🧩", name:"Chiết tự"},
   {id:"radicals",ico:"🌿", name:"Bộ thủ"},
   {id:"video",  ico:"➕", name:"Thêm nguồn từ"},
@@ -441,6 +443,7 @@ function buildNav(){
 }
 let current = "home";
 function go(id){
+  if(id!=="exam" && typeof examTimer!=="undefined" && examTimer){ clearInterval(examTimer); examTimer=null; if(examState) examState.running=false; }
   current = id;
   $$(".nav-item").forEach(b=>b.classList.toggle("active", b.dataset.page===id));
   $("#pageTitle").textContent = PAGES.find(p=>p.id===id).name;
@@ -1132,6 +1135,114 @@ function nextQuiz(){
   });
 }
 
+/* ---------- Thi thử (timed exam) ---------- */
+let examState=null, examTimer=null;
+RENDER.exam = () => {
+  if(examState && examState.running){ drawExam(); return; }
+  $("#view").innerHTML=`
+    <h2 class="section-h">🎯 Thi thử</h2>
+    <p class="sub">Bài thi trắc nghiệm tính giờ. Chọn nghĩa đúng cho hán tự. Kỷ lục của bạn: <b>${progress.examBest||0}%</b></p>
+    <div class="center-narrow">
+      <div class="panel">
+        <div class="toolbar" style="justify-content:center">
+          <select id="exN"><option>10</option><option selected>20</option><option>30</option><option>50</option></select>
+          <select id="exSec"><option value="10">10 giây/câu</option><option value="15" selected>15 giây/câu</option><option value="20">20 giây/câu</option><option value="0">Không giới hạn</option></select>
+          <select id="exSrc"><option value="all">Tất cả từ</option><option value="hsk">HSK có sẵn</option><option value="mywords">Thư viện của tôi</option></select>
+          <button class="btn primary" id="exStart">Bắt đầu thi</button>
+        </div>
+        <p class="sub" style="text-align:center;margin-top:8px">Hết giờ sẽ tự nộp. Sau khi thi có thể xem lại các câu sai.</p>
+      </div>
+    </div>`;
+  $("#exStart").onclick=startExam;
+};
+function startExam(){
+  const n=parseInt($("#exN").value)||20, sec=parseInt($("#exSec").value), src=$("#exSrc").value;
+  const pool=(src==="mywords"?progress.myWords:src==="hsk"?D.vocab:allVocab()).filter(v=>v.vi&&v.han);
+  if(pool.length<4){ toast("Không đủ từ để thi"); return; }
+  const qs=shuffle(pool).slice(0,Math.min(n,pool.length)).map(q=>{
+    const opts=shuffle([q, ...shuffle(pool.filter(v=>v.vi!==q.vi)).slice(0,3)]);
+    return {q, opts, answer:null};
+  });
+  examState={qs, idx:0, running:true, secPer:sec, timeLeft: sec? sec*qs.length : 0, startTs:Date.now()};
+  if(sec){ clearInterval(examTimer); examTimer=setInterval(examTick,1000); }
+  drawExam();
+}
+function examTick(){
+  if(!examState||!examState.running) return;
+  examState.timeLeft--;
+  const el=$("#exTime"); if(el) el.textContent=fmtTime(examState.timeLeft);
+  if(examState.timeLeft<=0){ finishExam(); }
+}
+function fmtTime(s){ s=Math.max(0,s); return Math.floor(s/60)+":"+String(s%60).padStart(2,"0"); }
+function drawExam(){
+  const st=examState, cur=st.qs[st.idx];
+  const answered=st.qs.filter(x=>x.answer!=null).length;
+  $("#view").innerHTML=`
+    <h2 class="section-h">🎯 Thi thử</h2>
+    <div class="center-narrow">
+      <div class="toolbar" style="justify-content:space-between;align-items:center">
+        <span class="chip">Câu ${st.idx+1}/${st.qs.length}</span>
+        ${st.secPer?`<span class="chip" id="exTimeWrap" style="background:var(--brand);color:#fff">⏱ <b id="exTime">${fmtTime(st.timeLeft)}</b></span>`:`<span class="chip">Không giới hạn</span>`}
+        <span class="sub">${answered}/${st.qs.length} đã trả lời</span>
+      </div>
+      <div class="progress-bar"><i style="width:${(st.idx)/st.qs.length*100}%"></i></div>
+      <div class="panel" style="text-align:center">
+        <div class="quiz-q">Hán tự này nghĩa là gì?</div>
+        <div class="quiz-han">${esc(cur.q.han)}</div>
+        <div class="quiz-q">${esc(cur.q.pinyin)} · <span style="color:var(--warn)">🗣️ ${esc(amBoiForHan(cur.q.han))}</span> <span class="audio-btn" onclick="speak('${esc(cur.q.han)}')">🔊</span></div>
+        <div style="margin-top:14px">${cur.opts.map(o=>`<button class="opt ${cur.answer===o.vi?'chosen':''}" data-vi="${esc(o.vi)}">${esc(o.vi)}</button>`).join("")}</div>
+      </div>
+      <div class="toolbar" style="justify-content:space-between">
+        <button class="btn" id="exPrev" ${st.idx===0?'disabled':''}>‹ Câu trước</button>
+        ${st.idx===st.qs.length-1?`<button class="btn primary" id="exSubmit">Nộp bài ✓</button>`:`<button class="btn primary" id="exNext">Câu sau ›</button>`}
+        <button class="btn" id="exQuit" style="border-color:var(--brand)">Thoát</button>
+      </div>
+    </div>`;
+  $$(".opt").forEach(b=>b.onclick=()=>{ cur.answer=b.dataset.vi; bumpStudy(cur.q.han);
+    if(st.idx<st.qs.length-1){ st.idx++; drawExam(); } else drawExam(); });
+  if($("#exNext")) $("#exNext").onclick=()=>{ st.idx=Math.min(st.qs.length-1,st.idx+1); drawExam(); };
+  if($("#exPrev")) $("#exPrev").onclick=()=>{ st.idx=Math.max(0,st.idx-1); drawExam(); };
+  if($("#exSubmit")) $("#exSubmit").onclick=finishExam;
+  $("#exQuit").onclick=()=>{ if(confirm("Thoát bài thi? Kết quả sẽ không được lưu.")){ clearInterval(examTimer); examState=null; RENDER.exam(); } };
+}
+function finishExam(){
+  clearInterval(examTimer);
+  const st=examState; if(!st) return; st.running=false;
+  const correct=st.qs.filter(x=>x.answer===x.q.vi).length;
+  const pct=Math.round(correct/st.qs.length*100);
+  const timeUsed=Math.round((Date.now()-st.startTs)/1000);
+  if(pct>progress.examBest){ progress.examBest=pct; }
+  save();
+  const wrong=st.qs.filter(x=>x.answer!==x.q.vi);
+  $("#view").innerHTML=`
+    <h2 class="section-h">🎯 Kết quả thi thử</h2>
+    <div class="center-narrow">
+      <div class="panel" style="text-align:center">
+        <div style="font-size:52px;font-weight:800;color:${pct>=80?'var(--ok)':pct>=50?'var(--warn)':'var(--brand)'}">${pct}%</div>
+        <div class="sub">Đúng ${correct}/${st.qs.length} câu · thời gian ${fmtTime(timeUsed)} · kỷ lục ${progress.examBest}%</div>
+        <div class="toolbar" style="justify-content:center;margin-top:12px">
+          <button class="btn primary" id="exAgain">Thi lại</button>
+          ${wrong.length?`<button class="btn" id="exReviewPlay">🔊 Nghe lại từ sai</button>`:""}
+        </div>
+      </div>
+      ${wrong.length?`<div class="panel">
+        <h3>❌ ${wrong.length} câu sai — xem lại</h3>
+        <div class="table-wrap" style="box-shadow:none"><table><thead><tr><th>Hán tự</th><th>Pinyin/Âm bồi</th><th>Đáp án đúng</th><th>Bạn chọn</th><th></th></tr></thead><tbody>
+        ${wrong.map(x=>`<tr>
+          <td class="han-cell">${esc(x.q.han)}</td>
+          <td>${pinAmbHTML(x.q.pinyin, x.q.han)}</td>
+          <td style="color:var(--ok)">${esc(x.q.vi)}</td>
+          <td style="color:var(--brand)">${esc(x.answer||"(bỏ trống)")}</td>
+          <td><button class="mini" onclick="speak('${esc(x.q.han)}')">🔊</button></td>
+        </tr>`).join("")}
+        </tbody></table></div>
+      </div>`:`<div class="panel" style="text-align:center"><h3>🎉 Hoàn hảo! Không có câu sai.</h3></div>`}
+    </div>`;
+  $("#exAgain").onclick=()=>{ examState=null; RENDER.exam(); };
+  if($("#exReviewPlay")) $("#exReviewPlay").onclick=()=>Player.start(wrong.map(x=>({han:x.q.han,sub:x.q.vi,vi:x.q.vi})),{pauseMs:1100});
+  examState=null;
+}
+
 /* ---------- Phrases ---------- */
 let phraseTopic="";
 RENDER.phrases = () => {
@@ -1638,7 +1749,7 @@ function drawSourceInput(){
   }
   else if(srcTab==="youtube"){
     box.innerHTML=`<h3>▶️ YouTube</h3>
-      <div class="toolbar"><input class="txt" id="ytUrl" style="flex:1;min-width:220px" placeholder="🔗 Dán link YouTube..."><button class="btn" id="ytLoad">Xem</button></div>
+      <div class="toolbar"><input class="txt" id="ytUrl" style="flex:1;min-width:220px" placeholder="🔗 Dán link YouTube..."><button class="btn" id="ytLoad">Xem</button><button class="btn" id="ytSaveLink">📎 Lưu vào Tài liệu</button></div>
       <div id="ytPlayer" style="margin-top:10px"></div>
       <details style="margin-top:10px"><summary style="cursor:pointer;font-weight:600">📄 Cách lấy phụ đề (bấm xem)</summary>
         <div style="line-height:1.7;margin-top:6px">1) Trên YouTube (máy tính): dưới video → <b>...→ Hiển thị bản chép lời</b> → chọn &amp; copy chữ Hán.<br>
@@ -1648,17 +1759,19 @@ function drawSourceInput(){
       <div class="toolbar" style="margin-top:10px"><button class="btn primary" id="sGo">▶ Trích từ → Room tạm</button></div>`;
     $("#ytLoad").onclick=()=>{ const id=ytId($("#ytUrl").value); if(!id){toast("Link không hợp lệ");return;}
       $("#ytPlayer").innerHTML=`<div style="position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden"><iframe src="https://www.youtube.com/embed/${id}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen allow="autoplay;encrypted-media;picture-in-picture"></iframe></div>`; };
+    $("#ytSaveLink").onclick=()=>saveQuickLink($("#ytUrl").value, "Video học");
     $("#sGo").onclick=()=>stageFromText($("#sIn").value, "youtube");
   }
   else if(srcTab==="reel"){
     box.innerHTML=`<h3>📱 Reel / Video Facebook</h3>
-      <div class="toolbar"><input class="txt" id="fbUrl" style="flex:1;min-width:220px" placeholder="🔗 Dán link reel/video Facebook (công khai)..."><button class="btn" id="fbLoad">Xem thử</button></div>
+      <div class="toolbar"><input class="txt" id="fbUrl" style="flex:1;min-width:220px" placeholder="🔗 Dán link reel/video Facebook (công khai)..."><button class="btn" id="fbLoad">Xem thử</button><button class="btn" id="fbSaveLink">📎 Lưu vào Tài liệu</button></div>
       <div id="fbPlayer" style="margin-top:10px"></div>
       <p class="sub" style="margin-top:8px">⚠️ Facebook không cho lấy phụ đề tự động. Hãy bật phụ đề khi xem reel, gõ/chép lại lời thoại chữ Hán rồi dán vào ô dưới (hoặc dùng caption bài viết).</p>
       <textarea class="ta" id="sIn" placeholder="Dán/gõ lời thoại hoặc caption chữ Hán..."></textarea>
       <div class="toolbar" style="margin-top:10px"><button class="btn primary" id="sGo">▶ Trích từ → Room tạm</button></div>`;
     $("#fbLoad").onclick=()=>{ const u=$("#fbUrl").value.trim(); if(!/facebook\.com|fb\.watch/.test(u)){toast("Link Facebook không hợp lệ");return;}
       $("#fbPlayer").innerHTML=`<iframe src="https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(u)}&show_text=false&width=560" style="width:100%;max-width:560px;height:315px;border:0;overflow:hidden" scrolling="no" allowfullscreen allow="autoplay;encrypted-media;picture-in-picture"></iframe><p class="sub">Nếu không hiện, reel để ở chế độ riêng tư hoặc FB chặn nhúng — bạn vẫn có thể gõ lời thoại vào ô dưới.</p>`; };
+    $("#fbSaveLink").onclick=()=>saveQuickLink($("#fbUrl").value, "Video học");
     $("#sGo").onclick=()=>stageFromText($("#sIn").value, "reel");
   }
   else if(srcTab==="pdf"){
@@ -1882,6 +1995,14 @@ function linkType(url){
   return {t:"web",ico:"🔗",name:"Trang web"};
 }
 let linkFilter="", linkTag="";
+function saveQuickLink(url, tag){
+  url=(url||"").trim(); if(!url){ toast("Chưa có URL"); return; }
+  let u=url; if(!/^https?:\/\//i.test(u)) u="https://"+u;
+  if(progress.links.some(l=>l.url===u)){ toast("Link đã có trong Tài liệu"); return; }
+  const ty=linkType(u);
+  progress.links.unshift({title:ty.name+" · "+u.replace(/^https?:\/\//,'').slice(0,40), url:u, type:ty.t, note:"", tag:tag||"", date:todayStr()});
+  save(); toast("📎 Đã lưu vào Tài liệu");
+}
 RENDER.links = () => {
   $("#view").innerHTML=`
     <h2 class="section-h">📎 Tài liệu / Link nhanh</h2>
@@ -2261,7 +2382,7 @@ RENDER.stats = () => {
     const blob=new Blob([JSON.stringify(progress,null,2)],{type:"application/json"});
     const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="tien-do-hsk.json"; a.click();
   };
-  $("#resetBtn").onclick=()=>{ if(confirm("Xóa toàn bộ tiến độ học (kể cả từ tự thêm & Room)? Cài đặt (API key, giọng) được giữ lại.")){ const keep=progress.settings; progress={learned:{},srs:{},quizStats:{correct:0,total:0},listenStats:{correct:0,total:0},myWords:[],rooms:[],settings:keep,daily:{date:"",reviews:0,listens:0,newLearned:0},streak:{count:0,best:0,lastDate:""},goal:{reviews:20,newWords:10},playCount:{},studyCount:{},history:{},sentSrs:{},dailyList:{date:"",words:[],sents:[]},links:[]}; save(); RENDER.stats(); toast("Đã đặt lại"); } };
+  $("#resetBtn").onclick=()=>{ if(confirm("Xóa toàn bộ tiến độ học (kể cả từ tự thêm & Room)? Cài đặt (API key, giọng) được giữ lại.")){ const keep=progress.settings; progress={learned:{},srs:{},quizStats:{correct:0,total:0},listenStats:{correct:0,total:0},myWords:[],rooms:[],settings:keep,daily:{date:"",reviews:0,listens:0,newLearned:0},streak:{count:0,best:0,lastDate:""},goal:{reviews:20,newWords:10},playCount:{},studyCount:{},history:{},sentSrs:{},dailyList:{date:"",words:[],sents:[]},links:[],examBest:0}; save(); RENDER.stats(); toast("Đã đặt lại"); } };
 };
 
 /* ---------- Utils ---------- */

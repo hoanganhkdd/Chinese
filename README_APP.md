@@ -36,6 +36,7 @@ App ghi nhớ & học tiếng Trung, **ưu tiên luyện nghe và từ vựng**.
 | 🎴 Flashcard | Lật thẻ ôn nhanh |
 | ✍️ Luyện viết | Nhìn nghĩa+pinyin, gõ hán tự, chấm điểm |
 | 📝 Kiểm tra | Trắc nghiệm chọn nghĩa |
+| 🎯 **Thi thử** | Bài thi tính giờ (10–50 câu, đếm ngược, tự nộp khi hết giờ), chấm %, lưu kỷ lục, **xem lại câu sai** + nghe lại từ sai. |
 | 🗣️ Khẩu ngữ (500) | Theo 17 chủ đề tình huống |
 | 💼 Thương mại (217) | Từ kinh doanh kèm English |
 | 📄 Câu nguồn (3330) | Tra cứu, lọc theo PDF |
