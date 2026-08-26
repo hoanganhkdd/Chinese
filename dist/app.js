@@ -22,6 +22,7 @@ progress.studyCount = progress.studyCount || {}; // han -> số lần học (ôn
 progress.history = progress.history || {};       // "YYYY-MM-DD" -> {reviews,listens,newLearned,sent}
 progress.sentSrs = progress.sentSrs || {};       // câu(han) -> {ef,interval,due,reps,lapses}
 progress.dailyList = progress.dailyList || {date:"", words:[], sents:[]};
+progress.links = progress.links || [];           // [{title,url,type,note,tag,date}] tài liệu/link nhanh
 if(!progress.settings) progress.settings = {};
 if(progress.settings.reminderOn==null) progress.settings.reminderOn=false;
 if(!progress.settings.reminderTime) progress.settings.reminderTime="08:00";
@@ -422,6 +423,7 @@ const PAGES = [
   {id:"radicals",ico:"🌿", name:"Bộ thủ"},
   {id:"video",  ico:"➕", name:"Thêm nguồn từ"},
   {id:"library",ico:"📇", name:"Thư viện keyword"},
+  {id:"links",  ico:"📎", name:"Tài liệu / Link"},
   {id:"phrases",ico:"🗣️", name:"Khẩu ngữ", badge:D.phrases.length},
   {id:"biz",    ico:"💼", name:"Thương mại", badge:D.business.length},
   {id:"sents",  ico:"📄", name:"Câu nguồn", badge:D.sentences.length},
@@ -1868,6 +1870,84 @@ RENDER.library = () => {
   draw();
 };
 
+/* ---------- Tài liệu / Link nhanh ---------- */
+function linkType(url){
+  const u=(url||"").toLowerCase();
+  if(/youtube\.com|youtu\.be/.test(u)) return {t:"youtube",ico:"▶️",name:"YouTube"};
+  if(/drive\.google\.com|docs\.google\.com|sheets\.google\.com/.test(u)) return {t:"drive",ico:"📁",name:"Google Drive"};
+  if(/facebook\.com|fb\.watch/.test(u)) return {t:"facebook",ico:"📱",name:"Facebook"};
+  if(/tiktok\.com|douyin/.test(u)) return {t:"tiktok",ico:"🎵",name:"TikTok/Douyin"};
+  if(/\.pdf($|\?)/.test(u)) return {t:"pdf",ico:"📄",name:"PDF"};
+  if(/bilibili\.com/.test(u)) return {t:"bili",ico:"📺",name:"Bilibili"};
+  return {t:"web",ico:"🔗",name:"Trang web"};
+}
+let linkFilter="", linkTag="";
+RENDER.links = () => {
+  $("#view").innerHTML=`
+    <h2 class="section-h">📎 Tài liệu / Link nhanh</h2>
+    <p class="sub">Lưu link video, Google Drive, tài liệu... để mở nhanh khi cần. Tự nhận diện loại link. Dữ liệu lưu trên máy bạn.</p>
+    <div class="panel">
+      <h3>➕ Thêm link mới</h3>
+      <div class="toolbar">
+        <input class="txt" id="lkUrl" style="flex:2;min-width:220px" placeholder="Dán URL (YouTube, Google Drive, PDF, web...)">
+        <input class="txt" id="lkTitle" style="flex:1;min-width:150px" placeholder="Tiêu đề (tùy chọn)">
+        <input class="txt" id="lkTag" style="width:130px" placeholder="Nhãn (vd: Ngữ pháp)">
+        <button class="btn primary" id="lkAdd">Lưu</button>
+      </div>
+      <input class="txt" id="lkNote" style="width:100%;margin-top:8px" placeholder="Ghi chú (tùy chọn)">
+    </div>
+    <div class="panel">
+      <div class="toolbar">
+        <input class="txt" id="lkSearch" style="flex:1;min-width:180px" placeholder="🔎 Tìm trong tài liệu...">
+        <select id="lkTagFilter"></select>
+        <span class="count-pill" id="lkCount"></span>
+      </div>
+      <div id="lkList" style="margin-top:8px"></div>
+    </div>`;
+  const add=()=>{
+    const url=($("#lkUrl").value||"").trim();
+    if(!url){ toast("Dán URL trước"); return; }
+    let u=url; if(!/^https?:\/\//i.test(u)) u="https://"+u;
+    const ty=linkType(u);
+    const title=($("#lkTitle").value||"").trim() || ty.name+" · "+u.replace(/^https?:\/\//,'').slice(0,40);
+    progress.links.unshift({title, url:u, type:ty.t, note:($("#lkNote").value||"").trim(), tag:($("#lkTag").value||"").trim(), date:todayStr()});
+    save(); toast("Đã lưu link"); $("#lkUrl").value="";$("#lkTitle").value="";$("#lkNote").value="";$("#lkTag").value="";
+    draw();
+  };
+  $("#lkAdd").onclick=add;
+  $("#lkUrl").onkeydown=e=>{ if(e.key==="Enter") add(); };
+  $("#lkSearch").oninput=()=>{linkFilter=$("#lkSearch").value;draw();};
+  const draw=()=>{
+    const tags=[...new Set(progress.links.map(l=>l.tag).filter(Boolean))];
+    const sel=$("#lkTagFilter");
+    if(sel) sel.innerHTML=`<option value="">Tất cả nhãn</option>`+tags.map(t=>`<option ${linkTag===t?"selected":""}>${esc(t)}</option>`).join("");
+    if(sel) sel.onchange=e=>{linkTag=e.target.value;draw();};
+    const q=(linkFilter||"").toLowerCase();
+    const list=progress.links.filter(l=>(!linkTag||l.tag===linkTag) && (!q||(l.title+l.url+(l.note||"")+(l.tag||"")).toLowerCase().includes(q)));
+    $("#lkCount").textContent=`${list.length} link`;
+    $("#lkList").innerHTML = list.length ? list.map((l)=>{
+      const gi=progress.links.indexOf(l); const ty=linkType(l.url);
+      return `<div class="link-row">
+        <span class="link-ico">${ty.ico}</span>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:600;overflow:hidden;text-overflow:ellipsis">${esc(l.title)}</div>
+          <div class="sub" style="font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(l.url)}</div>
+          ${l.note?`<div class="sub" style="font-size:12px">📝 ${esc(l.note)}</div>`:""}
+          <div style="margin-top:2px">${l.tag?`<span class="chip" style="font-size:11px;padding:2px 8px">${esc(l.tag)}</span> `:""}<span class="sub" style="font-size:11px">${esc(l.date||"")}</span></div>
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <a class="btn sm primary" href="${esc(l.url)}" target="_blank" rel="noopener">Mở ↗</a>
+          <button class="mini" data-copy="${gi}" title="Copy link">📋</button>
+          <button class="mini" data-del="${gi}" style="border-color:var(--brand)" title="Xóa">🗑</button>
+        </div>
+      </div>`;
+    }).join("") : `<p class="sub">Chưa có link nào. Thêm link ở trên để truy cập nhanh sau này.</p>`;
+    $$("[data-del]",$("#lkList")).forEach(b=>b.onclick=()=>{ if(confirm("Xóa link này?")){ progress.links.splice(+b.dataset.del,1); save(); draw(); } });
+    $$("[data-copy]",$("#lkList")).forEach(b=>b.onclick=()=>{ navigator.clipboard?.writeText(progress.links[+b.dataset.copy].url).then(()=>toast("Đã copy link"),()=>{}); });
+  };
+  draw();
+};
+
 /* ---------- Cài đặt ---------- */
 RENDER.settings = () => {
   const s=progress.settings;
@@ -2181,7 +2261,7 @@ RENDER.stats = () => {
     const blob=new Blob([JSON.stringify(progress,null,2)],{type:"application/json"});
     const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="tien-do-hsk.json"; a.click();
   };
-  $("#resetBtn").onclick=()=>{ if(confirm("Xóa toàn bộ tiến độ học (kể cả từ tự thêm & Room)? Cài đặt (API key, giọng) được giữ lại.")){ const keep=progress.settings; progress={learned:{},srs:{},quizStats:{correct:0,total:0},listenStats:{correct:0,total:0},myWords:[],rooms:[],settings:keep,daily:{date:"",reviews:0,listens:0,newLearned:0},streak:{count:0,best:0,lastDate:""},goal:{reviews:20,newWords:10},playCount:{},studyCount:{},history:{},sentSrs:{},dailyList:{date:"",words:[],sents:[]}}; save(); RENDER.stats(); toast("Đã đặt lại"); } };
+  $("#resetBtn").onclick=()=>{ if(confirm("Xóa toàn bộ tiến độ học (kể cả từ tự thêm & Room)? Cài đặt (API key, giọng) được giữ lại.")){ const keep=progress.settings; progress={learned:{},srs:{},quizStats:{correct:0,total:0},listenStats:{correct:0,total:0},myWords:[],rooms:[],settings:keep,daily:{date:"",reviews:0,listens:0,newLearned:0},streak:{count:0,best:0,lastDate:""},goal:{reviews:20,newWords:10},playCount:{},studyCount:{},history:{},sentSrs:{},dailyList:{date:"",words:[],sents:[]},links:[]}; save(); RENDER.stats(); toast("Đã đặt lại"); } };
 };
 
 /* ---------- Utils ---------- */
