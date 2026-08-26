@@ -24,6 +24,7 @@ progress.sentSrs = progress.sentSrs || {};       // câu(han) -> {ef,interval,du
 progress.dailyList = progress.dailyList || {date:"", words:[], sents:[]};
 progress.links = progress.links || [];           // [{title,url,type,note,tag,date}] tài liệu/link nhanh
 progress.examBest = progress.examBest || 0;      // % cao nhất bài thi thử
+progress.saved = progress.saved || {};           // han -> {han,pinyin,vi,mnemonic,date} từ đã lưu (mọi từ)
 if(!progress.settings) progress.settings = {};
 if(progress.settings.reminderOn==null) progress.settings.reminderOn=false;
 if(!progress.settings.reminderTime) progress.settings.reminderTime="08:00";
@@ -107,6 +108,21 @@ function addMyWord(w){
   if(!w.date) w.date=new Date().toISOString().slice(0,10);
   progress.myWords.push(w); srsInit(w.han); save(); return true;
 }
+
+/* ---------- Lưu từ (bookmark mọi từ) + Lưu cách nhớ ---------- */
+function isSaved(han){ return !!progress.saved[han]; }
+function ensureSaved(han, data={}){
+  if(!progress.saved[han]) progress.saved[han]={han, pinyin:data.pinyin||"", vi:data.vi||"", mnemonic:"", date:new Date().toISOString().slice(0,10)};
+  else { if(data.pinyin&&!progress.saved[han].pinyin) progress.saved[han].pinyin=data.pinyin; if(data.vi&&!progress.saved[han].vi) progress.saved[han].vi=data.vi; }
+  return progress.saved[han];
+}
+function toggleSaved(han, data={}){
+  if(progress.saved[han]){ delete progress.saved[han]; save(); return false; }
+  ensureSaved(han, data); save(); return true;
+}
+function saveMnemonic(han, text, data={}){ ensureSaved(han, data).mnemonic=text; save(); }
+function getMnemonic(han){ return (progress.saved[han]||{}).mnemonic || (progress.myWords.find(x=>x.han===han)||{}).mnemonic || ""; }
+window.toggleSaved=toggleSaved;
 
 /* ---------- Âm bồi (phiên âm tiếng Việt gần đúng) ---------- */
 // Chinese tone -> Vietnamese diacritic: 1 ngang, 2 sắc, 3 hỏi, 4 huyền
@@ -286,30 +302,32 @@ function openMemoryGuide(han, opts={}){
     <div class="toolbar" style="margin-top:12px">
       <button class="btn sm primary" onclick="speak('${esc(han)}')">🔊 Nghe</button>
       <button class="btn sm" onclick="speakAmboi('${esc(han)}')">🇻🇳 Âm bồi</button>
+      <button class="btn sm" id="mgSave" style="border-color:var(--warn)">${isSaved(han)?'⭐ Đã lưu từ':'☆ Lưu từ'}</button>
       <button class="btn sm" onclick="openYouglish('${esc(han)}')">🌐 Youglish</button>
     </div>
     <div class="detail-row"><div class="lab">🧩 Chiết tự từng chữ (offline)</div>${charBreakdownHTML(han)}</div>
     <div class="detail-row">
       <div class="lab">💡 Cách nhớ chi tiết (AI)</div>
-      <div id="mnBox"><button class="btn primary" id="mnGen">✨ Tạo hướng dẫn ghi nhớ${sentence?" (theo câu)":""}</button>
-        <p class="sub" style="margin-top:6px">Phân tích chiết tự sâu + mẹo liên tưởng dễ nhớ. Cần OpenAI API key (⚙️ Cài đặt).</p></div>
+      <div id="mnBox"></div>
     </div>`;
   $("#modal").classList.remove("hidden");
-  $("#mnGen").onclick=async()=>{
+  $("#mgSave").onclick=()=>{ const on=toggleSaved(han,{pinyin,vi}); $("#mgSave").textContent=on?'⭐ Đã lưu từ':'☆ Lưu từ'; toast(on?'Đã lưu từ':'Đã bỏ lưu'); };
+  const renderGen=(label)=>`<button class="btn primary" id="mnGen">${label||('✨ Tạo hướng dẫn ghi nhớ'+(sentence?" (theo câu)":""))}</button>
+    <p class="sub" style="margin-top:6px">Chiết tự sâu + mẹo liên tưởng dễ nhớ. Cần OpenAI API key (⚙️ Cài đặt).</p>`;
+  const bindGen=()=>{ $("#mnGen").onclick=async()=>{
     if(!(progress.settings.openaiKey||"").trim()){ toast("Cần OpenAI API key ở ⚙️ Cài đặt"); go("settings"); closeModal(); return; }
     $("#mnBox").innerHTML=`<p class="sub">✨ Đang phân tích cách nhớ…</p>`;
-    try{
-      const text=await aiMnemonic(han, pinyin, vi, sentence);
-      $("#mnBox").innerHTML=`<div class="mnemonic">${mnFormat(text)}</div>
-        <button class="btn sm" style="margin-top:8px" id="mnSave">💾 Lưu mẹo vào ghi chú từ</button>`;
-      $("#mnSave").onclick=()=>{ const mw=progress.myWords.find(x=>x.han===han); if(mw){ mw.mnemonic=text; save(); toast("Đã lưu vào từ trong thư viện"); } else toast("Từ này không nằm trong Thư viện của bạn (chỉ hiển thị tạm)"); };
-    }catch(e){ $("#mnBox").innerHTML=`<p class="sub" style="color:var(--brand)">Lỗi: ${esc(e.message)}</p>`; }
+    try{ const text=await aiMnemonic(han, pinyin, vi, sentence); showMn(text); }
+    catch(e){ $("#mnBox").innerHTML=`<p class="sub" style="color:var(--brand)">Lỗi: ${esc(e.message)}</p>`+renderGen("↻ Thử lại"); bindGen(); }
+  }; };
+  const showMn=(text)=>{
+    $("#mnBox").innerHTML=`<div class="mnemonic">${mnFormat(text)}</div>
+      <div class="toolbar" style="margin-top:8px"><button class="btn sm primary" id="mnSave">💾 Lưu cách nhớ</button><button class="btn sm" id="mnRe">🔄 Tạo lại</button></div>`;
+    $("#mnSave").onclick=()=>{ saveMnemonic(han, text, {pinyin,vi}); toast("💾 Đã lưu cách nhớ (⭐ từ cũng được lưu)"); if($("#mgSave")) $("#mgSave").textContent='⭐ Đã lưu từ'; };
+    $("#mnRe").onclick=()=>{ $("#mnBox").innerHTML=renderGen("✨ Tạo lại hướng dẫn"); bindGen(); };
   };
-  // nếu đã có mnemonic lưu sẵn
-  const saved=(progress.myWords.find(x=>x.han===han)||{}).mnemonic;
-  if(saved){ $("#mnBox").innerHTML=`<div class="mnemonic">${mnFormat(saved)}</div>
-    <button class="btn sm" style="margin-top:8px" id="mnRe">🔄 Tạo lại</button>`;
-    $("#mnRe").onclick=()=>{ $("#mnBox").innerHTML=`<button class="btn primary" id="mnGen">✨ Tạo lại hướng dẫn</button>`; openMemoryGuide(han,opts); }; }
+  const existing=getMnemonic(han);
+  if(existing) showMn(existing); else { $("#mnBox").innerHTML=renderGen(); bindGen(); }
 }
 function mnFormat(text){
   // làm nổi các tiêu đề mục + xuống dòng
@@ -437,33 +455,262 @@ function sentCounts(){
 
 /* ---------- Bộ thủ (radicals) ---------- */
 const RADICALS = {
-  "氵":{hv:"THỦY",m:"nước",ex:"河 海 湖 江 洗 汉 酒 没 游 清"}, "扌":{hv:"THỦ",m:"tay",ex:"打 拿 找 提 把 推 拉 接 换 掉"},
-  "口":{hv:"KHẨU",m:"miệng",ex:"吃 喝 叫 吗 名 听 唱 问 员 和"}, "亻":{hv:"NHÂN",m:"người",ex:"你 他 们 什 件 住 位 但 做 假"},
-  "人":{hv:"NHÂN",m:"người",ex:"人 从 众 今 会 全 介"}, "女":{hv:"NỮ",m:"phụ nữ",ex:"她 妈 好 姐 妹 婚 娘 要 安"},
-  "心":{hv:"TÂM",m:"tim, lòng",ex:"想 念 感 意 思 息 忘 急"}, "忄":{hv:"TÂM",m:"tim, cảm xúc",ex:"忙 快 慢 怕 情 惯 懂"},
-  "日":{hv:"NHẬT",m:"mặt trời, ngày",ex:"明 时 昨 早 星 春 是 晚 暖"}, "月":{hv:"NGUYỆT",m:"trăng / thịt",ex:"服 期 朋 有 能 脸 胖 脚"},
-  "木":{hv:"MỘC",m:"cây, gỗ",ex:"林 树 桌 椅 校 样 机 果 条"}, "火":{hv:"HỎA",m:"lửa",ex:"烧 烤 灯 炒 烟 灾"},
-  "灬":{hv:"HỎA",m:"lửa (chân)",ex:"点 热 然 照 熊"}, "土":{hv:"THỔ",m:"đất",ex:"地 场 城 坐 块 圾 增"},
-  "金":{hv:"KIM",m:"kim loại",ex:"金 鑫"}, "钅":{hv:"KIM",m:"kim loại",ex:"钱 银 铁 错 钟 镇 铅"},
-  "言":{hv:"NGÔN",m:"lời nói",ex:"警 誉"}, "讠":{hv:"NGÔN",m:"lời nói",ex:"说 话 语 请 谢 课 认 识 读 谁"},
-  "食":{hv:"THỰC",m:"ăn",ex:"餐"}, "饣":{hv:"THỰC",m:"ăn",ex:"饭 饿 馆 饱 饺 饮"},
-  "走":{hv:"TẨU",m:"đi, chạy",ex:"起 越 超 趣"}, "辶":{hv:"SƯỚC",m:"bước đi",ex:"这 边 过 进 远 近 送 通 道 迎"},
-  "车":{hv:"XA",m:"xe",ex:"轮 转 软 较 辆"}, "门":{hv:"MÔN",m:"cửa",ex:"们 问 间 闻 闹 闭"},
-  "目":{hv:"MỤC",m:"mắt",ex:"看 眼 睡 睛 眠 瞌"}, "耳":{hv:"NHĨ",m:"tai",ex:"听 取 聊 职 聪"},
-  "手":{hv:"THỦ",m:"tay",ex:"手 拿 掌 拳"}, "足":{hv:"TÚC",m:"chân",ex:"跑 跳 路 踢 跟 距"},
-  "力":{hv:"LỰC",m:"sức mạnh",ex:"办 加 动 助 努 男 劳"}, "刀":{hv:"ĐAO",m:"dao",ex:"分 切 召"}, "刂":{hv:"ĐAO",m:"dao",ex:"到 前 别 刻 剧 利"},
-  "大":{hv:"ĐẠI",m:"to lớn",ex:"天 太 头 夹 奖"}, "小":{hv:"TIỂU",m:"nhỏ",ex:"少 尖 尘"},
-  "山":{hv:"SƠN",m:"núi",ex:"岁 岛 峰 岭"}, "石":{hv:"THẠCH",m:"đá",ex:"矿 码 硬 碰 确 碗"}, "王":{hv:"VƯƠNG",m:"vua, ngọc",ex:"玩 现 球 环 理 珍"},
-  "田":{hv:"ĐIỀN",m:"ruộng",ex:"男 界 留 略 番"}, "禾":{hv:"HÒA",m:"lúa",ex:"和 秋 种 科 秒 税"}, "米":{hv:"MỄ",m:"gạo",ex:"料 粉 精 糖 粥"},
-  "衣":{hv:"Y",m:"áo",ex:"表 装 裂"}, "衤":{hv:"Y",m:"áo",ex:"衬 补 被 裤 袜"},
-  "纟":{hv:"MỊCH",m:"sợi tơ",ex:"红 给 经 线 纸 结 组 练"}, "贝":{hv:"BỐI",m:"tiền, quý",ex:"贵 费 买 卖 财 货 赢 贷"},
-  "雨":{hv:"VŨ",m:"mưa",ex:"雪 需 雷 零 雾 震"}, "宀":{hv:"MIÊN",m:"mái nhà",ex:"家 客 完 宝 定 安 室 宿 容"},
-  "广":{hv:"NGHIỄM",m:"mái hiên",ex:"店 床 座 应 底 度"}, "疒":{hv:"NẠCH",m:"bệnh",ex:"病 疼 痛 疯 瘦 疫"},
-  "犭":{hv:"KHUYỂN",m:"thú",ex:"猫 狗 猪 狮 独 猴"}, "鸟":{hv:"ĐIỂU",m:"chim",ex:"鸡 鸭 鹅 鸦"},
-  "鱼":{hv:"NGƯ",m:"cá",ex:"鲜 鲨 鲤"}, "虫":{hv:"TRÙNG",m:"sâu bọ",ex:"蚊 蛇 蜂 虾 蝶"},
-  "艹":{hv:"THẢO",m:"cỏ, cây",ex:"花 草 茶 菜 药 苦 苹 落 蓝"}, "竹":{hv:"TRÚC",m:"tre",ex:"笑 笔 笨 答 篮 简 筷"},
-  "彳":{hv:"XÍCH",m:"bước chân trái",ex:"很 得 往 律 徐 街"}, "阝":{hv:"PHỤ/ẤP",m:"gò đất / làng",ex:"院 阳 除 队 都 部 陪"},
-  "页":{hv:"HIỆT",m:"đầu, trang",ex:"顶 顺 须 顾 领 颜 题"}
+  "一":{hv:"NHẤT",m:"một"},
+  "丨":{hv:"CỔN",m:"nét sổ"},
+  "丶":{hv:"CHỦ",m:"điểm, chấm"},
+  "丿":{hv:"PHIỆT",m:"nét phẩy"},
+  "乙":{hv:"ẤT",m:"can Ất; cong"},
+  "亅":{hv:"QUYẾT",m:"nét móc"},
+  "二":{hv:"NHỊ",m:"hai"},
+  "亠":{hv:"ĐẦU",m:"nét đầu (trên)"},
+  "人":{hv:"NHÂN",m:"người",ex:"人 从 众 今 会 全 介"},
+  "亻":{hv:"NHÂN",m:"người",ex:"你 他 们 什 件 住 位 但 做 假"},
+  "儿":{hv:"NHÂN",m:"người (chân)"},
+  "入":{hv:"NHẬP",m:"vào"},
+  "八":{hv:"BÁT",m:"tám; chia"},
+  "冂":{hv:"QUYNH",m:"vùng biên"},
+  "冖":{hv:"MỊCH",m:"trùm khăn"},
+  "冫":{hv:"BĂNG",m:"băng, nước đá"},
+  "几":{hv:"KỶ",m:"ghế nhỏ"},
+  "凵":{hv:"KHẢM",m:"há miệng"},
+  "刀":{hv:"ĐAO",m:"dao",ex:"分 切 召"},
+  "刂":{hv:"ĐAO",m:"dao",ex:"到 前 别 刻 剧 利"},
+  "力":{hv:"LỰC",m:"sức mạnh",ex:"办 加 动 助 努 男 劳"},
+  "勹":{hv:"BAO",m:"bao bọc"},
+  "匕":{hv:"CHỦY",m:"thìa, muỗng"},
+  "匚":{hv:"PHƯƠNG",m:"hộp vuông"},
+  "匸":{hv:"HỆ",m:"che đậy"},
+  "十":{hv:"THẬP",m:"mười"},
+  "卜":{hv:"BỐC",m:"bói toán"},
+  "卩":{hv:"TIẾT",m:"dấu, đốt"},
+  "厂":{hv:"HÁN",m:"sườn núi"},
+  "厶":{hv:"KHƯ",m:"riêng tư"},
+  "又":{hv:"HỰU",m:"lại; tay phải"},
+  "口":{hv:"KHẨU",m:"miệng",ex:"吃 喝 叫 吗 名 听 唱 问 员 和"},
+  "囗":{hv:"VI",m:"vây quanh"},
+  "土":{hv:"THỔ",m:"đất",ex:"地 场 城 坐 块 圾 增"},
+  "士":{hv:"SĨ",m:"kẻ sĩ"},
+  "夂":{hv:"TRI",m:"đến sau"},
+  "夊":{hv:"TUY",m:"đi chậm"},
+  "夕":{hv:"TỊCH",m:"chiều tối"},
+  "大":{hv:"ĐẠI",m:"to lớn",ex:"天 太 头 夹 奖"},
+  "女":{hv:"NỮ",m:"phụ nữ",ex:"她 妈 好 姐 妹 婚 娘 要 安"},
+  "子":{hv:"TỬ",m:"con"},
+  "宀":{hv:"MIÊN",m:"mái nhà",ex:"家 客 完 宝 定 安 室 宿 容"},
+  "寸":{hv:"THỐN",m:"tấc"},
+  "小":{hv:"TIỂU",m:"nhỏ",ex:"少 尖 尘"},
+  "尢":{hv:"UÔNG",m:"yếu, què"},
+  "尸":{hv:"THI",m:"thây, xác"},
+  "屮":{hv:"TRIỆT",m:"mầm cây"},
+  "山":{hv:"SƠN",m:"núi",ex:"岁 岛 峰 岭"},
+  "巛":{hv:"XUYÊN",m:"sông"},
+  "川":{hv:"XUYÊN",m:"sông"},
+  "工":{hv:"CÔNG",m:"công việc"},
+  "己":{hv:"KỶ",m:"mình, bản thân"},
+  "巾":{hv:"CÂN",m:"khăn"},
+  "干":{hv:"CAN",m:"can; khiên"},
+  "幺":{hv:"YÊU",m:"nhỏ bé"},
+  "广":{hv:"NGHIỄM",m:"mái hiên",ex:"店 床 座 应 底 度"},
+  "廴":{hv:"DẪN",m:"bước dài"},
+  "廾":{hv:"CỦNG",m:"chắp tay"},
+  "弋":{hv:"DỰC",m:"bắn; cọc"},
+  "弓":{hv:"CUNG",m:"cây cung"},
+  "彐":{hv:"KÝ",m:"đầu con nhím"},
+  "彡":{hv:"SAM",m:"lông, tia"},
+  "彳":{hv:"XÍCH",m:"bước ngắn",ex:"很 得 往 律 徐 街"},
+  "心":{hv:"TÂM",m:"tim, lòng",ex:"想 念 感 意 思 息 忘 急"},
+  "忄":{hv:"TÂM",m:"tim, lòng",ex:"忙 快 慢 怕 情 惯 懂"},
+  "戈":{hv:"QUA",m:"giáo mác"},
+  "戶":{hv:"HỘ",m:"cửa một cánh"},
+  "户":{hv:"HỘ",m:"cửa một cánh"},
+  "手":{hv:"THỦ",m:"tay",ex:"手 拿 掌 拳"},
+  "扌":{hv:"THỦ",m:"tay",ex:"打 拿 找 提 把 推 拉 接 换 掉"},
+  "支":{hv:"CHI",m:"cành, chi"},
+  "攴":{hv:"PHỘC",m:"đánh khẽ"},
+  "攵":{hv:"PHỘC",m:"đánh khẽ"},
+  "文":{hv:"VĂN",m:"văn, chữ"},
+  "斗":{hv:"ĐẨU",m:"cái đấu (đong)"},
+  "斤":{hv:"CÂN",m:"cái rìu; cân"},
+  "方":{hv:"PHƯƠNG",m:"vuông; phương"},
+  "无":{hv:"VÔ",m:"không"},
+  "日":{hv:"NHẬT",m:"mặt trời, ngày",ex:"明 时 昨 早 星 春 是 晚 暖"},
+  "曰":{hv:"VIẾT",m:"nói rằng"},
+  "月":{hv:"NGUYỆT",m:"trăng, tháng",ex:"服 期 朋 有 能 脸 胖 脚"},
+  "木":{hv:"MỘC",m:"cây, gỗ",ex:"林 树 桌 椅 校 样 机 果 条"},
+  "欠":{hv:"KHIẾM",m:"thiếu; ngáp"},
+  "止":{hv:"CHỈ",m:"dừng"},
+  "歹":{hv:"ĐÃI",m:"xấu; chết"},
+  "殳":{hv:"THÙ",m:"binh khí"},
+  "毋":{hv:"VÔ",m:"chớ, đừng"},
+  "比":{hv:"TỶ",m:"so sánh"},
+  "毛":{hv:"MAO",m:"lông"},
+  "氏":{hv:"THỊ",m:"họ (tên họ)"},
+  "气":{hv:"KHÍ",m:"hơi, khí"},
+  "水":{hv:"THỦY",m:"nước"},
+  "氵":{hv:"THỦY",m:"nước",ex:"河 海 湖 江 洗 汉 酒 没 游 清"},
+  "火":{hv:"HỎA",m:"lửa",ex:"烧 烤 灯 炒 烟 灾"},
+  "灬":{hv:"HỎA",m:"lửa",ex:"点 热 然 照 熊"},
+  "爪":{hv:"TRẢO",m:"móng vuốt"},
+  "爫":{hv:"TRẢO",m:"móng vuốt"},
+  "父":{hv:"PHỤ",m:"cha"},
+  "爻":{hv:"HÀO",m:"hào (quẻ)"},
+  "爿":{hv:"TƯỜNG",m:"mảnh gỗ trái"},
+  "片":{hv:"PHIẾN",m:"tấm, mảnh"},
+  "牙":{hv:"NHA",m:"răng"},
+  "牛":{hv:"NGƯU",m:"trâu bò"},
+  "牜":{hv:"NGƯU",m:"trâu bò"},
+  "犬":{hv:"KHUYỂN",m:"chó"},
+  "犭":{hv:"KHUYỂN",m:"chó",ex:"猫 狗 猪 狮 独 猴"},
+  "玄":{hv:"HUYỀN",m:"huyền bí; đen"},
+  "玉":{hv:"NGỌC",m:"ngọc"},
+  "王":{hv:"NGỌC",m:"ngọc",ex:"玩 现 球 环 理 珍"},
+  "瓜":{hv:"QUA",m:"quả dưa"},
+  "瓦":{hv:"NGÕA",m:"ngói"},
+  "甘":{hv:"CAM",m:"ngọt"},
+  "生":{hv:"SINH",m:"sinh, sống"},
+  "用":{hv:"DỤNG",m:"dùng"},
+  "田":{hv:"ĐIỀN",m:"ruộng",ex:"男 界 留 略 番"},
+  "疋":{hv:"THẤT",m:"vải; chân"},
+  "疒":{hv:"NẠCH",m:"bệnh",ex:"病 疼 痛 疯 瘦 疫"},
+  "癶":{hv:"BÁT",m:"đôi chân gạt ngược"},
+  "白":{hv:"BẠCH",m:"trắng"},
+  "皮":{hv:"BÌ",m:"da"},
+  "皿":{hv:"MÃNH",m:"bát đĩa"},
+  "目":{hv:"MỤC",m:"mắt",ex:"看 眼 睡 睛 眠 瞌"},
+  "矛":{hv:"MÂU",m:"cây giáo"},
+  "矢":{hv:"THỈ",m:"mũi tên"},
+  "石":{hv:"THẠCH",m:"đá",ex:"矿 码 硬 碰 确 碗"},
+  "示":{hv:"THỊ",m:"thần; chỉ bảo"},
+  "礻":{hv:"THỊ",m:"thần; chỉ bảo"},
+  "禸":{hv:"NHỮU",m:"vết chân thú"},
+  "禾":{hv:"HÒA",m:"lúa",ex:"和 秋 种 科 秒 税"},
+  "穴":{hv:"HUYỆT",m:"hang"},
+  "立":{hv:"LẬP",m:"đứng"},
+  "竹":{hv:"TRÚC",m:"tre",ex:"笑 笔 笨 答 篮 简 筷"},
+  "米":{hv:"MỄ",m:"gạo",ex:"料 粉 精 糖 粥"},
+  "糸":{hv:"MỊCH",m:"sợi tơ"},
+  "纟":{hv:"MỊCH",m:"sợi tơ",ex:"红 给 经 线 纸 结 组 练"},
+  "缶":{hv:"PHẪU",m:"vò sành"},
+  "网":{hv:"VÕNG",m:"lưới"},
+  "罒":{hv:"VÕNG",m:"lưới"},
+  "羊":{hv:"DƯƠNG",m:"dê cừu"},
+  "羽":{hv:"VŨ",m:"lông vũ"},
+  "老":{hv:"LÃO",m:"già"},
+  "耂":{hv:"LÃO",m:"già"},
+  "而":{hv:"NHI",m:"mà; râu"},
+  "耒":{hv:"LỖI",m:"cái cày"},
+  "耳":{hv:"NHĨ",m:"tai",ex:"听 取 聊 职 聪"},
+  "聿":{hv:"DUẬT",m:"bút"},
+  "肉":{hv:"NHỤC",m:"thịt"},
+  "臣":{hv:"THẦN",m:"bề tôi"},
+  "自":{hv:"TỰ",m:"tự; mũi"},
+  "至":{hv:"CHÍ",m:"đến"},
+  "臼":{hv:"CỰU",m:"cối giã"},
+  "舌":{hv:"THIỆT",m:"lưỡi"},
+  "舛":{hv:"SUYỄN",m:"ngang trái"},
+  "舟":{hv:"CHU",m:"thuyền"},
+  "艮":{hv:"CẤN",m:"dừng; quẻ Cấn"},
+  "色":{hv:"SẮC",m:"màu sắc"},
+  "艸":{hv:"THẢO",m:"cỏ, cây"},
+  "艹":{hv:"THẢO",m:"cỏ, cây",ex:"花 草 茶 菜 药 苦 苹 落 蓝"},
+  "虍":{hv:"HÔ",m:"vằn hổ"},
+  "虫":{hv:"TRÙNG",m:"sâu bọ",ex:"蚊 蛇 蜂 虾 蝶"},
+  "血":{hv:"HUYẾT",m:"máu"},
+  "行":{hv:"HÀNH",m:"đi; hàng"},
+  "衣":{hv:"Y",m:"áo",ex:"表 装 裂"},
+  "衤":{hv:"Y",m:"áo",ex:"衬 补 被 裤 袜"},
+  "襾":{hv:"Á",m:"che đậy"},
+  "見":{hv:"KIẾN",m:"thấy"},
+  "见":{hv:"KIẾN",m:"thấy"},
+  "角":{hv:"GIÁC",m:"sừng; góc"},
+  "言":{hv:"NGÔN",m:"lời nói",ex:"警 誉"},
+  "讠":{hv:"NGÔN",m:"lời nói",ex:"说 话 语 请 谢 课 认 识 读 谁"},
+  "谷":{hv:"CỐC",m:"thung lũng"},
+  "豆":{hv:"ĐẬU",m:"đậu; bát đậu"},
+  "豕":{hv:"THỈ",m:"con lợn"},
+  "豸":{hv:"TRĨ",m:"thú không chân"},
+  "貝":{hv:"BỐI",m:"vỏ sò; tiền của"},
+  "贝":{hv:"BỐI",m:"vỏ sò; tiền của",ex:"贵 费 买 卖 财 货 赢 贷"},
+  "赤":{hv:"XÍCH",m:"đỏ"},
+  "走":{hv:"TẨU",m:"chạy",ex:"起 越 超 趣"},
+  "足":{hv:"TÚC",m:"chân",ex:"跑 跳 路 踢 跟 距"},
+  "身":{hv:"THÂN",m:"thân mình"},
+  "車":{hv:"XA",m:"xe"},
+  "车":{hv:"XA",m:"xe",ex:"轮 转 软 较 辆"},
+  "辛":{hv:"TÂN",m:"cay; can Tân"},
+  "辰":{hv:"THẦN",m:"chi Thìn; sớm"},
+  "辵":{hv:"SƯỚC",m:"bước đi"},
+  "辶":{hv:"SƯỚC",m:"bước đi",ex:"这 边 过 进 远 近 送 通 道 迎"},
+  "邑":{hv:"ẤP",m:"làng (bên phải)"},
+  "阝":{hv:"ẤP",m:"làng (bên phải)",ex:"院 阳 除 队 都 部 陪"},
+  "酉":{hv:"DẬU",m:"rượu; chi Dậu"},
+  "釆":{hv:"BIỆN",m:"phân biệt"},
+  "里":{hv:"LÝ",m:"dặm; làng"},
+  "金":{hv:"KIM",m:"kim loại, vàng",ex:"金 鑫"},
+  "钅":{hv:"KIM",m:"kim loại, vàng",ex:"钱 银 铁 错 钟 镇 铅"},
+  "長":{hv:"TRƯỜNG",m:"dài"},
+  "长":{hv:"TRƯỜNG",m:"dài"},
+  "門":{hv:"MÔN",m:"cửa"},
+  "门":{hv:"MÔN",m:"cửa",ex:"们 问 间 闻 闹 闭"},
+  "阜":{hv:"PHỤ",m:"gò đất (bên trái)"},
+  "隶":{hv:"ĐÃI",m:"bắt kịp"},
+  "隹":{hv:"CHUY",m:"chim đuôi ngắn"},
+  "雨":{hv:"VŨ",m:"mưa",ex:"雪 需 雷 零 雾 震"},
+  "青":{hv:"THANH",m:"xanh"},
+  "非":{hv:"PHI",m:"không; trái"},
+  "面":{hv:"DIỆN",m:"mặt"},
+  "革":{hv:"CÁCH",m:"da thuộc"},
+  "韋":{hv:"VI",m:"da mềm"},
+  "韦":{hv:"VI",m:"da mềm"},
+  "韭":{hv:"CỬU",m:"rau hẹ"},
+  "音":{hv:"ÂM",m:"âm thanh"},
+  "頁":{hv:"HIỆT",m:"trang; đầu"},
+  "页":{hv:"HIỆT",m:"trang; đầu",ex:"顶 顺 须 顾 领 颜 题"},
+  "風":{hv:"PHONG",m:"gió"},
+  "风":{hv:"PHONG",m:"gió"},
+  "飛":{hv:"PHI",m:"bay"},
+  "飞":{hv:"PHI",m:"bay"},
+  "食":{hv:"THỰC",m:"ăn",ex:"餐"},
+  "饣":{hv:"THỰC",m:"ăn",ex:"饭 饿 馆 饱 饺 饮"},
+  "首":{hv:"THỦ",m:"đầu"},
+  "香":{hv:"HƯƠNG",m:"mùi thơm"},
+  "馬":{hv:"MÃ",m:"ngựa"},
+  "马":{hv:"MÃ",m:"ngựa"},
+  "骨":{hv:"CỐT",m:"xương"},
+  "高":{hv:"CAO",m:"cao"},
+  "髟":{hv:"BƯU",m:"tóc dài"},
+  "鬥":{hv:"ĐẤU",m:"đánh nhau"},
+  "鬯":{hv:"SƯỞNG",m:"rượu nếp"},
+  "鬲":{hv:"CÁCH",m:"nồi ba chân"},
+  "鬼":{hv:"QUỶ",m:"ma quỷ"},
+  "魚":{hv:"NGƯ",m:"cá"},
+  "鱼":{hv:"NGƯ",m:"cá",ex:"鲜 鲨 鲤"},
+  "鳥":{hv:"ĐIỂU",m:"chim"},
+  "鸟":{hv:"ĐIỂU",m:"chim",ex:"鸡 鸭 鹅 鸦"},
+  "鹵":{hv:"LỖ",m:"đất mặn"},
+  "鹿":{hv:"LỘC",m:"con hươu"},
+  "麥":{hv:"MẠCH",m:"lúa mạch"},
+  "麦":{hv:"MẠCH",m:"lúa mạch"},
+  "麻":{hv:"MA",m:"cây gai"},
+  "黃":{hv:"HOÀNG",m:"vàng"},
+  "黄":{hv:"HOÀNG",m:"vàng"},
+  "黍":{hv:"THỬ",m:"lúa nếp"},
+  "黑":{hv:"HẮC",m:"đen"},
+  "黹":{hv:"CHỈ",m:"may vá thêu"},
+  "黽":{hv:"MẪNH",m:"ễnh ương"},
+  "鼎":{hv:"ĐỈNH",m:"cái đỉnh"},
+  "鼓":{hv:"CỔ",m:"cái trống"},
+  "鼠":{hv:"THỬ",m:"con chuột"},
+  "鼻":{hv:"TỴ",m:"mũi"},
+  "齊":{hv:"TỀ",m:"đều, ngay ngắn"},
+  "齐":{hv:"TỀ",m:"đều, ngay ngắn"},
+  "齒":{hv:"XỈ",m:"răng"},
+  "齿":{hv:"XỈ",m:"răng"},
+  "龍":{hv:"LONG",m:"rồng"},
+  "龙":{hv:"LONG",m:"rồng"},
+  "龜":{hv:"QUY",m:"con rùa"},
+  "龟":{hv:"QUY",m:"con rùa"},
+  "龠":{hv:"DƯỢC",m:"sáo, ống"}
 };
 
 /* ---------- Toast ---------- */
@@ -1036,6 +1283,7 @@ function openDetail(v){
       <button class="btn sm primary" onclick="speak('${esc(v.han)}')">🔊 Nghe (Trung)</button>
       <button class="btn sm" onclick="speakAmboi('${esc(v.han)}')">🇻🇳 Đọc âm bồi</button>
       <button class="btn sm" onclick="toggleLearned('${esc(v.han)}');toast('Đã cập nhật')">✓ Đánh dấu thuộc</button>
+      <button class="btn sm" id="dtSave" style="border-color:var(--warn)">${isSaved(v.han)?'⭐ Đã lưu':'☆ Lưu từ'}</button>
       <button class="btn sm" style="border-color:var(--brand)" onclick="openMemoryGuide('${esc(v.han)}')">💡 Cách nhớ</button>
       <a class="btn sm" href="${youglish(v.han)}" target="_blank" rel="noopener">🌐 Youglish</a>
       <span class="chip">${esc(v.level)}</span>
@@ -1051,6 +1299,7 @@ function openDetail(v){
     ${v.dateAdded?`<div class="detail-row"><div class="lab">📅 Ngày thêm</div>${esc(v.dateAdded)}</div>`:""}
   `;
   $("#modal").classList.remove("hidden");
+  if($("#dtSave")) $("#dtSave").onclick=()=>{ const on=toggleSaved(v.han,{pinyin:v.pinyin,vi:v.vi}); $("#dtSave").textContent=on?'⭐ Đã lưu':'☆ Lưu từ'; toast(on?'Đã lưu từ':'Đã bỏ lưu'); };
 }
 function closeModal(){ $("#modal").classList.add("hidden"); }
 $("#modal").onclick = e=>{ if(e.target.id==="modal") closeModal(); };
@@ -2009,10 +2258,18 @@ function drawRooms(){
 }
 
 /* ---------- Thư viện keyword ---------- */
+let libTab="lib";
 RENDER.library = () => {
+  const savedList=Object.values(progress.saved);
+  const tabs=`<div class="chips">
+      <span class="chip ${libTab==='lib'?'active':''}" data-lt="lib">📇 Thư viện keyword (${progress.myWords.length})</span>
+      <span class="chip ${libTab==='saved'?'active':''}" data-lt="saved">⭐ Từ đã lưu (${savedList.length})</span>
+    </div>`;
+  if(libTab==="saved"){ renderSavedLib(tabs, savedList); return; }
   const lib=progress.myWords;
   $("#view").innerHTML=`
     <h2 class="section-h">📇 Thư viện keyword</h2>
+    ${tabs}
     <p class="sub">Kho từ bạn tự thu thập từ các nguồn. Đã lọc trùng tự động. Từ đây được đưa vào ôn tập ghi nhớ.</p>
     <div class="stat-grid">
       <div class="stat"><div class="n">${lib.length}</div><div class="l">Tổng keyword</div></div>
@@ -2051,7 +2308,41 @@ RENDER.library = () => {
     const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["﻿"+csv],{type:"text/csv"})); a.download="thu-vien-keyword.csv"; a.click();
   };
   draw();
+  $$("[data-lt]").forEach(c=>c.onclick=()=>{ libTab=c.dataset.lt; RENDER.library(); });
 };
+function renderSavedLib(tabs, savedList){
+  $("#view").innerHTML=`
+    <h2 class="section-h">⭐ Từ đã lưu</h2>
+    ${tabs}
+    <p class="sub">Các từ bạn đã bấm ⭐ Lưu (từ bất kỳ, kể cả HSK) — kèm cách nhớ đã lưu. Truy cập nhanh để ôn.</p>
+    <div class="toolbar">
+      <input class="txt" id="svQ" placeholder="Tìm từ đã lưu..." style="flex:1;min-width:200px">
+      <button class="btn" id="svPlay">▶ Nghe tất cả</button>
+    </div>
+    <div id="svList"></div>`;
+  const draw=()=>{
+    const q=($("#svQ").value||"").toLowerCase();
+    const list=savedList.filter(w=>!q||(w.han+(w.pinyin||"")+(w.vi||"")+(w.mnemonic||"")).toLowerCase().includes(q));
+    $("#svList").innerHTML= list.length? list.map(w=>`
+      <div class="panel" style="padding:14px">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <span class="han-cell" style="font-size:28px">${esc(w.han)}</span>
+          <div>${pinAmbHTML(w.pinyin||toPinyin(w.han), w.han)}<div class="vi">${esc(w.vi||"")}</div></div>
+          <div style="margin-left:auto;display:flex;gap:6px">
+            <button class="mini" onclick="speak('${esc(w.han)}')">🔊</button>
+            <button class="mini" onclick="openMemoryGuide('${esc(w.han)}')" title="Cách nhớ">💡</button>
+            <button class="mini" data-unsave="${esc(w.han)}" style="border-color:var(--brand)" title="Bỏ lưu">🗑</button>
+          </div>
+        </div>
+        ${w.mnemonic?`<div class="mnemonic" style="margin-top:10px">${mnFormat(w.mnemonic)}</div>`:`<div class="sub" style="margin-top:6px">Chưa có cách nhớ — bấm 💡 để tạo &amp; lưu.</div>`}
+      </div>`).join("") : `<p class="sub">Chưa có từ nào được lưu. Bấm ☆ Lưu từ ở chi tiết từ hoặc trong 💡 Cách nhớ.</p>`;
+    $$("[data-unsave]").forEach(b=>b.onclick=()=>{ delete progress.saved[b.dataset.unsave]; save(); RENDER.library(); });
+  };
+  $("#svQ").oninput=draw;
+  $("#svPlay").onclick=()=>{ if(!savedList.length){toast("Chưa có từ đã lưu");return;} Player.start(savedList.map(w=>({han:w.han,sub:w.vi,vi:w.vi})),{pauseMs:1100}); };
+  draw();
+  $$("[data-lt]").forEach(c=>c.onclick=()=>{ libTab=c.dataset.lt; RENDER.library(); });
+}
 
 /* ---------- Tài liệu / Link nhanh ---------- */
 function linkType(url){
@@ -2462,7 +2753,7 @@ RENDER.stats = () => {
     const blob=new Blob([JSON.stringify(progress,null,2)],{type:"application/json"});
     const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="tien-do-hsk.json"; a.click();
   };
-  $("#resetBtn").onclick=()=>{ if(confirm("Xóa toàn bộ tiến độ học (kể cả từ tự thêm & Room)? Cài đặt (API key, giọng) được giữ lại.")){ const keep=progress.settings; progress={learned:{},srs:{},quizStats:{correct:0,total:0},listenStats:{correct:0,total:0},myWords:[],rooms:[],settings:keep,daily:{date:"",reviews:0,listens:0,newLearned:0},streak:{count:0,best:0,lastDate:""},goal:{reviews:20,newWords:10},playCount:{},studyCount:{},history:{},sentSrs:{},dailyList:{date:"",words:[],sents:[]},links:[],examBest:0}; save(); RENDER.stats(); toast("Đã đặt lại"); } };
+  $("#resetBtn").onclick=()=>{ if(confirm("Xóa toàn bộ tiến độ học (kể cả từ tự thêm & Room)? Cài đặt (API key, giọng) được giữ lại.")){ const keep=progress.settings; progress={learned:{},srs:{},quizStats:{correct:0,total:0},listenStats:{correct:0,total:0},myWords:[],rooms:[],settings:keep,daily:{date:"",reviews:0,listens:0,newLearned:0},streak:{count:0,best:0,lastDate:""},goal:{reviews:20,newWords:10},playCount:{},studyCount:{},history:{},sentSrs:{},dailyList:{date:"",words:[],sents:[]},links:[],examBest:0,saved:{}}; save(); RENDER.stats(); toast("Đã đặt lại"); } };
 };
 
 /* ---------- Utils ---------- */
