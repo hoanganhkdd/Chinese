@@ -19,7 +19,7 @@ App ghi nhớ & học tiếng Trung, **ưu tiên luyện nghe và từ vựng**.
 | 🔢 **Đếm số lần học/nghe** | Mỗi từ có badge **🔊×n** (số lần nghe) và **📖×n** (số lần học). Trang Từ vựng & Nghe liên tục **sắp xếp theo tần suất** (ít nhất → nhiều) để ưu tiên từ chưa quen. |
 | 📅 **Hôm nay học gì** | Trang chủ có lộ trình hằng ngày: **chuỗi streak 🔥**, mục tiêu thẻ/ngày (thanh tiến độ), việc cần làm hôm nay, và **Danh sách cố định 100 từ + 100 câu** (chọn tự động, giữ nguyên cả ngày; nút Học/Nghe/Ôn câu/Xem). |
 | 📖 **Ôn câu ví dụ** | SRS lặp lại ngắt quãng trên **cả câu** (câu nguồn + câu ví dụ): nghe → hiểu → tự chấm Quên/Khó/Nhớ/Dễ. |
-| 🌿 **Bộ thủ** | **Đủ 214 bộ thủ Khang Hy** (kèm biến thể giản thể) — âm Hán-Việt + nghĩa; tra 1 chữ → bộ thủ + chữ liên quan; ~56 bộ thông dụng có sẵn danh sách chữ ví dụ. |
+| 🌿 **Bộ thủ** | **Đủ 214 bộ thủ Khang Hy** (256 khóa) **xếp theo độ phổ biến** (#1 = hay gặp nhất), **highlight 🔥** top 10/30/60. Chi tiết mỗi bộ: hạng + phân tích + chữ mang bộ (bấm xem chiết tự/cách nhớ) + từ liên quan trong kho. |
 | ⭐ **Lưu từ + Lưu cách nhớ** | Bấm **☆ Lưu từ** ở bất kỳ từ nào (kể cả HSK); lưu cả **cách nhớ (mnemonic)**. Xem lại ở **📇 Thư viện → tab ⭐ Từ đã lưu** (kèm cách nhớ, nghe, ôn nhanh). |
 | ⏰ **Nhắc ôn theo giờ** | Đặt giờ nhắc (mặc định 08:00) → thông báo trình duyệt khi đến giờ; nhắc bù khi mở app sau giờ (⚙️ Cài đặt). |
 | 📊 **Biểu đồ 14 ngày** | Thống kê hiển thị cột 14 ngày: ôn tập · từ mới · ôn câu. |

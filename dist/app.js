@@ -2627,10 +2627,15 @@ function drawSent(){
 }
 
 /* ---------- Bộ thủ (radicals) ---------- */
+// Xếp hạng độ phổ biến (số chữ Hán mang bộ, mức gặp trong thực tế) — #1 = phổ biến nhất
+const RAD_RANK_ORDER = "口 氵 木 亻 扌 艹 讠 纟 女 忄 月 日 土 钅 虫 目 石 王 犭 阝 辶 宀 火 禾 竹 贝 广 立 车 页 疒 门 走 足 力 刂 大 小 山 田 米 衤 饣 彳 耳 又 心 灬 金 言 人 水 手 刀 衣 食 糸 示 礻 犬 玉 见 贝 车 门 马 鸟 鱼 雨 冫 亠 冖 勹 匚 卩 厂 廴 弓 戈 户 攵 斤 方 欠 殳 毛 气 爪 父 片 牙 牛 瓦 甘 用 皮 皿 矛 矢 穴 缶 网 羊 羽 老 而 耒 舌 舟 色 血 行 角 谷 豆 豕 赤 身 辛 辰 酉 里 隹 青 非 面 革 音 首 香 骨 高 鬼 麦 麻 黄 黑 鼎 鼓 鼠 鼻 齿".split(/\s+/);
+const RAD_RANK = {}; RAD_RANK_ORDER.forEach((r,i)=>{ if(RAD_RANK[r]==null) RAD_RANK[r]=i+1; });
+function radRank(r){ return RAD_RANK[r]||9999; }
+function radRankClass(rk){ return rk<=10?"rad-hot":rk<=30?"rad-warm":rk<=60?"rad-mild":""; }
 RENDER.radicals = () => {
   $("#view").innerHTML=`
     <h2 class="section-h">🌿 Bộ thủ &amp; cấu tạo chữ</h2>
-    <p class="sub">Bộ thủ là "gốc nghĩa" của chữ Hán — nắm bộ thủ giúp đoán nghĩa &amp; nhớ mặt chữ. Nhấn 1 bộ để xem các chữ liên quan trong kho.</p>
+    <p class="sub">Bộ thủ là "gốc nghĩa" của chữ Hán. Danh sách <b>xếp theo độ phổ biến (#1 = hay gặp nhất)</b>; bộ càng nóng càng nổi bật. Nhấn 1 bộ để phân tích chi tiết + chữ liên quan.</p>
     <div class="panel">
       <div class="toolbar">
         <input class="txt" id="radIn" style="flex:1;min-width:200px" placeholder="Tra 1 chữ để tìm bộ thủ liên quan (vd 你, 河, 妈)...">
@@ -2639,7 +2644,13 @@ RENDER.radicals = () => {
       <div id="radOut" style="margin-top:8px"></div>
     </div>
     <div class="panel">
-      <h3>Danh sách bộ thủ thường gặp (${Object.keys(RADICALS).length})</h3>
+      <h3>214 bộ thủ Khang Hy — xếp theo độ phổ biến</h3>
+      <div class="chips" style="margin-bottom:10px">
+        <span class="chip rad-hot" style="cursor:default">🔥 Top 1–10</span>
+        <span class="chip rad-warm" style="cursor:default">Top 11–30</span>
+        <span class="chip rad-mild" style="cursor:default">Top 31–60</span>
+        <span class="chip" style="cursor:default">Còn lại (theo thứ tự Khang Hy)</span>
+      </div>
       <div class="cards-grid" id="radGrid"></div>
     </div>`;
   const analyze=()=>{
@@ -2655,38 +2666,58 @@ RENDER.radicals = () => {
         ${info?`<span><b>${esc(info.hv)}</b> · ${esc(info.g)}</span>`:""}
         <button class="mini" onclick="speak('${esc(ch)}')">🔊</button>
       </div>
-      <div style="margin-top:8px"><b>Bộ thủ nhận diện:</b> ${found.length?found.map(r=>`<span class="chip rad-chip" data-r="${esc(r)}">${esc(r)} · ${esc(RADICALS[r].hv)} (${esc(RADICALS[r].m)})</span>`).join(" "):'<span class="sub">Không khớp bộ thủ nào trong danh sách (chữ có thể là bộ thủ độc lập).</span>'}</div>
+      <div style="margin-top:8px"><b>Bộ thủ nhận diện:</b> ${found.length?found.sort((a,b)=>radRank(a)-radRank(b)).map(r=>`<span class="chip rad-chip ${radRankClass(radRank(r))}" data-r="${esc(r)}">${radRank(r)<9999?'#'+radRank(r)+' ':''}${esc(r)} · ${esc(RADICALS[r].hv)} (${esc(RADICALS[r].m)})</span>`).join(" "):'<span class="sub">Không khớp bộ thủ nào trong danh sách (chữ có thể là bộ thủ độc lập).</span>'}</div>
       ${charBreakdownHTML(ch)}`;
     $$(".rad-chip",$("#radOut")).forEach(c=>c.onclick=()=>showRadical(c.dataset.r));
   };
   $("#radGo").onclick=analyze; $("#radIn").onkeydown=e=>{if(e.key==="Enter")analyze();};
-  $("#radGrid").innerHTML=Object.entries(RADICALS).map(([r,i])=>`
-    <div class="vcard rad-card" data-r="${esc(r)}">
+  const ordered=Object.entries(RADICALS).sort((a,b)=>radRank(a[0])-radRank(b[0]));
+  let kangxiNo=0;
+  $("#radGrid").innerHTML=ordered.map(([r,i])=>{
+    const rk=radRank(r); const cls=radRankClass(rk); kangxiNo++;
+    const badge = rk<9999
+      ? `<span class="rad-rank ${cls}">#${rk}${rk<=10?' 🔥':''}</span>`
+      : `<span class="rad-rank" style="background:var(--chip);color:var(--muted)">Khang Hy</span>`;
+    return `<div class="vcard rad-card ${cls}" data-r="${esc(r)}">
+      ${badge}
       <div class="han">${esc(r)}</div>
       <div class="vi"><b>${esc(i.hv)}</b></div>
       <div class="topic">${esc(i.m)}</div>
-    </div>`).join("");
+    </div>`;
+  }).join("");
   $$(".rad-card").forEach(c=>c.onclick=()=>showRadical(c.dataset.r));
 };
 function showRadical(r){
   const info=RADICALS[r];
-  // chữ ví dụ mang bộ này (danh sách curated), kèm pinyin/nghĩa nếu có trong kho
+  const rk=radRank(r);
+  const rkText = rk<=10?"🔥 Rất phổ biến (top 10)" : rk<=30?"Phổ biến (top 30)" : rk<=60?"Khá gặp (top 60)" : rk<9999?("Hạng #"+rk) : "Ít gặp (theo thứ tự Khang Hy)";
+  const py=D.charPinyin[r]||"";
+  // chữ ví dụ mang bộ này (danh sách curated), phân tích chi tiết
   const exChars=(info.ex||"").split(/\s+/).filter(Boolean);
   const cardFor=(ch)=>{ const w=findWord(ch)||{han:ch}; const ci=D.chars[ch];
-    return `<div class="vcard" onclick="speak('${esc(ch)}')">
+    return `<div class="vcard" onclick="openMemoryGuide('${esc(ch)}')" title="Bấm xem chiết tự/cách nhớ">
       <div class="han" style="font-size:26px">${esc(ch)}</div>
       <div class="pin">${esc(D.charPinyin[ch]||"")} · <span style="color:var(--warn)">${esc(amBoiSyllable(D.charPinyin[ch]||""))}</span></div>
       <div class="vi">${esc((ci&&ci.hv?ci.hv+" — ":"")+(w.vi||(ci&&ci.g)||""))}</div></div>`; };
-  const words=allVocab().filter(v=>v.han.length>1 && [...v.han].some(c=>exChars.includes(c))).slice(0,30);
+  const words=allVocab().filter(v=>v.han.length>1 && [...v.han].some(c=>exChars.includes(c))).slice(0,40);
   $("#modalCard").innerHTML=`
     <button class="close-x" onclick="closeModal()">×</button>
-    <div class="detail-han">${esc(r)}</div>
-    <div class="detail-pin">${esc(info.hv)} · ${esc(info.m)}</div>
-    ${exChars.length?`<div class="detail-row"><div class="lab">Chữ mang bộ ${esc(r)} (${exChars.length})</div>
-      <div class="cards-grid">${exChars.map(cardFor).join("")}</div></div>`:""}
-    ${words.length?`<div class="detail-row"><div class="lab">Từ trong kho có chứa các chữ này</div>
-      <div class="cards-grid">${words.map(v=>`<div class="vcard" onclick="speak('${esc(v.han)}')">
-        <div class="han" style="font-size:24px">${esc(v.han)}</div><div class="pin">${esc(v.pinyin||toPinyin(v.han))}</div>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <div class="detail-han">${esc(r)}</div>
+      <div>
+        <div class="detail-pin">${esc(info.hv)}${py?` · ${esc(py)}`:""}</div>
+        <div style="font-size:17px">Nghĩa gốc: <b>${esc(info.m)}</b></div>
+        <div style="margin-top:4px"><span class="rad-rank ${radRankClass(rk)}">${rk<9999?'#'+rk:'Khang Hy'}</span> <span class="sub">${rkText}</span></div>
+      </div>
+    </div>
+    <div class="detail-row"><div class="lab">📖 Phân tích</div>
+      <div class="sub">Chữ nào mang bộ <b>${esc(r)}</b> thường liên quan đến <b>“${esc(info.m)}”</b>. Khi gặp chữ lạ có bộ này, hãy đoán nghĩa theo hướng đó rồi kiểm chứng. Bấm mỗi chữ bên dưới để xem chiết tự &amp; cách nhớ.</div>
+    </div>
+    ${exChars.length?`<div class="detail-row"><div class="lab">🀄 Chữ mang bộ ${esc(r)} (${exChars.length}) — bấm để phân tích</div>
+      <div class="cards-grid">${exChars.map(cardFor).join("")}</div></div>`:`<div class="detail-row"><div class="sub">Chưa có danh sách chữ ví dụ sẵn cho bộ này.</div></div>`}
+    ${words.length?`<div class="detail-row"><div class="lab">🔗 Từ liên quan trong kho (${words.length})</div>
+      <div class="cards-grid">${words.map(v=>`<div class="vcard" onclick="openMemoryGuide('${esc(v.han)}')">
+        <div class="han" style="font-size:24px">${esc(v.han)}</div><div class="pin">${esc(v.pinyin||toPinyin(v.han))} · <span style="color:var(--warn)">${esc(amBoiForHan(v.han))}</span></div>
         <div class="vi">${esc(v.vi||"")}</div></div>`).join("")}</div></div>`:""}`;
   $("#modal").classList.remove("hidden");
 }
