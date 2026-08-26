@@ -167,16 +167,27 @@ function amBoiForHan(han){ // build from per-char pinyin
 
 /* ---------- Chiết tự (character breakdown) ---------- */
 function charInfo(ch){ return D.chars[ch] || null; }  // {hv, g}
-// Build per-character breakdown for any word, using char dict
+// Bộ thủ mà 1 chữ thuộc về (nhận diện qua danh sách ví dụ + chứa glyph)
+function charRadicals(ch){
+  if(typeof RADICALS==="undefined") return [];
+  return Object.keys(RADICALS).filter(r=> r!==ch && (ch.includes(r) || (RADICALS[r].ex||"").split(/\s+/).includes(ch)))
+    .map(r=>({r, hv:RADICALS[r].hv, m:RADICALS[r].m}));
+}
+// Build per-character breakdown for any word (kể cả từ mới ngoài kho)
 function charBreakdownHTML(han){
   const rows=[...han].filter(ch=>D.charPinyin[ch]).map(ch=>{
-    const info=charInfo(ch), py=D.charPinyin[ch];
+    const info=charInfo(ch), py=D.charPinyin[ch], rads=charRadicals(ch);
+    const radLine = rads.length
+      ? `<div class="sub" style="margin-top:3px">🌿 Bộ thủ: ${rads.map(x=>`<b>${esc(x.r)}</b> ${esc(x.hv)} <span style="opacity:.8">(${esc(x.m)})</span>`).join(" · ")}</div>`
+      : "";
     return `<div style="display:flex;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line)">
       <div class="han-cell" style="font-size:30px;min-width:42px">${esc(ch)}</div>
-      <div>
-        <div><span class="pin-cell">${esc(py)}</span> · <span style="color:var(--warn)">${esc(amBoiSyllable(py))}</span>
-          ${info?`· <b>${esc(info.hv)}</b> (Hán-Việt)`:''}</div>
-        <div class="sub" style="margin:2px 0 0">${info?esc(info.g):'<i>(chưa có chiết tự trong kho)</i>'}</div>
+      <div style="flex:1">
+        <div><span class="pin-cell">${esc(py)}</span> · <span style="color:var(--warn)">🗣️ ${esc(amBoiSyllable(py))}</span>
+          ${info?`· <b>${esc(info.hv)}</b> (Hán-Việt)`:''}
+          <button class="mini" style="margin-left:6px" onclick="speak('${esc(ch)}')">🔊</button></div>
+        <div class="sub" style="margin:2px 0 0">${info?esc(info.g):'<i>Nghĩa gốc: (chưa có sẵn — dùng 💡 Cách nhớ để phân tích chi tiết)</i>'}</div>
+        ${radLine}
       </div></div>`;
   }).join("");
   return rows;
@@ -251,6 +262,61 @@ Việt: <dịch tiếng Việt>
 Không thêm giải thích nào khác.`;
   return openaiChat([{role:"user",content:prompt}], {max_tokens:1100});
 }
+async function aiMnemonic(han, pinyin, vi, sentence){
+  const ctx = sentence ? `\nTừ này xuất hiện trong câu: "${sentence}". Hãy giải thích thêm vai trò/ý nghĩa của từ TRONG CÂU đó.` : "";
+  const prompt=`Bạn là chuyên gia dạy tiếng Trung cho người Việt bằng phương pháp CHIẾT TỰ + LIÊN TƯỞNG.
+Từ cần nhớ: ${han}${pinyin?` (pinyin: ${pinyin})`:""}${vi?` — nghĩa: ${vi}`:""}.${ctx}
+Hãy viết hướng dẫn ghi nhớ bằng tiếng Việt, ngắn gọn, có emoji, theo đúng các mục sau (giữ nguyên tiêu đề):
+🧩 CHIẾT TỰ: tách từng chữ Hán thành bộ thủ/thành phần, mỗi thành phần ghi nghĩa gốc + âm Hán-Việt.
+💡 MẸO LIÊN TƯỞNG: một hình ảnh hoặc câu chuyện ngắn, sinh động, nối các thành phần với nghĩa của từ để dễ nhớ.
+🔊 CÁCH ĐỌC: pinyin + gợi ý âm bồi (phiên âm tiếng Việt gần đúng).
+📝 VÍ DỤ: 1-2 câu (Hán tự + pinyin + dịch Việt) và cách dùng.${sentence?"\n🔎 TRONG CÂU: vai trò/ý nghĩa của từ trong câu đã cho.":""}`;
+  return openaiChat([{role:"user",content:prompt}], {max_tokens:900, temperature:0.7});
+}
+// Modal "Cách nhớ từ" — chiết tự offline + mẹo ghi nhớ AI
+function openMemoryGuide(han, opts={}){
+  const w=findWord(han)||{}; const pinyin=opts.pinyin||w.pinyin||toPinyin(han); const vi=opts.vi||w.vi||""; const sentence=opts.sentence||"";
+  $("#modalCard").innerHTML=`
+    <button class="close-x" onclick="closeModal()">×</button>
+    <div class="detail-han">${esc(han)}</div>
+    <div class="detail-pin">${esc(pinyin)}</div>
+    <div style="color:var(--warn);font-size:16px">🗣️ ${esc(amBoiForHan(han))}</div>
+    ${vi?`<div class="detail-vi">${esc(vi)}</div>`:""}
+    ${sentence?`<div class="sub" style="margin-top:4px">🔎 Trong câu: <span class="han-cell" style="font-size:15px">${esc(sentence)}</span></div>`:""}
+    <div class="toolbar" style="margin-top:12px">
+      <button class="btn sm primary" onclick="speak('${esc(han)}')">🔊 Nghe</button>
+      <button class="btn sm" onclick="speakAmboi('${esc(han)}')">🇻🇳 Âm bồi</button>
+      <button class="btn sm" onclick="openYouglish('${esc(han)}')">🌐 Youglish</button>
+    </div>
+    <div class="detail-row"><div class="lab">🧩 Chiết tự từng chữ (offline)</div>${charBreakdownHTML(han)}</div>
+    <div class="detail-row">
+      <div class="lab">💡 Cách nhớ chi tiết (AI)</div>
+      <div id="mnBox"><button class="btn primary" id="mnGen">✨ Tạo hướng dẫn ghi nhớ${sentence?" (theo câu)":""}</button>
+        <p class="sub" style="margin-top:6px">Phân tích chiết tự sâu + mẹo liên tưởng dễ nhớ. Cần OpenAI API key (⚙️ Cài đặt).</p></div>
+    </div>`;
+  $("#modal").classList.remove("hidden");
+  $("#mnGen").onclick=async()=>{
+    if(!(progress.settings.openaiKey||"").trim()){ toast("Cần OpenAI API key ở ⚙️ Cài đặt"); go("settings"); closeModal(); return; }
+    $("#mnBox").innerHTML=`<p class="sub">✨ Đang phân tích cách nhớ…</p>`;
+    try{
+      const text=await aiMnemonic(han, pinyin, vi, sentence);
+      $("#mnBox").innerHTML=`<div class="mnemonic">${mnFormat(text)}</div>
+        <button class="btn sm" style="margin-top:8px" id="mnSave">💾 Lưu mẹo vào ghi chú từ</button>`;
+      $("#mnSave").onclick=()=>{ const mw=progress.myWords.find(x=>x.han===han); if(mw){ mw.mnemonic=text; save(); toast("Đã lưu vào từ trong thư viện"); } else toast("Từ này không nằm trong Thư viện của bạn (chỉ hiển thị tạm)"); };
+    }catch(e){ $("#mnBox").innerHTML=`<p class="sub" style="color:var(--brand)">Lỗi: ${esc(e.message)}</p>`; }
+  };
+  // nếu đã có mnemonic lưu sẵn
+  const saved=(progress.myWords.find(x=>x.han===han)||{}).mnemonic;
+  if(saved){ $("#mnBox").innerHTML=`<div class="mnemonic">${mnFormat(saved)}</div>
+    <button class="btn sm" style="margin-top:8px" id="mnRe">🔄 Tạo lại</button>`;
+    $("#mnRe").onclick=()=>{ $("#mnBox").innerHTML=`<button class="btn primary" id="mnGen">✨ Tạo lại hướng dẫn</button>`; openMemoryGuide(han,opts); }; }
+}
+function mnFormat(text){
+  // làm nổi các tiêu đề mục + xuống dòng
+  return esc(text).replace(/\n/g,"<br>")
+    .replace(/(🧩[^<]*|💡[^<]*|🔊[^<]*|📝[^<]*|🔎[^<]*)/g, m=>`<b>${m}</b>`);
+}
+window.openMemoryGuide=openMemoryGuide;
 
 /* ---------- Youglish embedded widget ---------- */
 let ygLoaded=false, ygLoading=false, ygWidget=null;
@@ -970,6 +1036,7 @@ function openDetail(v){
       <button class="btn sm primary" onclick="speak('${esc(v.han)}')">🔊 Nghe (Trung)</button>
       <button class="btn sm" onclick="speakAmboi('${esc(v.han)}')">🇻🇳 Đọc âm bồi</button>
       <button class="btn sm" onclick="toggleLearned('${esc(v.han)}');toast('Đã cập nhật')">✓ Đánh dấu thuộc</button>
+      <button class="btn sm" style="border-color:var(--brand)" onclick="openMemoryGuide('${esc(v.han)}')">💡 Cách nhớ</button>
       <a class="btn sm" href="${youglish(v.han)}" target="_blank" rel="noopener">🌐 Youglish</a>
       <span class="chip">${esc(v.level)}</span>
     </div>
@@ -1859,7 +1926,8 @@ function renderStaging(){
         <td class="sub" style="font-size:11px">${esc(it.pos||"")}</td>
         <td><input class="txt stgVi" data-i="${i}" value="${esc(it.vi||"")}" placeholder="nhập nghĩa..." style="font-size:12.5px;padding:4px 6px;width:100%"></td>
         <td style="white-space:nowrap"><button class="mini stgListen" data-i="${i}" title="Nghe Trung + Việt">🔊🇻🇳</button>
-          <button class="mini" onclick="openYouglish('${esc(it.han)}')">🌐</button></td>
+          <button class="mini" onclick="openYouglish('${esc(it.han)}')">🌐</button>
+          <button class="mini stgMem" data-i="${i}" title="Cách nhớ">💡</button></td>
       </tr>`).join("")}
     </tbody></table></div>
     <div class="toolbar" style="margin-top:12px">
@@ -1873,6 +1941,7 @@ function renderStaging(){
   $$(".stgChk").forEach(c=>c.onchange=()=>{ staging.items[+c.dataset.i].checked=c.checked; upd(); });
   $$(".stgVi").forEach(inp=>inp.oninput=()=>{ staging.items[+inp.dataset.i].vi=inp.value; upd(); });
   $$(".stgListen").forEach(b=>b.onclick=()=>{ const it=staging.items[+b.dataset.i]; speakBilingual(it.han, it.vi); });
+  $$(".stgMem").forEach(b=>b.onclick=()=>{ const it=staging.items[+b.dataset.i]; openMemoryGuide(it.han,{pinyin:it.pinyin,vi:it.vi}); });
   $("#stgAll").onclick=()=>{ staging.items.forEach(i=>i.checked=true); renderStaging(); };
   $("#stgNone").onclick=()=>{ staging.items.forEach(i=>i.checked=false); renderStaging(); };
   $("#stgTrans").onclick=translateStaging;
@@ -1968,6 +2037,7 @@ RENDER.library = () => {
       <td class="sub" style="font-size:12px">${esc(w.source||"")}</td>
       <td class="sub" style="font-size:12px">${esc(w.date||"")}</td>
       <td style="white-space:nowrap"><button class="mini" onclick="speak('${esc(w.han)}')">🔊</button>
+        <button class="mini" onclick="openMemoryGuide('${esc(w.han)}')" title="Cách nhớ">💡</button>
         <button class="mini" onclick="openYouglish('${esc(w.han)}')">🌐</button>
         <button class="mini" data-del="${esc(w.han)}" style="border-color:var(--brand)">🗑</button></td>
     </tr>`).join("") : `<tr><td colspan="6" class="sub">Chưa có keyword nào. Vào ➕ Thêm nguồn để thu thập.</td></tr>`;
@@ -2167,6 +2237,7 @@ RENDER.hanzi = () => {
           <span style="color:var(--warn)">🗣️ ${esc(amBoiForHan(w))}</span>
           <button class="mini" onclick="speak('${esc(w)}')">🔊</button>
           <button class="mini" onclick="openYouglish('${esc(w)}')">🌐</button>
+          <button class="btn sm" style="border-color:var(--brand)" onclick="openMemoryGuide('${esc(w)}')">💡 Cách nhớ</button>
         </div>
         ${charBreakdownHTML(w) || '<div class="sub">Không có chữ Hán để phân tích.</div>'}
       </div>`).join("");
@@ -2238,6 +2309,8 @@ function drawSent(){
           <div class="amboi-line" style="justify-content:center">🗣️ ${esc(amBoiForHan(x.han))}</div>
           <div style="margin-top:6px">${esc(x.meaning||"")}</div>
           <div class="sub" style="font-size:11px">Nguồn: ${esc(x.src||"")}</div>
+          <div class="lab" style="margin-top:10px">💡 Bấm 1 từ để xem cách nhớ (trong ngữ cảnh câu)</div>
+          <div class="anno" style="justify-content:center" id="ssWords"></div>
         </div>
         <div class="flash-controls" style="margin-top:12px">
           <button class="btn" onclick="speak('${esc(x.han)}')">🔊 Nghe</button>
@@ -2252,6 +2325,13 @@ function drawSent(){
     </div>`;
   speak(x.han);
   if($("#ssFlip")) $("#ssFlip").onclick=()=>{sentShown=true; drawSent();};
+  if(sentShown && $("#ssWords")){
+    const toks=segment(x.han).filter(t=>!t.other);
+    $("#ssWords").innerHTML=toks.map((t,i)=>`<span class="tok" data-w="${i}" style="cursor:pointer">
+      <span class="tp">${esc((D.gloss[t.w]?D.gloss[t.w].p:toPinyin(t.w)))}</span>
+      <span class="th">${esc(t.w)}</span></span>`).join("");
+    $$("#ssWords .tok").forEach(el=>el.onclick=()=>{ const w=toks[+el.dataset.w].w; openMemoryGuide(w,{sentence:x.han}); });
+  }
   $$("[data-g]").forEach(b=>b.onclick=()=>{ const g=parseInt(b.dataset.g); sentReview(x.han,g); sentQueue.shift(); if(g<3)sentQueue.push(x); else sentDone++; sentShown=false; drawSent(); });
 }
 

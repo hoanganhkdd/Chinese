@@ -31,7 +31,8 @@ App ghi nhớ & học tiếng Trung, **ưu tiên luyện nghe và từ vựng**.
 | ⚙️ **Cài đặt** | Nhập **OpenAI API key** (tạo truyện AI), chọn **giọng đọc tiếng Việt**, sao lưu/khôi phục toàn bộ dữ liệu. |
 | 🗣️ **Âm bồi** | **Luôn hiển thị** cạnh pinyin ở mọi nơi (你好→nỉ hảo, 的→tơ, 么→mơ). Có nút **🇻🇳 Đọc âm bồi** — đọc bằng **giọng tiếng Việt** để nghe phát âm theo âm tiếng Việt. |
 | 🚗 **Đọc tất cả (rảnh tay)** | Khẩu ngữ, Thương mại, Câu nguồn, Nghe liên tục, Thư viện… có **▶ Đọc tất cả** — phát tuần tự với thanh điều khiển nổi (tua, lặp). Nút **🇻🇳** đọc **kèm nghĩa tiếng Việt** sau mỗi từ tiếng Trung (bật sẵn) — vừa nghe vừa hiểu nghĩa khi lái xe. |
-| 🧩 **Chiết tự** | Tra bất kỳ chữ/từ → phân tích **từng chữ**: pinyin · âm bồi · **âm Hán-Việt** · nghĩa gốc. 719 chữ có chiết tự, giúp hiểu nghĩa & nhớ lâu mặt chữ. Hiển thị cả trong chi tiết từ, flashcard, ôn tập. |
+| 🧩 **Chiết tự** | Tra bất kỳ chữ/từ → phân tích **từng chữ**: pinyin · âm bồi · **âm Hán-Việt** · nghĩa gốc · **🌿 bộ thủ** (nhận diện cho mọi chữ, kể cả từ mới). Hiển thị trong chi tiết từ, flashcard, ôn tập. |
+| 💡 **Trợ lý ghi nhớ** | Nút **💡 Cách nhớ** ở khắp nơi (chi tiết từ, thư viện, room tạm, chiết tự). Mở hướng dẫn: chiết tự offline + **AI tạo mẹo liên tưởng** (chiết tự sâu + câu chuyện dễ nhớ + ví dụ). Trong **Ôn câu**: bấm từng từ để học **cách nhớ từ trong ngữ cảnh câu**. Lưu mẹo vào ghi chú của từ. |
 | 📚 Từ vựng HSK (1022) | Lọc cấp độ/chủ đề, tìm kiếm, chiết tự + ví dụ, phát âm, Youglish, đánh dấu thuộc |
 | 🎴 Flashcard | Lật thẻ ôn nhanh |
 | ✍️ Luyện viết | Nhìn nghĩa+pinyin, gõ hán tự, chấm điểm |

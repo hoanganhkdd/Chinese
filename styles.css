@@ -163,6 +163,11 @@ textarea.ta{width:100%;min-height:120px;padding:12px;border:1px solid var(--line
 .sent-line{padding:12px 0;border-bottom:1px solid var(--line)}
 .audio-btn{cursor:pointer}
 
+/* Mnemonic box */
+.mnemonic{background:var(--panel2);border-radius:12px;padding:14px;font-size:14.5px;line-height:1.75;
+  border-left:4px solid var(--brand)}
+.mnemonic b{color:var(--brand)}
+
 /* Link rows */
 .link-row{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;
   margin-bottom:8px;background:var(--panel)}
