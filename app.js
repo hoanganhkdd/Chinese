@@ -2010,9 +2010,12 @@ function ytId(url){
 function loadScript(src){ return new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=src; s.onload=res; s.onerror=()=>rej(new Error("Không tải được "+src)); document.head.appendChild(s); }); }
 async function loadPdfJs(){
   if(window.pdfjsLib) return window.pdfjsLib;
-  const lib=await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.mjs");
-  lib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.mjs";
-  window.pdfjsLib=lib; return lib;
+  // pdf.js 3.x chỉ có bản UMD (.js) trên cdnjs — nạp bằng <script>, KHÔNG dùng import(.mjs)
+  await loadScript("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js");
+  const lib=window.pdfjsLib;
+  if(!lib) throw new Error("Không tải được thư viện pdf.js");
+  lib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  return lib;
 }
 async function loadTesseract(){ if(window.Tesseract) return window.Tesseract; await loadScript("https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"); return window.Tesseract; }
 
