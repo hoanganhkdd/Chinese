@@ -28,6 +28,8 @@ App ghi nhớ & học tiếng Trung, **ưu tiên luyện nghe và từ vựng**.
 | 🎧 **Luyện nghe** | 7 chế độ: nghe→chọn nghĩa/hán tự, nghe câu→đáp án, **🔁 nghe liên tục** (playlist rảnh tay), **📖 ghép câu chuyện** từ nhóm từ (+ nút tạo truyện bằng AI), **✍️ nghe→viết**, **🎤 nghe→nói lại**. |
 | ➕ **Thêm nguồn từ** | Nạp từ **5 nguồn**: đoạn text · YouTube (xem + dán phụ đề) · Reel Facebook · **file PDF** (đọc chữ) · **hình ảnh (OCR)**. Từ được đưa vào **Room tạm** để lọc trùng + lọc cơ bản (độ dài, hư từ), bạn duyệt bằng checkbox rồi **xác nhận vào Thư viện keyword** hoặc lưu thành Room. |
 | 📇 **Thư viện keyword** | Kho từ bạn tự thu thập (đã tự lọc trùng). Tìm kiếm, nghe tất cả, xóa, **xuất CSV**. Là nguồn cho ôn tập ghi nhớ. |
+| 📂 **Tài liệu tham khảo** | 96 tài liệu học tiếng Trung (gom từ kho chia sẻ Facebook), **phân theo 10 chủ đề** (từ vựng chuyên ngành, khẩu ngữ, ngữ pháp, HSK, luyện nghe, giáo trình, luyện dịch, công cụ, văn hóa...). Tìm kiếm, lọc theo chủ đề, mở nguồn gốc. |
+| 🔎 **Mở rộng từ vựng** | Từ **bộ thủ** hoặc **chiết tự** → liệt kê từ liên quan trong kho + **✨ AI gợi ý thêm từ cùng bộ/chữ**, mỗi từ **liên kết Youglish** để xem phát âm thật, nghe hàng loạt, lưu nhanh. |
 | 📎 **Tài liệu / Link** | Lưu link **video, Google Drive, PDF, web...** để mở nhanh. Tự nhận diện loại link (▶️📁📄), gắn nhãn, ghi chú, tìm kiếm, copy/mở nhanh. |
 | ⚙️ **Cài đặt** | Nhập **OpenAI API key** (tạo truyện AI), chọn **giọng đọc tiếng Việt**, sao lưu/khôi phục toàn bộ dữ liệu. |
 | 🗣️ **Âm bồi** | **Luôn hiển thị** cạnh pinyin ở mọi nơi (你好→nỉ hảo, 的→tơ, 么→mơ). Có nút **🇻🇳 Đọc âm bồi** — đọc bằng **giọng tiếng Việt** để nghe phát âm theo âm tiếng Việt. |

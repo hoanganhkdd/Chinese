@@ -27,7 +27,11 @@
       "Bash(python -c \"import paddleocr; print\\('paddleocr OK'\\)\")",
       "Bash(python -c \"import cnocr; print\\('cnocr OK'\\)\")",
       "Bash(mkdir -p pg)",
-      "Bash(python business.py)"
+      "Bash(python business.py)",
+      "WebFetch(domain:api.cdnjs.com)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

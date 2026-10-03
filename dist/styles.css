@@ -182,6 +182,10 @@ textarea.ta{width:100%;min-height:120px;padding:12px;border:1px solid var(--line
   border-left:4px solid var(--brand)}
 .mnemonic b{color:var(--brand)}
 
+/* Reference docs */
+.refdoc{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+.refdoc:last-child{border-bottom:none}
+
 /* Link rows */
 .link-row{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;
   margin-bottom:8px;background:var(--panel)}

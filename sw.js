@@ -1,8 +1,8 @@
 /* Service worker — NETWORK-FIRST cho file cùng nguồn, CACHE-FIRST cho CDN */
-const CACHE = "hsk-app-v13";
+const CACHE = "hsk-app-v14";
 const CDN_CACHE = "hsk-cdn-v1";
 const ASSETS = [
-  "./", "./index.html", "./styles.css", "./app.js", "./appdata.js",
+  "./", "./index.html", "./styles.css", "./app.js", "./appdata.js", "./refdocs.js",
   "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"
 ];
 self.addEventListener("install", e => {

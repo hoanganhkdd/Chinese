@@ -336,6 +336,70 @@ function mnFormat(text){
 }
 window.openMemoryGuide=openMemoryGuide;
 
+/* ---------- Mở rộng từ vựng từ bộ thủ / chiết tự (+ Youglish) ---------- */
+function expandFromChars(chars){
+  const set=new Set(chars.filter(Boolean));
+  const seen=new Set();
+  return allVocab().filter(v=>{
+    if(seen.has(v.han)) return false;
+    if([...v.han].some(c=>set.has(c))){ seen.add(v.han); return true; }
+    return false;
+  });
+}
+async function aiExpandWords(seed, kind){
+  const what = kind==="radical" ? `bộ thủ/chữ "${seed}"` : `chữ "${seed}"`;
+  const prompt=`Liệt kê 15 từ hoặc cụm từ tiếng Trung thông dụng (trình độ HSK1–4) có chứa ${what}. Mỗi từ đúng 1 dòng theo dạng: 汉字 | pinyin | nghĩa tiếng Việt ngắn gọn. Không thêm giải thích.`;
+  const out=await openaiChat([{role:"user",content:prompt}],{max_tokens:700,temperature:0.4});
+  return out.split(/\n/).map(l=>{ const m=l.match(/^\s*([一-鿿]+)\s*[|｜:：]\s*(.+?)\s*[|｜]\s*(.+)$/); return m?{han:m[1],pinyin:m[2].trim(),vi:m[3].trim()}:null; }).filter(Boolean);
+}
+function wordRowHTML(w){
+  const saved=isSaved(w.han);
+  return `<div class="refdoc" style="align-items:center">
+    <div style="flex:1;min-width:0">
+      <span class="han-cell" style="font-size:22px">${esc(w.han)}</span>
+      <span class="pin-cell" style="margin-left:6px">${esc(w.pinyin||toPinyin(w.han))}</span>
+      <span style="color:var(--warn);margin-left:6px">🗣️ ${esc(amBoiForHan(w.han))}</span>
+      ${w.vi?`<div class="sub" style="font-size:12.5px">${esc(w.vi)}</div>`:""}
+    </div>
+    <div style="display:flex;gap:5px;flex-shrink:0">
+      <button class="mini" onclick="speak('${esc(w.han)}')">🔊</button>
+      <a class="btn sm primary" href="${youglish(w.han)}" target="_blank" rel="noopener">🌐 Youglish</a>
+      <button class="mini xpSave" data-h="${esc(w.han)}" data-p="${esc(w.pinyin||'')}" data-v="${esc(w.vi||'')}">${saved?'⭐':'☆'}</button>
+    </div>
+  </div>`;
+}
+function bindXpSave(container){
+  $$(".xpSave",container).forEach(b=>b.onclick=()=>{ const on=toggleSaved(b.dataset.h,{pinyin:b.dataset.p,vi:b.dataset.v}); b.textContent=on?'⭐':'☆'; toast(on?'Đã lưu từ':'Đã bỏ lưu'); });
+}
+function openExpand(seed, label, chars){
+  const words=expandFromChars(chars&&chars.length?chars:[seed]).slice(0,80);
+  $("#modalCard").innerHTML=`
+    <button class="close-x" onclick="closeModal()">×</button>
+    <h3 style="margin:0 0 4px">🔎 Mở rộng từ vựng: ${esc(label||seed)}</h3>
+    <p class="sub">Các từ liên quan — nghe phát âm &amp; <b>liên kết Youglish</b> để xem người bản xứ dùng trong video thật. Bấm ☆ để lưu.</p>
+    <div class="toolbar"><button class="btn sm primary" id="xpPlay">▶ Nghe tất cả</button>
+      <button class="btn sm" id="xpAI">✨ AI gợi ý thêm từ (kèm Youglish)</button>
+      <a class="btn sm" href="${youglish(seed)}" target="_blank" rel="noopener">🌐 Youglish bộ/chữ "${esc(seed)}"</a></div>
+    <div class="detail-row"><div class="lab">Từ trong kho (${words.length})</div>
+      <div id="xpInApp">${words.length?words.map(wordRowHTML).join(""):'<p class="sub">Chưa có từ nào trong kho chứa chữ này.</p>'}</div></div>
+    <div class="detail-row"><div class="lab">✨ Từ mở rộng (AI)</div><div id="xpAiBox"><p class="sub">Bấm "AI gợi ý thêm từ" để sinh thêm từ cùng bộ/chữ (cần OpenAI key).</p></div></div>`;
+  $("#modal").classList.remove("hidden");
+  bindXpSave($("#xpInApp"));
+  $("#xpPlay").onclick=()=>{ if(!words.length){toast("Không có từ");return;} Player.start(words.map(w=>({han:w.han,sub:w.vi,vi:w.vi})),{pauseMs:1000}); };
+  $("#xpAI").onclick=async()=>{
+    if(!(progress.settings.openaiKey||"").trim()){ toast("Cần OpenAI API key ở ⚙️ Cài đặt"); go("settings"); closeModal(); return; }
+    $("#xpAiBox").innerHTML=`<p class="sub">✨ Đang gợi ý thêm từ…</p>`;
+    try{
+      const list=await aiExpandWords(seed, chars&&chars.length>1?"radical":"char");
+      if(!list.length){ $("#xpAiBox").innerHTML=`<p class="sub">Không nhận được kết quả.</p>`; return; }
+      $("#xpAiBox").innerHTML=`<div class="toolbar"><button class="btn sm" id="xpAddAll">➕ Thêm tất cả vào thư viện</button></div>`+list.map(wordRowHTML).join("");
+      bindXpSave($("#xpAiBox"));
+      $("#xpAddAll").onclick=()=>{ let n=0; list.forEach(w=>{ if(addMyWord({han:w.han,pinyin:w.pinyin,vi:w.vi,source:"mở rộng "+seed})) n++; }); toast(`Đã thêm ${n} từ vào thư viện`); };
+    }catch(e){ $("#xpAiBox").innerHTML=`<p class="sub" style="color:var(--brand)">Lỗi: ${esc(e.message)}</p>`; }
+  };
+}
+window.openExpand=openExpand;
+
 /* ---------- Youglish embedded widget ---------- */
 let ygLoaded=false, ygLoading=false, ygWidget=null;
 function loadYouglishScript(cb){
@@ -738,6 +802,7 @@ const PAGES = [
   {id:"radicals",ico:"🌿", name:"Bộ thủ"},
   {id:"video",  ico:"➕", name:"Thêm nguồn từ"},
   {id:"library",ico:"📇", name:"Thư viện keyword"},
+  {id:"refdocs",ico:"📂", name:"Tài liệu tham khảo"},
   {id:"links",  ico:"📎", name:"Tài liệu / Link"},
   {id:"phrases",ico:"🗣️", name:"Khẩu ngữ", badge:D.phrases.length},
   {id:"biz",    ico:"💼", name:"Thương mại", badge:D.business.length},
@@ -2347,6 +2412,49 @@ function renderSavedLib(tabs, savedList){
   $$("[data-lt]").forEach(c=>c.onclick=()=>{ libTab=c.dataset.lt; RENDER.library(); });
 }
 
+/* ---------- Tài liệu tham khảo (gom theo chủ đề) ---------- */
+let refCat="";
+RENDER.refdocs = () => {
+  const docs=(D.refDocs||[]);
+  const cats=[...new Set(docs.map(d=>d.cat))];
+  const byCat={}; cats.forEach(c=>byCat[c]=docs.filter(d=>d.cat===c));
+  $("#view").innerHTML=`
+    <h2 class="section-h">📂 Tài liệu tham khảo tiếng Trung</h2>
+    <p class="sub">${docs.length} tài liệu học tiếng Trung được gom từ kho chia sẻ, phân theo ${cats.length} chủ đề. Nhấn để mở nguồn gốc.</p>
+    <div class="toolbar">
+      <input class="txt" id="rdQ" placeholder="🔎 Tìm tiêu đề, nội dung, nguồn..." style="flex:1;min-width:200px">
+      <span class="count-pill" id="rdCount"></span>
+    </div>
+    <div class="chips" id="rdChips">
+      <span class="chip ${refCat===''?'active':''}" data-c="">Tất cả (${docs.length})</span>
+      ${cats.map(c=>`<span class="chip ${refCat===c?'active':''}" data-c="${esc(c)}">${esc(c)} (${byCat[c].length})</span>`).join("")}
+    </div>
+    <div id="rdList"></div>`;
+  $$("#rdChips .chip").forEach(c=>c.onclick=()=>{refCat=c.dataset.c; RENDER.refdocs();});
+  const draw=()=>{
+    const q=($("#rdQ").value||"").toLowerCase();
+    let list=docs.filter(d=>(!refCat||d.cat===refCat) && (!q||(d.title+d.summary+d.source).toLowerCase().includes(q)));
+    $("#rdCount").textContent=`${list.length} tài liệu`;
+    // group by cat when viewing all
+    const groups = refCat ? {[refCat]:list} : (()=>{const g={}; list.forEach(d=>{(g[d.cat]=g[d.cat]||[]).push(d);}); return g;})();
+    $("#rdList").innerHTML = Object.keys(groups).length ? Object.entries(groups).map(([c,items])=>`
+      <div class="panel">
+        <h3>${esc(c)} <span class="sub">· ${items.length}</span></h3>
+        ${items.map(d=>`<div class="refdoc">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:600">${esc(d.title)}</div>
+            ${d.summary?`<div class="sub" style="font-size:12.5px;margin-top:3px">${esc(d.summary)}</div>`:""}
+            <div class="sub" style="font-size:11.5px;margin-top:4px">📌 ${esc(d.source||"")} · ${esc(d.date||"")}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">
+            ${(d.links||[]).map(l=>`<a class="btn sm ${l[0]==='Link ngoài'?'primary':''}" href="${esc(l[1])}" target="_blank" rel="noopener">${esc(l[0])} ↗</a>`).join("")}
+          </div>
+        </div>`).join("")}
+      </div>`).join("") : `<p class="sub">Không tìm thấy tài liệu phù hợp.</p>`;
+  };
+  $("#rdQ").oninput=draw; draw();
+};
+
 /* ---------- Tài liệu / Link nhanh ---------- */
 function linkType(url){
   const u=(url||"").toLowerCase();
@@ -2531,6 +2639,7 @@ RENDER.hanzi = () => {
           <span style="color:var(--warn)">🗣️ ${esc(amBoiForHan(w))}</span>
           <button class="mini" onclick="speak('${esc(w)}')">🔊</button>
           <button class="mini" onclick="openYouglish('${esc(w)}')">🌐</button>
+          <button class="btn sm" style="border-color:var(--accent)" onclick="openExpand('${esc([...w][0]||w)}','${esc(w)}',[${[...w].map(c=>"'"+esc(c)+"'").join(',')}])">🔎 Mở rộng từ vựng</button>
           <button class="btn sm" style="border-color:var(--brand)" onclick="openMemoryGuide('${esc(w)}')">💡 Cách nhớ</button>
         </div>
         ${charBreakdownHTML(w) || '<div class="sub">Không có chữ Hán để phân tích.</div>'}
@@ -2668,6 +2777,8 @@ RENDER.radicals = () => {
         <span style="color:var(--warn)">🗣️ ${esc(amBoiSyllable(D.charPinyin[ch]||""))}</span>
         ${info?`<span><b>${esc(info.hv)}</b> · ${esc(info.g)}</span>`:""}
         <button class="mini" onclick="speak('${esc(ch)}')">🔊</button>
+        <button class="btn sm" style="border-color:var(--accent)" onclick="openExpand('${esc(ch)}','${esc(ch)}',['${esc(ch)}'])">🔎 Mở rộng từ vựng</button>
+        <button class="btn sm" style="border-color:var(--brand)" onclick="openMemoryGuide('${esc(ch)}')">💡 Cách nhớ</button>
       </div>
       <div style="margin-top:8px"><b>Bộ thủ nhận diện:</b> ${found.length?found.sort((a,b)=>radRank(a)-radRank(b)).map(r=>`<span class="chip rad-chip ${radRankClass(radRank(r))}" data-r="${esc(r)}">${radRank(r)<9999?'#'+radRank(r)+' ':''}${esc(r)} · ${esc(RADICALS[r].hv)} (${esc(RADICALS[r].m)})</span>`).join(" "):'<span class="sub">Không khớp bộ thủ nào trong danh sách (chữ có thể là bộ thủ độc lập).</span>'}</div>
       ${charBreakdownHTML(ch)}`;
@@ -2712,6 +2823,11 @@ function showRadical(r){
         <div style="font-size:17px">Nghĩa gốc: <b>${esc(info.m)}</b></div>
         <div style="margin-top:4px"><span class="rad-rank ${radRankClass(rk)}">${rk<9999?'#'+rk:'Khang Hy'}</span> <span class="sub">${rkText}</span></div>
       </div>
+    </div>
+    <div class="toolbar" style="margin-top:10px">
+      <button class="btn sm" onclick="speak('${esc(r)}')">🔊 Nghe</button>
+      <button class="btn sm primary" onclick="openExpand('${esc(r)}','${esc(r)} (${esc(info.hv)})',[${exChars.map(c=>"'"+esc(c)+"'").join(',')}])">🔎 Mở rộng từ vựng + Youglish</button>
+      <a class="btn sm" href="${youglish(r)}" target="_blank" rel="noopener">🌐 Youglish</a>
     </div>
     <div class="detail-row"><div class="lab">📖 Phân tích</div>
       <div class="sub">Chữ nào mang bộ <b>${esc(r)}</b> thường liên quan đến <b>“${esc(info.m)}”</b>. Khi gặp chữ lạ có bộ này, hãy đoán nghĩa theo hướng đó rồi kiểm chứng. Bấm mỗi chữ bên dưới để xem chiết tự &amp; cách nhớ.</div>
