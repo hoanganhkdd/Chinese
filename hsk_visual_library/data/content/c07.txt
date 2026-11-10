@@ -1,0 +1,241 @@
+1501|Không sao cả, sao cũng được|去不去都无所谓。|Đi hay không cũng được.
+1502|Biểu đạt, bày tỏ|我不知道怎么表达。|Tôi không biết diễn đạt thế nào.
+1503|Cả đời|一辈子的朋友。|Bạn bè cả đời.
+1504|Thần bí|这个地方很神秘。|Nơi này rất bí ẩn.
+1505|Thực hiện|实现梦想。|Thực hiện ước mơ.
+1506|Chính trị|我不谈政治。|Tôi không bàn chính trị.
+1507|To lớn, khổng lồ|变化巨大。|Thay đổi to lớn.
+1508|Đối thủ|他是我们的竞争对手。|Họ là đối thủ cạnh tranh của chúng tôi.
+1509|Kích thích|这个游戏很刺激。|Trò chơi này rất kích thích.
+1510|Dựa vào|凭经验判断。|Phán đoán dựa vào kinh nghiệm.
+1511|Lời vô nghĩa|别说废话。|Đừng nói lời thừa.
+1512|Nắm vững|掌握技术。|Nắm vững kỹ thuật.
+1513|Cổ|我脖子疼。|Tôi đau cổ.
+1514|Đồ chơi|这家工厂生产玩具。|Nhà máy này sản xuất đồ chơi.
+1515|Thỏa mãn, đáp ứng|满足客户的需要。|Đáp ứng nhu cầu khách hàng.
+1516|Truyền thống|中国传统节日。|Ngày lễ truyền thống Trung Quốc.
+1517|Đọc (to); nhớ|念一下。|Đọc lên nghe xem.
+1518|Lặp lại|请重复一遍。|Vui lòng nhắc lại một lần.
+1519|Hòa bình|我们热爱和平。|Chúng ta yêu hòa bình.
+1520|Thưởng thức|欣赏风景。|Ngắm cảnh.
+1521|Séc|可以用支票付款吗？|Có thể trả bằng séc không?
+1522|Lý luận|理论和实践。|Lý luận và thực tiễn.
+1523|Góc độ|换个角度想。|Nghĩ theo góc độ khác.
+1524|Tuổi tác|他年纪很大了。|Ông ấy tuổi đã cao.
+1525|Quan sát|仔细观察市场。|Quan sát kỹ thị trường.
+1526|Con chuột|老鼠很怕猫。|Chuột rất sợ mèo.
+1527|Con rồng|中国人是龙的传人。|Người Trung Quốc là con cháu rồng.
+1528|Đậy, che; đóng (dấu)|请盖章。|Vui lòng đóng dấu.
+1529|Di động|移动电话。|Điện thoại di động.
+1530|Không ngừng|不断进步。|Không ngừng tiến bộ.
+1531|Công chúa|小公主。|Cô công chúa nhỏ.
+1532|Trơn, trượt|路很滑。|Đường rất trơn.
+1533|Sờ, chạm|别摸。|Đừng sờ.
+1534|Suy nghĩ|让我思考一下。|Để tôi suy nghĩ một chút.
+1535|Đóng cửa (ngừng hoạt động)|工厂关闭了。|Nhà máy đã đóng cửa.
+1536|Ảo tưởng|别幻想了。|Đừng ảo tưởng nữa.
+1537|Vung, vẩy; đá (bồ)|甩手。|Vẩy tay.
+1538|Đồng bạn, đối tác|合作伙伴。|Đối tác hợp tác.
+1539|Cắm|插上电源。|Cắm điện vào.
+1540|Đạt tới|达到目标。|Đạt mục tiêu.
+1541|Tóm lại|总之，我们同意。|Tóm lại, chúng tôi đồng ý.
+1542|Sáng|天亮了。|Trời sáng rồi.
+1543|Mức độ|损坏程度不大。|Mức độ hư hỏng không lớn.
+1544|Vỡ vụn|杯子碎了。|Cốc vỡ rồi.
+1545|Nằm ở, ở chỗ|问题在于价格。|Vấn đề nằm ở giá.
+1546|Bài học, dạy dỗ|这是一个教训。|Đây là một bài học.
+1547|Quyền lực|他有很大的权力。|Ông ấy có quyền lực lớn.
+1548|Ổn định|价格很稳定。|Giá rất ổn định.
+1549|Tôn kính|尊敬的客户。|Kính gửi quý khách hàng.
+1550|Kiên cường|她很坚强。|Cô ấy rất kiên cường.
+1552|Thủy tinh, kính|玻璃杯。|Cốc thủy tinh.
+1553|Dũng khí|他没有勇气说。|Anh ấy không có can đảm nói.
+1554|Nhân viên|我们公司有一百个员工。|Công ty chúng tôi có 100 nhân viên.
+1555|Tò mò|我很好奇。|Tôi rất tò mò.
+1556|Phi thường, giỏi giang|你真了不起！|Bạn thật phi thường!
+1557|Chặt|砍树。|Chặt cây.
+1558|Giả thiết|假设价格降低百分之十。|Giả sử giá giảm 10%.
+1559|Cái cớ|别找借口。|Đừng viện cớ.
+1560|Đất đai|土地很贵。|Đất đai rất đắt.
+1561|Phẳng; bình|这条路很平。|Con đường này rất bằng phẳng.
+1562|Phàn nàn|客户抱怨价格太高。|Khách hàng phàn nàn giá quá cao.
+1563|Chịu đựng, gánh chịu|承受压力。|Chịu áp lực.
+1564|Thời thượng, mốt|这个设计很时尚。|Thiết kế này rất thời thượng.
+1565|Vi-rút|电脑有病毒。|Máy tính có vi-rút.
+1566|Thiết bị|工厂的设备很新。|Thiết bị nhà máy rất mới.
+1567|Cứng|这个很硬。|Cái này rất cứng.
+1568|Lấy vợ|他娶了一个越南姑娘。|Anh ấy lấy một cô gái Việt Nam.
+1569|Đầu tư|他们在越南投资。|Họ đầu tư vào Việt Nam.
+1570|Quá đáng|你太过分了！|Bạn quá đáng rồi!
+1571|Đối tượng; người yêu|你有对象吗？|Bạn có người yêu chưa?
+1572|Nhất trí|大家意见一致。|Mọi người nhất trí ý kiến.
+1573|Sức hút, quyến rũ|她很有魅力。|Cô ấy rất có sức hút.
+1574|Thí nghiệm|做实验。|Làm thí nghiệm.
+1575|Yêu đương|他们在谈恋爱。|Họ đang yêu nhau.
+1576|Chủ đề (câu chuyện)|换个话题吧。|Đổi chủ đề khác nhé.
+1578|Đoàn, nhóm; viên tròn|旅游团。|Đoàn du lịch.
+1579|Kiến trúc, công trình|这座建筑很有名。|Công trình này rất nổi tiếng.
+1581|Hoàng tử|白马王子。|Hoàng tử bạch mã.
+1582|Tự hào|我为你感到自豪。|Tôi tự hào về bạn.
+1583|Đầu tư vào, nhập tâm|投入生产。|Đưa vào sản xuất.
+1584|Chín chắn; chín|他很成熟。|Anh ấy rất chín chắn.
+1585|Cho thấy|调查表明……|Điều tra cho thấy…
+1586|Bức (lượng từ tranh)|一幅画。|Một bức tranh.
+1587|Công cụ|工具在哪儿？|Dụng cụ ở đâu?
+1588|Xương|鱼骨头。|Xương cá.
+1589|Giẫm, đạp|别踩草。|Đừng giẫm lên cỏ.
+1590|Giả như|假如你是我，你会怎么办？|Giả như bạn là tôi, bạn sẽ làm gì?
+1592|Tranh thủ, giành|争取早日合作。|Cố gắng sớm hợp tác.
+1593|Ngực|胸口疼。|Đau ngực.
+1594|Địa phương, bản địa|当地人。|Người địa phương.
+1595|Mỉm cười|她微笑着说。|Cô ấy mỉm cười nói.
+1597|Con rắn|我怕蛇。|Tôi sợ rắn.
+1598|Ngoan|孩子很乖。|Đứa bé rất ngoan.
+1599|Nội bộ, bên trong|公司内部消息。|Tin nội bộ công ty.
+1600|Hệ, khoa; buộc|中文系。|Khoa Tiếng Trung.
+1601|Tư thế|姿势不对。|Tư thế không đúng.
+1602|Mù; bừa|别瞎说。|Đừng nói bừa.
+1603|Phòng ngủ|卧室在二楼。|Phòng ngủ ở tầng hai.
+1604|Ngón tay|手指受伤了。|Ngón tay bị thương.
+1605|Ôi, ơ (thán từ)|哎，你怎么来了？|Ơ, sao bạn lại đến?
+1606|Tư cách|他有资格参加。|Anh ấy có đủ tư cách tham gia.
+1607|Từ chức, nghỉ việc|他辞职了。|Anh ấy nghỉ việc rồi.
+1608|Hợp pháp|合法经营。|Kinh doanh hợp pháp.
+1609|Tìm kiếm (trên mạng)|在网上搜索。|Tìm kiếm trên mạng.
+1611|Độc lập|独立工作。|Làm việc độc lập.
+1612|Trận chung kết|决赛明天开始。|Trận chung kết bắt đầu ngày mai.
+1613|Mạng lưới, mạng|网络很慢。|Mạng rất chậm.
+1614|Bệnh vặt; lỗi, tật|机器出毛病了。|Máy bị lỗi rồi.
+1615|Chóng mặt|我头晕。|Tôi chóng mặt.
+1616|Công khai|公开信息。|Công khai thông tin.
+1617|Quan điểm|我同意你的观点。|Tôi đồng ý quan điểm của bạn.
+1618|Biết đâu, có khi|说不定他忘了。|Biết đâu anh ấy quên rồi.
+1619|Trao đổi|交换名片。|Trao đổi danh thiếp.
+1620|Ôm|我们拥抱一下。|Chúng ta ôm nhau một cái.
+1621|Lỡ như, vạn nhất|万一下雨怎么办？|Lỡ trời mưa thì sao?
+1622|Phát minh|这是新发明。|Đây là phát minh mới.
+1623|Trọng đại|重大决定。|Quyết định trọng đại.
+1624|Tổ hợp, kết hợp|产品组合。|Tổ hợp sản phẩm.
+1625|Tư tưởng|他的思想很开放。|Tư tưởng của anh ấy rất cởi mở.
+1626|Nhắm vào|针对越南市场。|Nhắm vào thị trường Việt Nam.
+1627|Cụ thể|请说得具体一点儿。|Vui lòng nói cụ thể hơn.
+1628|Lãnh đạo|我们领导同意了。|Lãnh đạo chúng tôi đã đồng ý.
+1629|Chủ đề|会议的主题是什么？|Chủ đề cuộc họp là gì?
+1630|Răng|牙齿很白。|Răng rất trắng.
+1631|Đi vòng|绕路。|Đi đường vòng.
+1632|Chủ nhiệm|他是办公室主任。|Ông ấy là chánh văn phòng.
+1633|Lái (xe)|驾驶执照。|Giấy phép lái xe.
+1634|Ứng phó|应付不了。|Không ứng phó nổi.
+1635|Tài sản|个人财产。|Tài sản cá nhân.
+1636|Cãi nhau|他们吵架了。|Họ cãi nhau rồi.
+1637|Trang phục|服装出口。|Xuất khẩu hàng may mặc.
+1638|Cao cấp|高级经理。|Quản lý cấp cao.
+1639|Châu Âu|我们的产品出口到欧洲。|Sản phẩm chúng tôi xuất sang châu Âu.
+1641|Chắn, che|别挡路。|Đừng chắn đường.
+1642|Hậu quả|后果很严重。|Hậu quả rất nghiêm trọng.
+1643|Cá tính|他很有个性。|Anh ấy rất có cá tính.
+1644|Qua lại, giao thiệp|我们交往很多年了。|Chúng tôi qua lại nhiều năm rồi.
+1645|Lập tức (trang trọng)|立即执行。|Thi hành ngay lập tức.
+1646|Tránh|避免错误。|Tránh sai sót.
+1647|Giữ lại, bảo lưu|保留意见。|Bảo lưu ý kiến.
+1648|Lô, đợt (lượng từ hàng)|这批货什么时候到？|Lô hàng này khi nào đến?
+1649|Nhặt|捡起来。|Nhặt lên.
+1650|Liên tục, kéo dài|持续增长。|Tăng trưởng liên tục.
+1651|Con khỉ|猴子很聪明。|Khỉ rất thông minh.
+1652|Áp dụng (biện pháp)|采取措施。|Áp dụng biện pháp.
+1653|Lên, tăng|价格升了。|Giá đã tăng.
+1654|Loại hình|这是什么类型的产品？|Đây là loại sản phẩm gì?
+1655|Kim loại|金属材料。|Vật liệu kim loại.
+1656|Hợp lý|价格很合理。|Giá rất hợp lý.
+1657|Trong thời gian|会议期间请关手机。|Trong thời gian họp vui lòng tắt điện thoại.
+1658|Tối|房间很暗。|Phòng rất tối.
+1660|Sức lực, tinh lực|没有精力。|Không có sức.
+1661|Nghỉ hưu|我爸爸退休了。|Bố tôi nghỉ hưu rồi.
+1662|Nói nhảm|别胡说！|Đừng nói nhảm!
+1663|Chỉ huy|指挥交通。|Điều khiển giao thông.
+1664|Xấu (ngoại hình)|这个颜色有点儿丑。|Màu này hơi xấu.
+1665|Tự động|自动门。|Cửa tự động.
+1666|Tòa án|去法院。|Đến tòa án.
+1667|Vẫn như cũ|依然很忙。|Vẫn rất bận.
+1668|Bình tĩnh, yên lặng|心情很平静。|Tâm trạng rất bình thản.
+1669|Ngồi xổm|蹲下。|Ngồi xổm xuống.
+1670|Phát biểu, đăng|发表意见。|Phát biểu ý kiến.
+1671|Diễn thuyết|他的演讲很精彩。|Bài diễn thuyết của ông ấy rất hay.
+1672|Giọt; nhỏ giọt|一滴水。|Một giọt nước.
+1673|Cai, bỏ|戒烟。|Cai thuốc lá.
+1674|Trưởng thành|孩子成长得很快。|Trẻ con lớn rất nhanh.
+1675|Sâu sắc|印象很深刻。|Ấn tượng rất sâu sắc.
+1676|Vạch; chèo|划船。|Chèo thuyền.
+1677|Ghé thăm (lời mời khách)|欢迎光临！|Hân hạnh chào đón quý khách!
+1678|Thơ|唐诗。|Thơ Đường.
+1679|Chiếm|占百分之三十。|Chiếm 30%.
+1680|Ôi, haiz (thở dài)|唉，又加班。|Haiz, lại tăng ca.
+1681|Bối cảnh, lý lịch|他的背景很好。|Lý lịch của anh ấy rất tốt.
+1682|Xe cứu thương|快叫救护车！|Gọi xe cấp cứu mau!
+1683|Mô phỏng, bắt chước|模仿别人。|Bắt chước người khác.
+1684|Phỏng vấn|记者采访了老板。|Phóng viên phỏng vấn sếp.
+1685|Đánh giá|客户评价很好。|Đánh giá của khách hàng rất tốt.
+1686|Mãnh liệt|强烈反对。|Phản đối mạnh mẽ.
+1687|Kiếm (tiền)|挣钱。|Kiếm tiền.
+1688|Vi phạm|违反规定。|Vi phạm quy định.
+1689|Giai đoạn|第一阶段。|Giai đoạn đầu.
+1690|Phủ nhận|他否认了。|Anh ấy phủ nhận.
+1691|Trốn tránh|逃避责任。|Trốn tránh trách nhiệm.
+1692|Kênh (truyền hình)|换个频道。|Đổi kênh khác.
+1693|Thời kỳ|困难时期。|Thời kỳ khó khăn.
+1694|Vật chất|物质生活。|Đời sống vật chất.
+1695|Truyền thuyết|这是一个传说。|Đây là một truyền thuyết.
+1696|Bắn|射击比赛。|Thi bắn súng.
+1697|Duỗi, vươn|伸手。|Đưa tay ra.
+1698|Nguyện vọng|新年愿望。|Mong ước năm mới.
+1699|Con thỏ|兔子很可爱。|Con thỏ rất dễ thương.
+1700|Hình ảnh, hình tượng|公司形象。|Hình ảnh công ty.
+1701|Sự vật|新事物。|Sự vật mới.
+1702|Sợi dây|用绳子绑好。|Buộc chặt bằng dây.
+1703|Phát huy|发挥作用。|Phát huy tác dụng.
+1704|Kỷ niệm|纪念日。|Ngày kỷ niệm.
+1705|Xui xẻo|真倒霉！|Xui thật!
+1706|Suy cho cùng|毕竟他是新人。|Suy cho cùng anh ấy là người mới.
+1707|Đạo đức|职业道德。|Đạo đức nghề nghiệp.
+1708|An ủi|安慰朋友。|An ủi bạn bè.
+1709|Cơ bắp|他肌肉很发达。|Cơ bắp anh ấy rất phát triển.
+1710|Giải trí|娱乐节目。|Chương trình giải trí.
+1711|Mở (mắt)|睁开眼睛。|Mở mắt ra.
+1712|Kinh điển|经典电影。|Phim kinh điển.
+1713|Có vẻ, trông|他显得很累。|Anh ấy trông rất mệt.
+1714|Tiến bộ|你的汉语进步很快。|Tiếng Trung của bạn tiến bộ rất nhanh.
+1715|Theo đuổi|追求质量。|Theo đuổi chất lượng.
+1716|Nhân lúc, thừa dịp|趁热吃吧。|Ăn lúc còn nóng nhé.
+1717|Nhạy cảm|这是敏感问题。|Đây là vấn đề nhạy cảm.
+1718|Bảo tàng|我们去参观博物馆。|Chúng ta đi tham quan bảo tàng.
+1719|Tuân thủ|遵守合同。|Tuân thủ hợp đồng.
+1720|Nấu, luộc|煮面条。|Nấu mì.
+1721|Đảm nhận, gánh vác|承担责任。|Gánh vác trách nhiệm.
+1722|Tháo, dỡ|拆包装。|Bóc bao bì.
+1723|Bầu trời|蓝色的天空。|Bầu trời xanh.
+1724|Còn về|至于价格，我们再谈。|Còn về giá, chúng ta bàn sau.
+1725|Đăng ký (thủ tục)|在前台登记。|Đăng ký ở quầy lễ tân.
+1726|Mắng|老板骂人了。|Sếp mắng người rồi.
+1727|Chỉ đạo, hướng dẫn|谢谢您的指导。|Cảm ơn sự chỉ dẫn của anh/chị.
+1728|Bất an|心里不安。|Trong lòng bất an.
+1729|Liên quan|相关文件。|Tài liệu liên quan.
+1730|Vóc dáng|她身材很好。|Cô ấy dáng rất đẹp.
+1731|Châm biếm|别讽刺我。|Đừng mỉa mai tôi.
+1732|Khẩn trương, tranh thủ|抓紧时间。|Tranh thủ thời gian.
+1733|Tròn|月亮很圆。|Trăng rất tròn.
+1734|Im lặng|他沉默了。|Anh ấy im lặng.
+1735|Nghiêm túc, nghiêm nghị|他很严肃。|Ông ấy rất nghiêm nghị.
+1736|Phối hợp|谢谢你的配合。|Cảm ơn bạn đã phối hợp.
+1737|Cách xưng hô|怎么称呼您？|Tôi nên xưng hô với anh/chị thế nào?
+1738|Trêu, chọc cười|他很会逗人笑。|Anh ấy rất biết chọc cười.
+1739|Biểu tượng, dấu hiệu|公司标志。|Logo công ty.
+1740|Bình thường, thường ngày|平常我很少加班。|Bình thường tôi ít tăng ca.
+1741|Lắc, vẫy|摇头。|Lắc đầu.
+1742|Hoàn chỉnh|资料很完整。|Tài liệu rất đầy đủ.
+1743|Vai|肩膀疼。|Đau vai.
+1744|Tuyên truyền, quảng bá|宣传产品。|Quảng bá sản phẩm.
+1746|Phòng bên cạnh|他住在隔壁。|Anh ấy ở phòng bên cạnh.
+1747|Thương nghiệp|商业中心。|Trung tâm thương mại.
+1748|Ích kỷ|他很自私。|Anh ấy rất ích kỷ.
+1749|Sa mạc|沙漠里很热。|Trong sa mạc rất nóng.
+1750|Trăm triệu|十亿。|Một tỷ.

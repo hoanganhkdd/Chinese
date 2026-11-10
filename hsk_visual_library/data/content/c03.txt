@@ -1,0 +1,231 @@
+501|Cưỡi, đi (xe đạp, xe máy)|我骑摩托车上班。|Tôi đi xe máy đi làm.
+502|Mặt trời|太阳出来了。|Mặt trời mọc rồi.
+503|Cực kỳ (好极了)|这个主意好极了！|Ý tưởng này tuyệt vời!
+504|Chủ yếu|我们主要做出口。|Chúng tôi chủ yếu làm xuất khẩu.
+506|Mũi|我鼻子不舒服。|Mũi tôi khó chịu.
+507|Góc; hào (1/10 tệ)|桌子的角。|Góc bàn.
+508|Thay đổi, biến đổi|这几年变化很大。|Mấy năm nay thay đổi rất lớn.
+509|Đông|公司在城市东边。|Công ty ở phía đông thành phố.
+510|Năm học, lớp (khối)|我儿子上三年级。|Con trai tôi học lớp ba.
+511|Môi trường|这里的环境很好。|Môi trường ở đây rất tốt.
+512|Béo, mập|我最近胖了。|Dạo này tôi béo lên.
+513|Bản đồ|请看地图。|Mời xem bản đồ.
+514|Bánh mì|早上我吃面包。|Buổi sáng tôi ăn bánh mì.
+515|Tai|我的耳朵有点儿疼。|Tai tôi hơi đau.
+516|Váy|这条裙子很漂亮。|Chiếc váy này rất đẹp.
+517|Tươi, tươi mới|这些水果很新鲜。|Hoa quả này rất tươi.
+518|Yên tâm|放心，我会准时发货。|Yên tâm, tôi sẽ giao hàng đúng hạn.
+519|Tán gẫu, nói chuyện|我们一起聊聊天吧。|Chúng ta cùng tán gẫu nhé.
+520|Nam (phía)|越南在中国的南边。|Việt Nam ở phía nam Trung Quốc.
+521|Nhiệt tình|中国朋友很热情。|Bạn bè Trung Quốc rất nhiệt tình.
+522|Thẻ tín dụng|可以用信用卡吗？|Dùng thẻ tín dụng được không?
+523|Thang máy|电梯在左边。|Thang máy ở bên trái.
+525|Nhà vệ sinh|请问，洗手间在哪儿？|Xin hỏi, nhà vệ sinh ở đâu?
+526|Tắm|我每天晚上洗澡。|Tối nào tôi cũng tắm.
+527|Đồ uống|你要什么饮料？|Bạn muốn đồ uống gì?
+528|Hiệu trưởng|他是我们学校的校长。|Ông ấy là hiệu trưởng trường chúng tôi.
+529|Trình độ|你的汉语水平很高。|Trình độ tiếng Trung của bạn rất cao.
+530|Bài tập về nhà|孩子在做作业。|Con đang làm bài tập.
+531|Áo sơ mi|他穿白衬衫。|Anh ấy mặc áo sơ mi trắng.
+532|Thành tích, điểm số|他的成绩很好。|Thành tích của cậu ấy rất tốt.
+533|Bát, chén|一碗米饭。|Một bát cơm.
+534|Cô, dì (gọi phụ nữ lớn tuổi)|阿姨，您好！|Cháu chào cô!
+535|Thư viện|图书馆几点开门？|Thư viện mấy giờ mở cửa?
+536|Văn hóa|我对中国文化很感兴趣。|Tôi rất quan tâm văn hóa Trung Quốc.
+537|Xanh lá|我喜欢绿色。|Tôi thích màu xanh lá.
+538|Quét dọn|我周末打扫房间。|Cuối tuần tôi dọn phòng.
+539|Cỏ|公园里有很多草。|Trong công viên có nhiều cỏ.
+540|Tủ lạnh|牛奶在冰箱里。|Sữa ở trong tủ lạnh.
+541|Toán học|我数学不好。|Tôi học toán không giỏi.
+542|Xe đạp|我骑自行车去公园。|Tôi đạp xe ra công viên.
+543|Sốt ruột, lo lắng|别着急，慢慢来。|Đừng sốt ruột, từ từ thôi.
+544|Gầy|她很瘦。|Cô ấy rất gầy.
+545|Nâng cao|我想提高汉语水平。|Tôi muốn nâng cao trình độ tiếng Trung.
+546|Cất cánh|飞机几点起飞？|Máy bay mấy giờ cất cánh?
+547|Thấp (người)|我比他矮。|Tôi thấp hơn anh ấy.
+548|Tàu điện ngầm|我坐地铁去公司。|Tôi đi tàu điện ngầm đến công ty.
+549|Thể thao, thể dục|我喜欢看体育节目。|Tôi thích xem chương trình thể thao.
+550|Khắc (15 phút)|现在三点一刻。|Bây giờ là 3 giờ 15.
+552|Ngày lễ|春节是中国最重要的节日。|Tết là ngày lễ quan trọng nhất của Trung Quốc.
+553|Cái đĩa|请给我一个盘子。|Cho tôi một cái đĩa.
+554|Tổng cộng|一共多少钱？|Tổng cộng bao nhiêu tiền?
+555|Cái chai, lọ|这个瓶子是空的。|Cái chai này rỗng.
+556|Đường phố|这条街道很热闹。|Con phố này rất náo nhiệt.
+557|Rèn luyện (thân thể)|我每天锻炼身体。|Ngày nào tôi cũng rèn luyện sức khỏe.
+558|Cảm cúm|我感冒了。|Tôi bị cảm rồi.
+559|Sở thích|你的爱好是什么？|Sở thích của bạn là gì?
+560|Siêu thị|我去超市买东西。|Tôi đi siêu thị mua đồ.
+561|Mặt trăng|今天的月亮很圆。|Trăng hôm nay rất tròn.
+562|No|我吃饱了。|Tôi no rồi.
+563|Nổi tiếng|这家饭店很有名。|Nhà hàng này rất nổi tiếng.
+564|Sổ tay; máy tính xách tay|我的笔记本电脑坏了。|Laptop của tôi hỏng rồi.
+565|Quả chuối|越南香蕉出口到中国。|Chuối Việt Nam xuất khẩu sang Trung Quốc.
+566|Mùa hè|夏天很热。|Mùa hè rất nóng.
+568|Lên mạng|我每天上网看新闻。|Ngày nào tôi cũng lên mạng đọc tin.
+569|Miền bắc, phương bắc|北方冬天很冷。|Mùa đông miền bắc rất lạnh.
+570|Mùa (trong năm)|你最喜欢哪个季节？|Bạn thích mùa nào nhất?
+571|Sốt|孩子发烧了。|Đứa bé bị sốt rồi.
+572|Khát|我渴了，想喝水。|Tôi khát, muốn uống nước.
+573|Không những|他不但会说汉语，还会说英语。|Anh ấy không những biết tiếng Trung mà còn biết tiếng Anh.
+574|Điều hòa|请开空调。|Vui lòng bật điều hòa.
+575|Máy ảnh|我带了照相机。|Tôi có mang máy ảnh.
+576|Mùa xuân|春天来了。|Mùa xuân đến rồi.
+577|Cái ô, dù|下雨了，带伞吧。|Trời mưa rồi, mang ô đi.
+578|Kilôgam|一公斤多少钱？|Một ký bao nhiêu tiền?
+579|Vóc dáng, chiều cao|他个子很高。|Anh ấy dáng cao.
+580|Gấu trúc|熊猫很可爱。|Gấu trúc rất dễ thương.
+581|Đánh răng|我每天早上刷牙。|Sáng nào tôi cũng đánh răng.
+582|Ôn tập|晚上我复习汉语。|Buổi tối tôi ôn tiếng Trung.
+583|Mùa đông|冬天到了。|Mùa đông đến rồi.
+585|Tiếng Trung|你会说中文吗？|Bạn biết nói tiếng Trung không?
+586|Mùa thu|北京的秋天很美。|Mùa thu Bắc Kinh rất đẹp.
+587|Câu|请用这个词造句子。|Hãy đặt câu với từ này.
+588|Vali|我的行李箱很重。|Vali của tôi rất nặng.
+589|Đũa|你会用筷子吗？|Bạn biết dùng đũa không?
+590|Giày da|他穿黑皮鞋。|Anh ấy đi giày da đen.
+591|Leo núi|周末我们去爬山。|Cuối tuần chúng ta đi leo núi.
+592|Bảng đen|老师在黑板上写字。|Thầy giáo viết chữ lên bảng.
+593|Có hứng thú|我对中国菜很感兴趣。|Tôi rất có hứng thú với món Trung Quốc.
+594|Từ điển|我用手机词典查生词。|Tôi tra từ mới bằng từ điển trên điện thoại.
+595|Du học|她在中国留学。|Cô ấy đang du học ở Trung Quốc.
+596|Gió thổi|今天刮风了。|Hôm nay có gió.
+597|Hoàng Hà (sông)|黄河是中国第二长的河。|Hoàng Hà là con sông dài thứ hai Trung Quốc.
+599|Chết|我的手机死机了。|Điện thoại của tôi bị treo rồi.
+600|Làm (khẩu ngữ)|你在干什么？|Bạn đang làm gì đấy?
+601|Mà, và, nhưng (văn viết)|价格便宜而质量好。|Giá rẻ mà chất lượng tốt.
+602|Làm, đảm nhiệm; khi (当…时)|他当经理三年了。|Anh ấy làm quản lý được ba năm rồi.
+603|Tất cả|所有的样品都准备好了。|Tất cả hàng mẫu đã chuẩn bị xong.
+604|Có lẽ|他也许明天来。|Có lẽ mai anh ấy đến.
+605|Được, ổn; đi, đi lại|行，就这么办。|Được, cứ làm vậy.
+606|Có điều, nhưng mà|价格不错，不过要快点儿发货。|Giá ổn, nhưng phải giao hàng nhanh một chút.
+607|Xảy ra|发生了什么事？|Đã xảy ra chuyện gì?
+608|Tất cả, mọi thứ|一切都很顺利。|Mọi thứ đều suôn sẻ.
+610|Cảm giác; cảm thấy|我感觉不太舒服。|Tôi cảm thấy không khỏe lắm.
+611|Khẳng định, chắc chắn|他肯定会来。|Anh ấy chắc chắn sẽ đến.
+612|Giỏi, tuyệt|你真棒！|Bạn giỏi thật!
+613|Tưởng rằng (mà hóa ra không phải)|我以为你走了。|Tôi tưởng bạn đi rồi.
+614|Rơi, rớt; mất|我的钱包掉了。|Ví của tôi rơi mất rồi.
+615|Cuộc sống; sinh sống|在越南生活习惯吗？|Sống ở Việt Nam quen chưa?
+616|Của (văn viết)|百分之十。|Mười phần trăm.
+617|Bất kỳ|有任何问题请联系我。|Có bất kỳ vấn đề gì xin liên hệ tôi.
+618|Và, với (văn viết)|越南与中国的贸易很发达。|Thương mại Việt – Trung rất phát triển.
+619|Làm (khẩu ngữ); làm cho|你把我的电脑弄坏了。|Bạn làm hỏng máy tính của tôi rồi.
+620|Lại, nhưng lại|他说要来，却没来。|Anh ấy nói sẽ đến nhưng lại không đến.
+621|Tiếp tục|我们继续讨论吧。|Chúng ta tiếp tục thảo luận nhé.
+622|Lấy, dùng; để (văn viết)|以质量为主。|Lấy chất lượng làm chính.
+623|Đủ|时间够吗？|Thời gian có đủ không?
+624|Cha, bố (trang trọng)|我父亲是农民。|Cha tôi là nông dân.
+625|Hoàn toàn|我完全同意。|Tôi hoàn toàn đồng ý.
+626|Nhưng|我想去，可是没时间。|Tôi muốn đi nhưng không có thời gian.
+627|Nói chuyện, bàn|我们谈谈价格吧。|Chúng ta bàn về giá nhé.
+628|Hình như|他好像生病了。|Hình như anh ấy bị ốm.
+629|Cảnh sát|快叫警察！|Gọi cảnh sát mau!
+630|Trận, buổi (lượng từ); sân|一场比赛。|Một trận đấu.
+631|Vừa mới|我刚到公司。|Tôi vừa đến công ty.
+632|Ạ, nhé (trợ từ cảm thán)|快来呀！|Mau đến đây nào!
+633|Tình hình|现在情况怎么样？|Bây giờ tình hình thế nào?
+634|Chỉ cần|只要价格合适，我们就买。|Chỉ cần giá hợp lý, chúng tôi sẽ mua.
+635|Phần, bản (lượng từ)|一份合同。|Một bản hợp đồng.
+636|Rốt cuộc|你到底来不来？|Rốt cuộc bạn có đến không?
+637|Trở thành|他成为了我们的好朋友。|Anh ấy đã trở thành bạn tốt của chúng tôi.
+638|Mãi mãi|我们永远是朋友。|Chúng ta mãi mãi là bạn.
+639|An toàn|安全第一。|An toàn là trên hết.
+640|Ở lại; để lại|请留下您的电话。|Vui lòng để lại số điện thoại.
+642|Hai người, cả hai (khẩu ngữ)|我们俩是同学。|Hai chúng tôi là bạn học.
+643|Dừng|车停在门口。|Xe dừng ở cửa.
+645|Dám|我不敢说。|Tôi không dám nói.
+646|Từ trước đến nay|我从来没去过北京。|Tôi chưa bao giờ đến Bắc Kinh.
+647|Thắng|我们赢了！|Chúng ta thắng rồi!
+648|Tin tức, tin|有好消息吗？|Có tin tốt không?
+649|Kéo|请拉门。|Vui lòng kéo cửa.
+650|Nguyên nhân|迟到的原因是什么？|Lý do đến muộn là gì?
+651|Ngay cả|他连早饭都没吃。|Anh ấy ngay cả bữa sáng cũng chưa ăn.
+652|Quả thực, đúng là|价格确实有点儿高。|Giá quả thực hơi cao.
+653|Khá, rất (khẩu ngữ)|这个挺好的。|Cái này khá tốt.
+654|Bảo đảm|我保证按时交货。|Tôi bảo đảm giao hàng đúng hạn.
+655|Tiếp nhận, chấp nhận|我们接受你的价格。|Chúng tôi chấp nhận giá của bạn.
+656|Thay đổi|计划改变了。|Kế hoạch thay đổi rồi.
+658|Xuất hiện|出现了新问题。|Xuất hiện vấn đề mới.
+659|Bất kể|不管多忙，我都会来。|Dù bận đến đâu tôi cũng sẽ đến.
+660|Thậm chí|他甚至没说再见。|Anh ấy thậm chí không nói tạm biệt.
+661|Bảo vệ|保护环境很重要。|Bảo vệ môi trường rất quan trọng.
+662|Thật sự, chân chính|他是我真正的朋友。|Anh ấy là người bạn thật sự của tôi.
+663|Kết quả|结果怎么样？|Kết quả thế nào?
+664|Lúc đó|当时我在开会。|Lúc đó tôi đang họp.
+665|Ít nhất|至少要三天。|Ít nhất phải ba ngày.
+666|Luật sư|我们公司有律师。|Công ty chúng tôi có luật sư.
+667|Biểu diễn|今晚有表演。|Tối nay có biểu diễn.
+668|Không (văn viết)|无法联系。|Không thể liên lạc.
+669|Đoán|你猜他多大？|Bạn đoán xem anh ấy bao nhiêu tuổi?
+670|Chúng ta (gồm cả người nghe)|咱们走吧。|Chúng ta đi thôi.
+671|Tiến hành|会议正在进行。|Cuộc họp đang diễn ra.
+672|Bên trong|三天内完成。|Hoàn thành trong vòng ba ngày.
+673|Có hay không (văn viết)|请确认是否收到。|Vui lòng xác nhận đã nhận được hay chưa.
+674|Điều tra|我们做了市场调查。|Chúng tôi đã làm khảo sát thị trường.
+675|Thành công|祝你成功！|Chúc bạn thành công!
+677|Hẹn hò, cuộc hẹn|今晚我有约会。|Tối nay tôi có hẹn.
+678|Thông qua, qua|通过朋友介绍认识的。|Quen nhau qua bạn giới thiệu.
+679|Vui vẻ|今天很开心。|Hôm nay rất vui.
+680|Mẹ (trang trọng)|我母亲六十岁了。|Mẹ tôi 60 tuổi rồi.
+681|Ý kiến, chủ ý|这是个好主意。|Đây là một ý hay.
+682|Đổ, rót; ngược lại|我给你倒杯茶。|Tôi rót cho bạn tách trà.
+685|Chứng minh|请提供证明。|Vui lòng cung cấp giấy chứng nhận.
+686|Sinh mệnh, sự sống|生命很宝贵。|Sự sống rất quý giá.
+687|Lẽ nào|难道你不知道？|Lẽ nào bạn không biết?
+688|Do, bởi|这件事由我负责。|Việc này do tôi phụ trách.
+689|Chỉ, trỏ; ngón tay|你指的是哪个？|Bạn chỉ cái nào?
+690|Nguy hiểm|这里很危险。|Ở đây rất nguy hiểm.
+691|Ghét|我讨厌下雨天。|Tôi ghét ngày mưa.
+692|Tỉnh dậy|我六点就醒了。|6 giờ tôi đã tỉnh rồi.
+693|Dáng vẻ, kiểu|这个样子很好看。|Kiểu này rất đẹp.
+694|Thú vị|这个工作很有趣。|Công việc này rất thú vị.
+695|Nhắc đến; xách|他提到了你。|Anh ấy có nhắc đến bạn.
+696|Bộ phận, phần|这只是一部分。|Đây chỉ là một phần.
+697|Lý giải, thông cảm|谢谢你的理解。|Cảm ơn bạn đã thông cảm.
+698|Nặng|这个箱子很重。|Thùng này rất nặng.
+700|Khiến, làm cho|这件事使我很高兴。|Việc này khiến tôi rất vui.
+701|Chuyển, quay|请转给A。|Vui lòng chuyển cho A.
+702|Tiến sĩ|她是博士。|Cô ấy là tiến sĩ.
+703|Căng thẳng|别紧张。|Đừng căng thẳng.
+704|Từ bỏ|不要放弃。|Đừng bỏ cuộc.
+705|Khoảng, đại khái|大概需要一个星期。|Khoảng một tuần.
+706|Lại từ đầu|请重新发一次。|Vui lòng gửi lại một lần nữa.
+707|Trong đó|其中有两个坏了。|Trong đó có hai cái bị hỏng.
+708|Đến từ|我来自越南。|Tôi đến từ Việt Nam.
+709|Vốn dĩ, ban đầu|我本来想去，后来没时间。|Ban đầu tôi định đi, sau lại không có thời gian.
+710|Và, hơn nữa|他同意并且签了合同。|Anh ấy đồng ý và đã ký hợp đồng.
+711|Trực tiếp|你可以直接找我。|Bạn có thể tìm tôi trực tiếp.
+712|Đối với|对于这个问题，我有意见。|Đối với vấn đề này, tôi có ý kiến.
+713|Bình thường|一切正常。|Mọi thứ bình thường.
+714|Lần, lượt (từ đầu đến cuối)|请再说一遍。|Vui lòng nói lại một lượt.
+715|Bình tĩnh|请冷静一点儿。|Vui lòng bình tĩnh chút.
+716|Phương pháp|这个方法很好。|Phương pháp này rất hay.
+717|Ném, vứt|别乱扔垃圾。|Đừng vứt rác bừa bãi.
+718|Năng lực|他的工作能力很强。|Năng lực làm việc của anh ấy rất mạnh.
+719|Ngoài ra|另外，还有一个问题。|Ngoài ra, còn một vấn đề nữa.
+720|Thư giãn|周末放松一下。|Cuối tuần thư giãn một chút.
+721|Mất, đánh rơi|我的护照丢了。|Hộ chiếu của tôi bị mất rồi.
+723|Giấc mơ|我做了一个梦。|Tôi đã mơ một giấc mơ.
+724|Đeo, đội|他戴眼镜。|Anh ấy đeo kính.
+725|Sai lầm, lỗi|这是我的错误。|Đây là lỗi của tôi.
+726|Tùy ý, tùy tiện|随便坐。|Ngồi đâu cũng được.
+727|Đáy, cuối|月底发货。|Cuối tháng giao hàng.
+728|Trải qua; kinh nghiệm sống|这是一次难忘的经历。|Đây là một trải nghiệm khó quên.
+731|Nếu không thì|快走，否则要迟到了。|Đi nhanh, nếu không sẽ muộn.
+732|Ánh sáng; hết sạch|钱花光了。|Tiền tiêu hết sạch rồi.
+734|Chìa khóa|我的钥匙在哪儿？|Chìa khóa của tôi đâu?
+735|Thông tin|请发给我产品信息。|Gửi tôi thông tin sản phẩm.
+736|Toàn bộ|全部卖完了。|Bán hết toàn bộ rồi.
+737|Trước hết|首先，欢迎大家。|Trước hết, chào mừng mọi người.
+738|Chiếu, chụp (ảnh); theo|我给你照张相。|Tôi chụp cho bạn một tấm.
+739|Nộp, giao; kết (bạn)|请明天交报告。|Vui lòng nộp báo cáo vào ngày mai.
+740|Cái, chiếc (lượng từ máy móc); đài|一台电脑。|Một chiếc máy tính.
+741|Kiên trì|坚持就是胜利。|Kiên trì là chiến thắng.
+743|Lửa|小心火！|Cẩn thận lửa!
+744|Cho dù|即使下雨，我也去。|Cho dù trời mưa tôi cũng đi.
+745|Khắp nơi|到处都是人。|Khắp nơi toàn là người.
+746|Treo; cúp (máy)|请先别挂电话。|Khoan cúp máy đã.
+747|Xin lỗi (chính thức)|我向你道歉。|Tôi xin lỗi bạn.
+748|Đáng thương|这只小狗真可怜。|Con chó nhỏ này thật đáng thương.
+749|Thật sự, quả thật|我实在太忙了。|Tôi thật sự quá bận.
+750|Lừa|别骗我。|Đừng lừa tôi.

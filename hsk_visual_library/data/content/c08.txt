@@ -1,0 +1,245 @@
+1751|Găng tay|戴手套。|Đeo găng tay.
+1752|Đối mặt, đứng trước|面临挑战。|Đứng trước thử thách.
+1753|Bằng, tương đương|一美元等于多少越南盾？|Một đô la bằng bao nhiêu đồng Việt Nam?
+1754|Cẩn thận, coi chừng|当心车！|Coi chừng xe!
+1755|Kinh doanh|他经营一家工厂。|Ông ấy kinh doanh một nhà máy.
+1756|Có mặt, dự|出席会议。|Dự cuộc họp.
+1757|Giáo trình, khóa học|汉语课程。|Khóa học tiếng Trung.
+1758|Chữ cái|英文字母。|Chữ cái tiếng Anh.
+1759|Dây chuyền|金项链。|Dây chuyền vàng.
+1760|Khuyên|我劝他别去。|Tôi khuyên anh ấy đừng đi.
+1761|Vốn, tiền vốn|资金不够。|Vốn không đủ.
+1762|Nguyên tắc|这是原则问题。|Đây là vấn đề nguyên tắc.
+1763|Cho dù, dù cho|哪怕很难，我也要试试。|Dù rất khó, tôi cũng phải thử.
+1764|Kỷ lục|打破纪录。|Phá kỷ lục.
+1765|Ngô, bắp|玉米。|Ngô.
+1766|Thú cưng|你养宠物吗？|Bạn có nuôi thú cưng không?
+1767|Tro; màu xám|灰色。|Màu xám.
+1768|Quảng trường|天安门广场。|Quảng trường Thiên An Môn.
+1769|Hạn chế|没有数量限制。|Không giới hạn số lượng.
+1770|Vô số|无数次。|Vô số lần.
+1771|Bỏng, nóng|小心烫！|Cẩn thận nóng!
+1772|Lương thiện, tốt bụng|她很善良。|Cô ấy rất tốt bụng.
+1773|Bề mặt|表面很光滑。|Bề mặt rất nhẵn.
+1774|Chủ tịch|国家主席。|Chủ tịch nước.
+1775|Trí tuệ|智慧。|Trí tuệ.
+1776|Chủ động|他很主动。|Anh ấy rất chủ động.
+1777|Liên hợp|联合国。|Liên Hợp Quốc.
+1778|Rò, rỉ; sót|漏水了。|Bị rò nước rồi.
+1779|Bầu không khí|气氛很好。|Bầu không khí rất tốt.
+1780|Phê duyệt|老板批准了。|Sếp đã phê duyệt.
+1781|Đáng tin cậy|这家供应商很可靠。|Nhà cung cấp này rất đáng tin cậy.
+1782|Trải nghiệm|体验中国文化。|Trải nghiệm văn hóa Trung Quốc.
+1783|Ghi âm|会议录音。|Ghi âm cuộc họp.
+1784|Biên tập|他是编辑。|Anh ấy là biên tập viên.
+1785|Ưu thế|我们的优势是价格。|Ưu thế của chúng tôi là giá.
+1786|Tạm thời, lâm thời|临时改变计划。|Tạm thời thay đổi kế hoạch.
+1787|Vàng (kim loại)|黄金很贵。|Vàng rất đắt.
+1788|Dịu dàng|她很温柔。|Cô ấy rất dịu dàng.
+1789|Thành tựu|取得了很大的成就。|Đạt được thành tựu lớn.
+1790|Phương án|我们有两个方案。|Chúng tôi có hai phương án.
+1791|Hình dung, miêu tả|很难形容。|Rất khó diễn tả.
+1792|Lợi ích|双方的利益。|Lợi ích của hai bên.
+1793|Hỏi thăm, hỏi han|询问价格。|Hỏi giá.
+1794|Quân sự|军事。|Quân sự.
+1795|Quyên góp|捐钱。|Quyên tiền.
+1797|Kết luận|结论是什么？|Kết luận là gì?
+1798|Cân bằng|工作和生活要平衡。|Công việc và cuộc sống phải cân bằng.
+1799|Tốt đẹp|良好的合作关系。|Quan hệ hợp tác tốt đẹp.
+1800|Công nhân|工厂有五百个工人。|Nhà máy có 500 công nhân.
+1801|Tự nguyện|自愿参加。|Tự nguyện tham gia.
+1802|Chúc phúc|祝福你！|Chúc phúc cho bạn!
+1803|Biện pháp|采取措施。|Áp dụng biện pháp.
+1804|Hóa học|化学产品。|Sản phẩm hóa chất.
+1805|Điều chỉnh|调整价格。|Điều chỉnh giá.
+1806|Dạ dày|我胃疼。|Tôi đau dạ dày.
+1807|Dị ứng|我对海鲜过敏。|Tôi dị ứng hải sản.
+1808|Bưu kiện|你的包裹到了。|Bưu kiện của bạn đến rồi.
+1809|Phụ nữ|三八妇女节。|Ngày Quốc tế Phụ nữ 8/3.
+1810|Thảm|地毯很干净。|Thảm rất sạch.
+1811|Cuối cùng cũng|总算完成了。|Cuối cùng cũng xong.
+1812|Yến tiệc|欢迎宴会。|Tiệc chào mừng.
+1813|Hoài niệm, nhớ về|怀念过去。|Hoài niệm quá khứ.
+1814|Thay thế|没有人能代替你。|Không ai thay thế được bạn.
+1815|Dứt khoát, thẳng thắn|干脆不去了。|Thôi dứt khoát không đi nữa.
+1816|Ấm áp|温暖的家。|Ngôi nhà ấm áp.
+1817|Xuất bản|出版社。|Nhà xuất bản.
+1818|Chủ trì, dẫn chương trình|他主持会议。|Ông ấy chủ trì cuộc họp.
+1819|Thiếu hụt|缺乏经验。|Thiếu kinh nghiệm.
+1820|Nghĩa vụ|这是我的义务。|Đây là nghĩa vụ của tôi.
+1821|Liên tục|连续三天加班。|Tăng ca liên tục ba ngày.
+1822|Con ong mật|蜜蜂。|Ong mật.
+1823|Khoa trương, phóng đại|太夸张了！|Phóng đại quá!
+1824|Bảo quản, lưu giữ|请保存文件。|Vui lòng lưu tài liệu.
+1825|Ngày nay|如今生活好了。|Ngày nay cuộc sống tốt hơn rồi.
+1826|Không bằng|我不如你。|Tôi không bằng bạn.
+1827|Sớm muộn|迟早会知道的。|Sớm muộn gì cũng biết.
+1828|Đài phát thanh|广播电台。|Đài phát thanh.
+1829|Giới thiệu, đề cử|请推荐一家好饭店。|Giới thiệu giúp một nhà hàng ngon.
+1830|Vỗ tay|大家鼓掌欢迎！|Mọi người vỗ tay chào đón!
+1831|Xé|别撕。|Đừng xé.
+1832|Tư vấn|咨询价格。|Tư vấn giá.
+1833|Hồ đồ, lẫn lộn|我糊涂了。|Tôi lẫn rồi.
+1834|Cháy, đốt cháy|燃烧。|Đốt cháy.
+1835|Sang trọng, xa hoa|豪华酒店。|Khách sạn sang trọng.
+1836|Dễ dàng, tùy tiện|不要轻易放弃。|Đừng dễ dàng bỏ cuộc.
+1837|Xanh (lam/lục)|青菜。|Rau xanh.
+1838|Mềm|这个枕头很软。|Cái gối này rất mềm.
+1839|Dân số|越南人口一亿。|Dân số Việt Nam 100 triệu.
+1840|Bạc|银色。|Màu bạc.
+1841|Chức năng|这个产品有什么功能？|Sản phẩm này có chức năng gì?
+1842|Rõ ràng, minh bạch|目标很明确。|Mục tiêu rất rõ ràng.
+1843|Nắm chắc|有把握吗？|Có chắc không?
+1844|Kịch liệt, gay gắt|竞争很激烈。|Cạnh tranh rất gay gắt.
+1845|Dìu, đỡ|扶老人过马路。|Dìu người già qua đường.
+1846|Tập hợp|八点在门口集合。|8 giờ tập trung ở cổng.
+1847|Thư ký|她是老板的秘书。|Cô ấy là thư ký của sếp.
+1848|Xông vào|闯红灯。|Vượt đèn đỏ.
+1849|Trước (sự việc)|请事先通知我。|Vui lòng báo tôi trước.
+1850|Sao chép|复制文件。|Sao chép tài liệu.
+1851|Nhiếp ảnh|摄影师。|Nhiếp ảnh gia.
+1852|Tia chớp|打雷闪电。|Sấm chớp.
+1853|Gara xe|车库。|Gara xe.
+1854|Phá sản|那家公司破产了。|Công ty đó phá sản rồi.
+1855|Bãi cát|沙滩很美。|Bãi biển rất đẹp.
+1856|Bốc cháy|着火了！|Cháy rồi!
+1857|Di dân, nhập cư|移民。|Di dân.
+1858|Ngày tháng (ghi trên giấy)|请写上日期。|Vui lòng ghi ngày tháng.
+1859|Tán thành|我赞成。|Tôi tán thành.
+1860|Yêu tha thiết|热爱工作。|Yêu công việc.
+1861|Xe máy|越南人喜欢骑摩托车。|Người Việt thích đi xe máy.
+1862|Hình thức|合作形式。|Hình thức hợp tác.
+1863|Mâu thuẫn|他们有矛盾。|Họ có mâu thuẫn.
+1864|Hiện tượng|这是普遍现象。|Đây là hiện tượng phổ biến.
+1865|Kết hợp|理论结合实际。|Lý thuyết kết hợp thực tế.
+1866|Tương tự|两个产品很相似。|Hai sản phẩm rất giống nhau.
+1867|Lĩnh vực|这个领域。|Lĩnh vực này.
+1868|Đầy đủ, sung túc|准备得很充分。|Chuẩn bị rất đầy đủ.
+1869|Nghe nói|据说价格要涨。|Nghe nói giá sắp tăng.
+1870|Pin|电池没电了。|Pin hết rồi.
+1871|Bình an|一路平安！|Thượng lộ bình an!
+1872|Quê hương|我的家乡在河内。|Quê tôi ở Hà Nội.
+1873|Nhanh chóng|迅速处理。|Xử lý nhanh chóng.
+1874|Tiền đồ, tương lai|这个行业很有前途。|Ngành này rất có tương lai.
+1875|Hiện đại|现代化工厂。|Nhà máy hiện đại.
+1876|Thành lập|公司成立于二〇一五年。|Công ty được thành lập năm 2015.
+1877|Yếu|信号很弱。|Tín hiệu rất yếu.
+1878|Cản trở|妨碍工作。|Cản trở công việc.
+1879|Vẫy, vung|挥手告别。|Vẫy tay tạm biệt.
+1880|Trang trí|装饰房间。|Trang trí phòng.
+1881|Chẩn đoán|医生诊断是感冒。|Bác sĩ chẩn đoán là cảm cúm.
+1882|Tài nguyên|越南资源丰富。|Việt Nam giàu tài nguyên.
+1883|Người lớn|成人票。|Vé người lớn.
+1884|Độc đáo|设计很独特。|Thiết kế rất độc đáo.
+1885|Thể nghiệm, hiểu ra|我深有体会。|Tôi hiểu rất rõ.
+1886|Eo, thắt lưng|我腰疼。|Tôi đau lưng.
+1888|Phát (chương trình)|播放视频。|Phát video.
+1889|Ánh sáng, tươi sáng|光明的未来。|Tương lai tươi sáng.
+1890|Vay tiền|向银行贷款。|Vay tiền ngân hàng.
+1891|Kẻ nhát gan|他是个胆小鬼。|Anh ta là kẻ nhát gan.
+1892|Câu (cá)|钓鱼。|Câu cá.
+1893|Động đất|地震。|Động đất.
+1894|Chuyển biến|观念转变了。|Quan niệm đã thay đổi.
+1895|Ban đầu, lúc đầu|最初我不同意。|Lúc đầu tôi không đồng ý.
+1896|Tạo thành, gồm|由三个部分组成。|Gồm ba phần.
+1897|Mỗi người, riêng từng|各自负责。|Mỗi người tự chịu trách nhiệm.
+1898|Hái, tháo|摘苹果。|Hái táo.
+1899|Chuyên tâm|专心工作。|Chuyên tâm làm việc.
+1900|Từ biệt|告别朋友。|Từ biệt bạn bè.
+1901|Cống hiến|他为公司做了很大贡献。|Anh ấy đã cống hiến nhiều cho công ty.
+1902|Địa vị|社会地位。|Địa vị xã hội.
+1903|Trước sau, luôn luôn|他始终支持我。|Anh ấy luôn ủng hộ tôi.
+1904|Giao thiệp, làm việc với|我经常和中国人打交道。|Tôi thường xuyên làm việc với người Trung Quốc.
+1905|Tài khoản|银行账户。|Tài khoản ngân hàng.
+1906|Cổ phiếu|买股票。|Mua cổ phiếu.
+1907|Hình thành|形成习惯。|Hình thành thói quen.
+1908|Ngành nghề|你在哪个行业工作？|Bạn làm trong ngành nào?
+1909|Kịch|戏剧。|Kịch.
+1910|Giấy phép|营业执照。|Giấy phép kinh doanh.
+1912|Xăng|汽油涨价了。|Xăng tăng giá rồi.
+1913|Tập thể hình|我去健身房健身。|Tôi đi phòng gym tập.
+1914|Khoác|披上外套。|Khoác áo vào.
+1915|Cô đơn|一个人很寂寞。|Một mình rất cô đơn.
+1916|Đơn vị, cơ quan|你在哪个单位工作？|Bạn làm ở cơ quan nào?
+1917|Luận văn|写论文。|Viết luận văn.
+1918|May nhờ có|多亏你的帮助。|May nhờ có sự giúp đỡ của bạn.
+1919|Cố định|固定价格。|Giá cố định.
+1920|Khẩu vị|你喜欢什么口味？|Bạn thích vị gì?
+1921|Đăng ký (tài khoản, công ty)|注册公司。|Đăng ký công ty.
+1922|Anh tuấn, đẹp trai|英俊的小伙子。|Chàng trai anh tuấn.
+1923|Gỗ|木头桌子。|Bàn gỗ.
+1924|Quả nhiên|果然下雨了。|Quả nhiên trời mưa.
+1925|Công bố|公布结果。|Công bố kết quả.
+1926|Lạc quan|他很乐观。|Anh ấy rất lạc quan.
+1927|Đến nay|至今还没回复。|Đến nay vẫn chưa trả lời.
+1928|Tranh luận|别争论了。|Đừng tranh cãi nữa.
+1930|Lạ lẫm, xa lạ|陌生人。|Người lạ.
+1931|Nghiệp dư, ngoài giờ|业余时间。|Thời gian rảnh.
+1932|Nhân tài|我们需要人才。|Chúng tôi cần nhân tài.
+1933|Thất nghiệp|他失业了。|Anh ấy thất nghiệp rồi.
+1934|Nghiêng, xiêu vẹo|画挂歪了。|Bức tranh treo bị lệch.
+1935|Thảo nào|难怪他不高兴。|Thảo nào anh ấy không vui.
+1936|Khắc phục|克服困难。|Khắc phục khó khăn.
+1937|Toàn diện|全面检查。|Kiểm tra toàn diện.
+1938|Tính toán|计算成本。|Tính chi phí.
+1939|Thu hoạch|这次出差收获很大。|Chuyến công tác này thu hoạch rất lớn.
+1940|Nghỉ ngơi (khẩu ngữ)|歇一会儿吧。|Nghỉ một lát đi.
+1941|Có lợi|对双方都有利。|Có lợi cho cả hai bên.
+1942|Thận trọng|做决定要谨慎。|Ra quyết định phải thận trọng.
+1943|Giáp (thứ nhất)|甲方和乙方。|Bên A và bên B (hợp đồng).
+1944|Do dự|别犹豫了。|Đừng do dự nữa.
+1945|Từ đó|从此以后。|Từ đó về sau.
+1946|Tải xuống|下载文件。|Tải tài liệu xuống.
+1948|Sư tử|狮子。|Sư tử.
+1949|Thanh thiếu niên|青少年。|Thanh thiếu niên.
+1950|Triển khai|展开工作。|Triển khai công việc.
+1951|Hai bên|双方同意。|Hai bên đồng ý.
+1952|Tượng trưng|红色象征好运。|Màu đỏ tượng trưng cho may mắn.
+1953|Mở cửa, cởi mở|开放政策。|Chính sách mở cửa.
+1954|Cỡ lớn|大型展会。|Hội chợ quy mô lớn.
+1955|Đông lạnh|冻肉。|Thịt đông lạnh.
+1956|Không nhịn được|我忍不住笑了。|Tôi không nhịn được cười.
+1957|Văn minh|文明城市。|Thành phố văn minh.
+1958|Phơi (nắng)|晒太阳。|Tắm nắng.
+1959|Dễ chịu, thoải mái|房间很舒适。|Phòng rất dễ chịu.
+1960|Con voi|大象。|Con voi.
+1961|Nhân tố|价格是重要因素。|Giá là nhân tố quan trọng.
+1962|Không đủ, thiếu sót|还有很多不足。|Vẫn còn nhiều thiếu sót.
+1963|Nghi vấn|有疑问请问。|Có thắc mắc xin cứ hỏi.
+1964|Bận tâm, lo lắng|让你操心了。|Làm bạn bận tâm rồi.
+1965|Sương mù|今天有雾。|Hôm nay có sương mù.
+1966|Ngày xưa|从前有一个国王。|Ngày xưa có một ông vua.
+1967|Vận dụng|运用知识。|Vận dụng kiến thức.
+1968|Ngây thơ|孩子很天真。|Đứa bé rất ngây thơ.
+1969|Khoai tây|土豆。|Khoai tây.
+1970|Ngẫu nhiên|偶然遇到。|Tình cờ gặp.
+1971|Cánh (chim)|鸟的翅膀。|Cánh chim.
+1972|Đoàn tàu|列车。|Đoàn tàu.
+1973|Cực kỳ|极其重要。|Cực kỳ quan trọng.
+1974|Xúc xích|香肠。|Xúc xích.
+1975|Khóa, kỳ (lượng từ)|第一届。|Khóa thứ nhất.
+1976|Quyết tâm|我下定决心学汉语。|Tôi quyết tâm học tiếng Trung.
+1977|Làm (nghề), theo nghề|他从事进出口贸易。|Anh ấy làm thương mại xuất nhập khẩu.
+1978|Nằm ở|公司位于胡志明市。|Công ty nằm ở TP. Hồ Chí Minh.
+1979|Truyền bá|传播文化。|Truyền bá văn hóa.
+1980|Rộng|这条路很宽。|Con đường này rất rộng.
+1981|Đón, chào đón|迎接客人。|Đón khách.
+1982|Con bướm|蝴蝶。|Con bướm.
+1983|Ngược lại, trái lại|他不但没生气，反而笑了。|Anh ấy không những không giận mà còn cười.
+1984|Tổng giám đốc|他是公司总裁。|Ông ấy là tổng giám đốc công ty.
+1985|Cái đuôi|狗尾巴。|Đuôi chó.
+1986|Cái kéo|剪刀。|Cái kéo.
+1987|Điểm tâm, bánh ngọt|广东点心。|Điểm tâm Quảng Đông.
+1988|Ngăn kéo|文件在抽屉里。|Tài liệu ở trong ngăn kéo.
+1989|Đóa, bông (lượng từ hoa)|一朵花。|Một bông hoa.
+1990|Trận, cơn (lượng từ)|一阵雨。|Một cơn mưa.
+1991|Xảo quyệt, ranh mãnh|狐狸很狡猾。|Cáo rất ranh mãnh.
+1992|Phong cảnh|这里风景很美。|Phong cảnh ở đây rất đẹp.
+1993|Viết văn, sáng tác|写作能力。|Khả năng viết.
+1994|Tòa cao ốc|我们公司在这座大厦。|Công ty chúng tôi ở tòa nhà này.
+1995|Ca ngợi|赞美。|Ca ngợi.
+1996|Phần còn lại|其余的明天做。|Phần còn lại mai làm.
+1997|Kết cấu, cấu trúc|句子结构。|Cấu trúc câu.
+1998|Rắc, vẩy|洒水。|Tưới nước.
+1999|Giấy tờ tùy thân|请带好证件。|Vui lòng mang theo giấy tờ.
+2000|Nhiệt liệt|热烈欢迎！|Nhiệt liệt chào mừng!

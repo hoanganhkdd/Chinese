@@ -1,0 +1,223 @@
+251|Em gái|我妹妹在银行工作。|Em gái tôi làm ở ngân hàng.
+252|Đỏ|红色在中国代表好运。|Màu đỏ ở Trung Quốc tượng trưng cho may mắn.
+253|Chậm|请说慢一点儿。|Vui lòng nói chậm một chút.
+254|Gần|我家离公司很近。|Nhà tôi rất gần công ty.
+255|Trắng|我要白色的。|Tôi lấy màu trắng.
+256|Chị gái|我姐姐是医生。|Chị gái tôi là bác sĩ.
+258|Cá|我喜欢吃鱼。|Tôi thích ăn cá.
+259|Mệt|今天工作很累。|Hôm nay làm việc rất mệt.
+260|Tiết học, bài học|我晚上有汉语课。|Buổi tối tôi có lớp tiếng Trung.
+262|Bên cạnh|银行在公司旁边。|Ngân hàng ở bên cạnh công ty.
+263|Vận động, thể thao|我每天早上运动。|Mỗi sáng tôi tập thể dục.
+264|Năm ngoái|去年我去了广州。|Năm ngoái tôi đã đi Quảng Châu.
+265|Báo (giấy)|我每天看报纸。|Mỗi ngày tôi đọc báo.
+266|Màu sắc|你喜欢什么颜色？|Bạn thích màu gì?
+268|Hát|她唱歌很好听。|Cô ấy hát rất hay.
+269|Nghìn|一千个起订。|Đặt tối thiểu một nghìn cái.
+270|Ngon|越南菜很好吃。|Món Việt rất ngon.
+271|Thi, kiểm tra|我下个月有汉语考试。|Tháng sau tôi có kỳ thi tiếng Trung.
+272|Bên trái|洗手间在左边。|Nhà vệ sinh ở bên trái.
+274|Trăm|一百块钱。|Một trăm đồng.
+275|Tuyết|北京下雪了。|Bắc Kinh có tuyết rồi.
+276|Đắt|这个太贵了。|Cái này đắt quá.
+277|Bị ốm|他生病了，今天没来。|Anh ấy bị ốm, hôm nay không đến.
+278|Bơi|我周末去游泳。|Cuối tuần tôi đi bơi.
+279|Sữa bò|早上我喝牛奶。|Buổi sáng tôi uống sữa.
+280|Bên phải|电梯在右边。|Thang máy ở bên phải.
+281|Rẻ|这个很便宜。|Cái này rất rẻ.
+282|Thức dậy|我每天六点起床。|Mỗi ngày tôi dậy lúc 6 giờ.
+283|Trứng gà|我要一个鸡蛋。|Tôi lấy một quả trứng.
+284|Đề, câu hỏi (bài thi)|这道题很难。|Câu này rất khó.
+285|Số không|我的号码是零九零……|Số của tôi là 090…
+286|Đồng hồ đeo tay|这块手表很贵。|Chiếc đồng hồ này rất đắt.
+287|Du lịch|我想去中国旅游。|Tôi muốn đi du lịch Trung Quốc.
+288|Nhân viên phục vụ|服务员，买单！|Phục vụ ơi, tính tiền!
+290|Phòng học|教室在三楼。|Phòng học ở tầng ba.
+291|Chạy bộ|我每天早上跑步。|Mỗi sáng tôi chạy bộ.
+292|Âm u, nhiều mây|今天是阴天。|Hôm nay trời âm u.
+293|Mì sợi|我中午吃面条。|Trưa tôi ăn mì.
+294|Bút chì|请用铅笔写。|Vui lòng viết bằng bút chì.
+295|Ga tàu hỏa|火车站离这儿很远。|Ga tàu cách đây rất xa.
+296|Dưa hấu|夏天吃西瓜很舒服。|Mùa hè ăn dưa hấu rất dễ chịu.
+297|Thịt dê/cừu|你吃羊肉吗？|Bạn ăn thịt cừu không?
+298|Trời nắng, quang|明天是晴天。|Mai trời nắng.
+299|Xe buýt|我坐公共汽车上班。|Tôi đi xe buýt đi làm.
+300|Chơi bóng rổ|他喜欢打篮球。|Anh ấy thích chơi bóng rổ.
+301|Đá bóng|周末我们去踢足球。|Cuối tuần chúng ta đi đá bóng.
+302|À, a (thán từ, trợ từ cuối câu)|好啊！|Được thôi!
+303|Đem, lấy (đưa tân ngữ lên trước)|请把文件给我。|Vui lòng đưa tài liệu cho tôi.
+304|Nếu|如果你有时间，就来吧。|Nếu bạn có thời gian thì đến nhé.
+305|Chỉ|我只要一个。|Tôi chỉ cần một cái.
+306|Bị (câu bị động)|我的手机被偷了。|Điện thoại của tôi bị trộm rồi.
+307|Với, cùng|我跟A一起去。|Tôi đi cùng A.
+308|Tự mình, bản thân|我自己做。|Tôi tự làm.
+309|Dùng, sử dụng|你用微信吗？|Bạn có dùng WeChat không?
+310|Giống như|她像她妈妈。|Cô ấy giống mẹ.
+311|Vì, cho (ai)|为我们的合作干杯！|Cạn ly vì sự hợp tác của chúng ta!
+313|Nên, phải|你应该早点儿休息。|Bạn nên nghỉ sớm một chút.
+314|Đứng dậy; lên (bổ ngữ xu hướng)|请站起来。|Vui lòng đứng lên.
+315|Mới (muộn, ít hơn mong đợi)|他十点才来。|10 giờ anh ấy mới đến.
+316|Lại (lặp lại)|他又迟到了。|Anh ấy lại đến muộn.
+317|Cầm, lấy|请帮我拿一下。|Cầm giúp tôi một chút.
+318|Càng, hơn nữa|这个更好。|Cái này tốt hơn.
+319|Mang, đem theo|别忘了带护照。|Đừng quên mang hộ chiếu.
+320|Sau đó|先开会，然后吃饭。|Họp trước, sau đó ăn cơm.
+321|Giống nhau|这两个价格一样。|Hai cái này giá như nhau.
+322|Đương nhiên|当然可以！|Đương nhiên được!
+323|Tin tưởng|我相信你。|Tôi tin bạn.
+324|Cho rằng|我认为这个价格很合理。|Tôi cho rằng giá này hợp lý.
+326|Luôn luôn, suốt|我一直在等你。|Tôi đợi bạn suốt.
+327|Nơi, chỗ|这个地方很漂亮。|Nơi này rất đẹp.
+328|Rời khỏi|他已经离开公司了。|Anh ấy đã rời công ty rồi.
+329|Nhất định|我一定准时到。|Tôi nhất định đến đúng giờ.
+330|Hay là; vẫn|你喝茶还是喝咖啡？|Bạn uống trà hay cà phê?
+331|Phát hiện|我发现一个问题。|Tôi phát hiện một vấn đề.
+332|Hơn nữa, mà còn|这个产品便宜，而且质量好。|Sản phẩm này rẻ, mà chất lượng còn tốt.
+333|Bắt buộc, phải|你必须今天完成。|Bạn phải hoàn thành hôm nay.
+334|Đặt, để; thả|把文件放在桌子上。|Để tài liệu lên bàn.
+335|Để, vì (mục đích)|为了学汉语，我每天练习。|Để học tiếng Trung, ngày nào tôi cũng luyện.
+336|Một cách (trợ từ trước động từ)|他认真地工作。|Anh ấy làm việc một cách chăm chỉ.
+337|Hướng về, về phía|我向你学习。|Tôi học hỏi từ bạn.
+338|Già, cũ (lâu năm)|他是我们的老客户。|Ông ấy là khách hàng lâu năm của chúng tôi.
+339|Vị (lượng từ lịch sự cho người)|这位是A先生。|Vị này là ông A.
+340|Trước, trước tiên|我先说一下。|Tôi nói trước một chút.
+341|Loại, kiểu|这种产品很受欢迎。|Loại sản phẩm này rất được ưa chuộng.
+342|Cuối cùng|最后，谢谢大家。|Cuối cùng, cảm ơn mọi người.
+343|Khác, còn lại|还有其他问题吗？|Còn câu hỏi nào khác không?
+344|Nhớ|你记得他的名字吗？|Bạn còn nhớ tên anh ấy không?
+345|Hoặc là|你可以打电话或者发邮件。|Bạn có thể gọi điện hoặc gửi email.
+346|Quá khứ; đi qua|过去的事不要想了。|Chuyện đã qua đừng nghĩ nữa.
+347|Lo lắng|别担心，没问题。|Đừng lo, không vấn đề gì.
+348|Cái, con (lượng từ vật dài)|一条路，一条鱼。|Một con đường, một con cá.
+349|Trước đây|以前我在银行工作。|Trước đây tôi làm ở ngân hàng.
+350|Thế giới|我们的产品卖到全世界。|Sản phẩm chúng tôi bán khắp thế giới.
+352|Người khác|别人都走了。|Người khác đều đi rồi.
+353|Cơ hội|谢谢你给我这个机会。|Cảm ơn bạn đã cho tôi cơ hội này.
+354|Tờ, tấm (lượng từ vật phẳng)|一张名片，一张票。|Một tấm danh thiếp, một tấm vé.
+356|Cuộc thi đấu|今天晚上有足球比赛。|Tối nay có trận bóng đá.
+357|Quan hệ|我们两家公司关系很好。|Hai công ty chúng ta có quan hệ rất tốt.
+360|Về (vấn đề gì)|关于价格，我们明天谈。|Về giá, mai chúng ta bàn.
+361|Khó|汉语难吗？|Tiếng Trung có khó không?
+363|Đứng; trạm, bến|他站在门口。|Anh ấy đứng ở cửa.
+364|Kết thúc|会议几点结束？|Cuộc họp mấy giờ kết thúc?
+366|Bằng lòng, sẵn lòng|我愿意帮你。|Tôi sẵn lòng giúp bạn.
+367|Hoa; tiêu (tiền, thời gian)|这次出差花了很多钱。|Chuyến công tác này tốn nhiều tiền.
+368|Ảnh, tấm hình|请发几张产品照片。|Gửi vài tấm ảnh sản phẩm nhé.
+370|Luôn luôn, lúc nào cũng|他总是很忙。|Anh ấy lúc nào cũng bận.
+371|Miệng|他嘴很甜。|Anh ấy ăn nói ngọt ngào.
+372|Tham gia|我参加了广交会。|Tôi đã tham gia Hội chợ Quảng Châu.
+374|Lựa chọn|你可以选择颜色。|Bạn có thể chọn màu.
+375|Hỏng, xấu|电脑坏了。|Máy tính hỏng rồi.
+376|Dự định|你打算什么时候去中国？|Bạn định khi nào đi Trung Quốc?
+377|Thử|你可以试一下。|Bạn có thể thử một chút.
+378|Đặc biệt|这个产品特别好卖。|Sản phẩm này đặc biệt dễ bán.
+379|Chú ý|请注意安全。|Vui lòng chú ý an toàn.
+380|Thật ra|其实我也不知道。|Thật ra tôi cũng không biết.
+381|Cẩn thận|小心！路很滑。|Cẩn thận! Đường trơn lắm.
+382|Lâu|好久不见！|Lâu quá không gặp!
+383|Chỉ có (… mới)|只有你能帮我。|Chỉ có bạn mới giúp được tôi.
+384|Ngựa|他骑马。|Anh ấy cưỡi ngựa.
+385|Giảng, nói, kể|请讲一下你们的产品。|Mời giới thiệu về sản phẩm của các bạn.
+386|Câu chuyện|这个故事很有意思。|Câu chuyện này rất thú vị.
+387|Đổi, thay|我想换一个颜色。|Tôi muốn đổi màu khác.
+388|Kết hôn|他们明年结婚。|Năm sau họ kết hôn.
+389|Đoạn (thời gian, văn bản)|这段时间我很忙。|Khoảng thời gian này tôi rất bận.
+390|Cố gắng|我会努力的。|Tôi sẽ cố gắng.
+391|Sợ|我害怕坐飞机。|Tôi sợ đi máy bay.
+392|Gửi, phát|我把文件发给你了。|Tôi đã gửi tài liệu cho bạn.
+393|Vừa nãy|刚才A给你打电话了。|Vừa nãy A gọi cho bạn.
+394|Tiết mục, chương trình|这个节目很好看。|Chương trình này rất hay.
+395|Chiếc (lượng từ xe)|一辆车。|Một chiếc xe.
+396|Mười nghìn, vạn|一万个。|Mười nghìn cái.
+397|Đóng; tắt|请关灯。|Vui lòng tắt đèn.
+400|Lạ, kỳ lạ|真奇怪，他还没来。|Lạ thật, anh ấy vẫn chưa đến.
+402|Trò chơi|孩子喜欢玩游戏。|Trẻ con thích chơi game.
+404|Quốc gia, đất nước|你去过几个国家？|Bạn đã đi mấy nước rồi?
+405|Gần đây, dạo này|最近怎么样？|Dạo này thế nào?
+406|Âm thanh, giọng|请大点儿声音。|Vui lòng nói to hơn.
+407|Đáng yêu|你的女儿真可爱！|Con gái bạn đáng yêu quá!
+408|Phút; điểm; chia|三点十分。|Ba giờ mười phút.
+410|Một nửa|我等了半个小时。|Tôi đợi nửa tiếng.
+411|Yêu cầu|客户的要求很高。|Yêu cầu của khách hàng rất cao.
+412|Ngoài… ra|除了价格，还有什么问题？|Ngoài giá cả ra, còn vấn đề gì?
+413|Dễ|这个问题很容易。|Vấn đề này rất dễ.
+414|Dạy|你能教我汉语吗？|Bạn dạy tôi tiếng Trung được không?
+415|Mặt|他脸红了。|Anh ấy đỏ mặt rồi.
+416|Đơn giản|这个很简单。|Cái này rất đơn giản.
+418|Âm nhạc|我喜欢听音乐。|Tôi thích nghe nhạc.
+419|Càng… càng|你的汉语越来越好。|Tiếng Trung của bạn ngày càng giỏi.
+420|Chăm sóc|谢谢你的照顾。|Cảm ơn bạn đã chăm sóc.
+421|Thông minh|她很聪明。|Cô ấy rất thông minh.
+422|Ngọt|这个水果很甜。|Trái cây này rất ngọt.
+423|Đột nhiên|突然下雨了。|Đột nhiên trời mưa.
+424|Cuối cùng (đã)|货终于到了。|Cuối cùng hàng cũng đến.
+425|Thuyền, tàu|货物用船运。|Hàng được chở bằng tàu biển.
+426|Miệng; cửa (khẩu)|门口有人等你。|Có người đợi bạn ở cửa.
+428|Quà|这是给你的礼物。|Đây là quà tặng bạn.
+429|Tóc|她的头发很长。|Tóc cô ấy rất dài.
+430|Quan tâm|谢谢你的关心。|Cảm ơn sự quan tâm của bạn.
+431|Chân (bàn chân)|我的脚很疼。|Chân tôi rất đau.
+432|Tức giận|别生气了。|Đừng giận nữa.
+433|Khóc|孩子哭了。|Đứa bé khóc rồi.
+434|Vẽ; bức tranh|他画得很好。|Anh ấy vẽ rất đẹp.
+435|Trẻ|他很年轻。|Anh ấy rất trẻ.
+436|Túi; bao, gói|我的包在哪儿？|Túi của tôi đâu?
+437|Chân (cẳng chân)|我的腿很累。|Chân tôi rất mỏi.
+438|Quên|对不起，我忘记了。|Xin lỗi, tôi quên mất.
+439|Chuyển (nhà, đồ)|我们公司下个月搬家。|Tháng sau công ty chúng tôi chuyển địa điểm.
+440|Tòa nhà; tầng|我们在五楼。|Chúng tôi ở tầng năm.
+441|Gặp phải|我在路上遇到了A。|Tôi gặp A trên đường.
+442|Tin tức|你看新闻了吗？|Bạn xem tin tức chưa?
+443|Tương đối, khá|这个价格比较合适。|Giá này khá hợp lý.
+444|Đôi|一双鞋，一双筷子。|Một đôi giày, một đôi đũa.
+446|Thường xuyên|我经常去中国出差。|Tôi thường xuyên đi công tác Trung Quốc.
+447|Thành phố|胡志明市是越南最大的城市。|TP. Hồ Chí Minh là thành phố lớn nhất Việt Nam.
+448|Một lát|请等一会儿。|Vui lòng đợi một lát.
+449|Gần đây, lân cận|附近有银行吗？|Gần đây có ngân hàng không?
+450|Mượn; cho mượn|我可以借你的笔吗？|Tôi mượn bút của bạn được không?
+451|Ảnh hưởng|天气影响了运输。|Thời tiết ảnh hưởng đến vận chuyển.
+452|Nghiêm túc, chăm chỉ|他工作很认真。|Anh ấy làm việc rất nghiêm túc.
+453|Mét; gạo|这个桌子两米长。|Cái bàn này dài hai mét.
+454|Kém; thiếu|现在差五分八点。|Bây giờ là 8 giờ kém 5.
+455|Ngân hàng|我去银行付款。|Tôi đi ngân hàng thanh toán.
+456|Yên tĩnh|这里很安静。|Ở đây rất yên tĩnh.
+457|Biết bao, thật là|多么漂亮啊！|Đẹp biết bao!
+458|Đói|我饿了。|Tôi đói rồi.
+459|Căn cứ, dựa theo|根据合同，你们要先付款。|Theo hợp đồng, các bạn phải thanh toán trước.
+460|Hầu như|我几乎每天都加班。|Hầu như ngày nào tôi cũng tăng ca.
+461|Sau này, về sau|后来他去了中国。|Về sau anh ấy đi Trung Quốc.
+462|Động vật|你喜欢什么动物？|Bạn thích con vật gì?
+463|Tây|太阳从西边下山。|Mặt trời lặn ở phía tây.
+464|Vừa… vừa; một bên|他一边吃饭一边看手机。|Anh ấy vừa ăn cơm vừa xem điện thoại.
+465|Dễ chịu, khỏe|你哪儿不舒服？|Bạn khó chịu ở đâu?
+466|Bình thường, thông thường|我一般七点起床。|Tôi thường dậy lúc 7 giờ.
+467|Chú|叔叔，您好！|Cháu chào chú!
+468|Đau|我头疼。|Tôi đau đầu.
+470|Lịch sử|中国历史很长。|Lịch sử Trung Quốc rất dài.
+471|Bia|来两瓶啤酒！|Cho hai chai bia!
+472|Ngắn|时间太短了。|Thời gian ngắn quá.
+473|Đi qua; trải qua|经过讨论，我们同意了。|Sau khi thảo luận, chúng tôi đã đồng ý.
+475|Lớp; ca làm|我们班有二十个学生。|Lớp chúng tôi có hai mươi học sinh.
+476|Thói quen; quen với|我已经习惯了。|Tôi đã quen rồi.
+477|Công viên|早上我去公园跑步。|Buổi sáng tôi ra công viên chạy bộ.
+478|Sạch sẽ|房间很干净。|Phòng rất sạch.
+479|Chim|树上有一只鸟。|Trên cây có một con chim.
+480|Khỏe mạnh|祝你身体健康！|Chúc bạn sức khỏe dồi dào!
+481|Cây|公司前面有很多树。|Trước công ty có nhiều cây.
+482|Bánh ngọt, bánh kem|生日蛋糕。|Bánh sinh nhật.
+483|Đồng (tệ); nguyên|一百元。|Một trăm tệ.
+484|Khách|今天有客人来公司。|Hôm nay có khách đến công ty.
+486|Bà nội|我奶奶八十岁了。|Bà nội tôi 80 tuổi rồi.
+487|Quần|这条裤子多少钱？|Cái quần này bao nhiêu tiền?
+488|Hàng xóm|他是我的邻居。|Anh ấy là hàng xóm của tôi.
+490|Tầng, lớp|办公室在十层。|Văn phòng ở tầng mười.
+491|Đèn|请开灯。|Vui lòng bật đèn.
+492|Luyện tập|我每天练习说汉语。|Mỗi ngày tôi luyện nói tiếng Trung.
+493|Ông nội|爷爷身体很好。|Ông nội sức khỏe rất tốt.
+494|Xanh dương|天很蓝。|Trời rất xanh.
+495|Buồn|别难过了。|Đừng buồn nữa.
+496|Ở giữa|他坐在中间。|Anh ấy ngồi ở giữa.
+497|Mũ|你的帽子很好看。|Mũ của bạn đẹp quá.
+498|Tài xế|司机在楼下等你。|Tài xế đang đợi bạn dưới lầu.
+499|Cũ|这台电脑太旧了。|Cái máy tính này cũ quá.
+500|Hài lòng|客户很满意。|Khách hàng rất hài lòng.

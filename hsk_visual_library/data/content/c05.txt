@@ -1,0 +1,228 @@
+1001|Lễ phép, lịch sự|他很有礼貌。|Anh ấy rất lễ phép.
+1003|Phán đoán|很难判断。|Rất khó phán đoán.
+1004|Cánh tay|我的胳膊疼。|Cánh tay tôi bị đau.
+1005|Sắp xếp, chỉnh lý|请整理一下文件。|Vui lòng sắp xếp lại tài liệu.
+1006|Rừng|森林里有很多动物。|Trong rừng có nhiều động vật.
+1007|Đồng cảm, thương cảm|我很同情他。|Tôi rất thương cảm anh ấy.
+1010|Kính mắt|我的眼镜呢？|Kính của tôi đâu?
+1011|Gương|镜子在洗手间。|Gương ở trong nhà vệ sinh.
+1012|Đắng; khổ|这个药很苦。|Thuốc này rất đắng.
+1013|Phát thanh, loa thông báo|请注意听广播。|Vui lòng chú ý nghe thông báo.
+1014|Chuyên, chuyên môn|我专门来看你。|Tôi đến riêng để thăm bạn.
+1015|Nếm|你尝尝这个菜。|Bạn nếm thử món này.
+1016|Thịnh hành, thời thượng|这种颜色今年很流行。|Màu này năm nay rất thịnh hành.
+1017|Vật liệu, tài liệu|这是什么材料做的？|Cái này làm bằng chất liệu gì?
+1018|Đối thoại, hội thoại|我们练习对话吧。|Chúng ta luyện hội thoại nhé.
+1019|Chi tiết, tỉ mỉ|请发给我详细的报价。|Gửi tôi bảng báo giá chi tiết.
+1020|Cùng với, theo đà|随着经济发展，需求增加了。|Cùng với sự phát triển kinh tế, nhu cầu đã tăng.
+1021|Hạ cánh|飞机已经降落了。|Máy bay đã hạ cánh rồi.
+1022|Võ công; công sức|学汉语要花功夫。|Học tiếng Trung phải bỏ công sức.
+1023|Nghiêm khắc|我们对质量要求很严格。|Chúng tôi yêu cầu chất lượng rất nghiêm ngặt.
+1024|Nhật ký|我每天写日记。|Ngày nào tôi cũng viết nhật ký.
+1025|Thỉnh thoảng|我偶尔喝酒。|Thỉnh thoảng tôi uống rượu.
+1026|Thực tế|实际情况怎么样？|Tình hình thực tế thế nào?
+1027|Thân thiện|中国客户很友好。|Khách hàng Trung Quốc rất thân thiện.
+1028|Ngược lại|结果正好相反。|Kết quả hoàn toàn ngược lại.
+1029|Bác sĩ (khẩu ngữ)|大夫，我头疼。|Bác sĩ ơi, tôi đau đầu.
+1030|Tình hữu nghị|越中友谊。|Tình hữu nghị Việt – Trung.
+1031|Chính xác|数据要准确。|Số liệu phải chính xác.
+1032|Ngày thường|我平时七点起床。|Ngày thường tôi dậy lúc 7 giờ.
+1033|Đối diện|银行在公司对面。|Ngân hàng ở đối diện công ty.
+1034|Tính khí, tính nết|他脾气很好。|Anh ấy tính tình rất tốt.
+1036|Tính cách|她性格很开朗。|Cô ấy tính cách rất cởi mở.
+1037|Khích lệ, động viên|谢谢你的鼓励。|Cảm ơn sự động viên của bạn.
+1039|Lạc đường|我迷路了。|Tôi bị lạc đường rồi.
+1040|Cây (lượng từ cây)|一棵树。|Một cái cây.
+1041|Lý tưởng|这个结果很理想。|Kết quả này rất lý tưởng.
+1042|Tiền lương|你们的工资怎么样？|Lương bên các bạn thế nào?
+1043|Đành phải|没办法，只好等了。|Không có cách nào, đành phải đợi.
+1044|Đi dạo|晚饭后我去散步。|Sau bữa tối tôi đi dạo.
+1045|Cảm động|我很感动。|Tôi rất cảm động.
+1046|Tri thức, kiến thức|他有很多专业知识。|Anh ấy có nhiều kiến thức chuyên môn.
+1047|Khó chịu|我胃很难受。|Dạ dày tôi rất khó chịu.
+1048|Tiền thưởng|年底有奖金。|Cuối năm có thưởng.
+1049|Hài hước|他很幽默。|Anh ấy rất hài hước.
+1050|Cháu nội (trai)|这是我孙子。|Đây là cháu nội tôi.
+1051|Mồ hôi|热得出汗了。|Nóng đến toát mồ hôi.
+1052|Thu nhập|收入增加了。|Thu nhập đã tăng.
+1053|Chua|这个水果很酸。|Trái cây này rất chua.
+1054|Kilômét|工厂离这儿二十公里。|Nhà máy cách đây 20 km.
+1055|Cơ sở, nền tảng|我的汉语基础不好。|Nền tảng tiếng Trung của tôi chưa tốt.
+1056|Xấu hổ, ngượng|她很害羞。|Cô ấy rất hay ngượng.
+1058|Tích cực|他工作很积极。|Anh ấy làm việc rất tích cực.
+1059|Giàu|他很富。|Ông ấy rất giàu.
+1060|Sức lực|我没力气了。|Tôi hết sức rồi.
+1061|Lối vào|入口在那边。|Lối vào ở bên kia.
+1062|Tất (vớ)|一双袜子。|Một đôi tất.
+1063|Phiền não|别烦恼了。|Đừng phiền muộn nữa.
+1064|Tổ chức (sự kiện)|公司举办了年会。|Công ty đã tổ chức tiệc tất niên.
+1065|Sửa chữa|电脑需要修理。|Máy tính cần sửa.
+1066|Giảm bớt|我们要减少成本。|Chúng ta phải giảm chi phí.
+1067|Họ hàng|春节去看亲戚。|Tết đi thăm họ hàng.
+1069|Phong phú|内容很丰富。|Nội dung rất phong phú.
+1070|Nước ép trái cây|我要一杯果汁。|Tôi lấy một cốc nước ép.
+1071|Khăn mặt|毛巾在哪儿？|Khăn mặt ở đâu?
+1072|Tác giả|这本书的作者是谁？|Tác giả quyển sách này là ai?
+1073|Đại dương|太平洋是最大的海洋。|Thái Bình Dương là đại dương lớn nhất.
+1074|Phê bình|老板批评了我。|Sếp phê bình tôi.
+1075|Xếp hàng|请排队。|Vui lòng xếp hàng.
+1076|Ví dụ|例如：价格、质量。|Ví dụ: giá cả, chất lượng.
+1077|Thực vật|这里有很多植物。|Ở đây có nhiều thực vật.
+1078|Nghèo|他小时候家里很穷。|Hồi nhỏ nhà anh ấy rất nghèo.
+1079|Đồ nội thất|这家工厂做家具。|Nhà máy này làm đồ nội thất.
+1080|Muối|菜里放点儿盐。|Cho chút muối vào món ăn.
+1081|Nhiệt độ|今天温度三十五度。|Hôm nay nhiệt độ 35 độ.
+1083|Đi dạo, đi loanh quanh (mua sắm)|我们去逛街吧。|Mình đi dạo phố nhé.
+1084|Dày|这本书很厚。|Quyển sách này rất dày.
+1085|Châu Á|越南在亚洲。|Việt Nam ở châu Á.
+1086|Không kịp|来不及了，快走！|Không kịp rồi, đi mau!
+1087|Bác thợ; sư phụ (gọi tài xế, thợ)|师傅，去机场。|Bác tài, đi sân bay.
+1088|Ô nhiễm|空气污染很严重。|Ô nhiễm không khí rất nghiêm trọng.
+1089|Giảm cân|我在减肥。|Tôi đang giảm cân.
+1090|Còn kịp|现在去还来得及。|Bây giờ đi vẫn còn kịp.
+1091|Phòng khách|请到客厅坐。|Mời vào phòng khách ngồi.
+1092|Thiếu|我们缺少人手。|Chúng tôi thiếu người.
+1093|Con hổ|老虎很危险。|Hổ rất nguy hiểm.
+1094|Hạ thấp, giảm|降低价格。|Hạ giá.
+1095|Mây|天上有很多云。|Trên trời có nhiều mây.
+1097|Học kỳ|这个学期很忙。|Học kỳ này rất bận.
+1098|Nhà vệ sinh, phòng tắm|卫生间在二楼。|Nhà vệ sinh ở tầng hai.
+1099|Thứ hai là, kế đến|首先是价格，其次是质量。|Trước hết là giá, kế đến là chất lượng.
+1100|Quần vợt|他喜欢打网球。|Anh ấy thích chơi quần vợt.
+1102|Bảng biểu, mẫu đơn|请填这张表格。|Vui lòng điền vào mẫu này.
+1103|Đọc (hiểu)|我每天阅读中文新闻。|Ngày nào tôi cũng đọc tin tiếng Trung.
+1104|Phong bì|请把信放进信封。|Vui lòng bỏ thư vào phong bì.
+1105|Thứ tự|请按顺序排好。|Vui lòng xếp theo thứ tự.
+1106|Đi (phương tiện, trang trọng)|我乘坐飞机去北京。|Tôi đi máy bay đến Bắc Kinh.
+1107|Coi trọng|我们很重视质量。|Chúng tôi rất coi trọng chất lượng.
+1109|Khuyết điểm|这个产品的缺点是太重。|Nhược điểm của sản phẩm này là quá nặng.
+1110|Trạm xăng|附近有加油站吗？|Gần đây có trạm xăng không?
+1111|Thủ đô|河内是越南的首都。|Hà Nội là thủ đô Việt Nam.
+1112|Ngưỡng mộ|我很羡慕你。|Tôi rất ngưỡng mộ bạn.
+1113|Tiền lẻ|你有零钱吗？|Bạn có tiền lẻ không?
+1114|Ấm áp|今天很暖和。|Hôm nay rất ấm.
+1115|Lười|他很懒。|Anh ấy rất lười.
+1117|Dân tộc|越南有五十四个民族。|Việt Nam có 54 dân tộc.
+1119|Ưu điểm|这个产品的优点是价格便宜。|Ưu điểm của sản phẩm này là giá rẻ.
+1120|Thùng rác|请把垃圾扔进垃圾桶。|Vui lòng bỏ rác vào thùng.
+1122|Chủ nhà (cho thuê)|房东要涨房租。|Chủ nhà muốn tăng tiền thuê.
+1123|Đúng giờ, đúng hạn|请按时付款。|Vui lòng thanh toán đúng hạn.
+1124|Nho|我喜欢吃葡萄。|Tôi thích ăn nho.
+1125|Thường thường|周末往往很忙。|Cuối tuần thường rất bận.
+1126|Đường cao tốc|我们走高速公路。|Chúng ta đi đường cao tốc.
+1127|Đắc ý|他很得意。|Anh ấy rất đắc ý.
+1128|Đặc điểm|这个产品有什么特点？|Sản phẩm này có đặc điểm gì?
+1129|Đạt tiêu chuẩn|质量检查合格。|Kiểm tra chất lượng đạt.
+1130|Giới tính|请填写性别。|Vui lòng điền giới tính.
+1131|Đăng ký (tham gia)|我报名参加了展会。|Tôi đã đăng ký tham gia hội chợ.
+1132|Internet|互联网改变了生活。|Internet đã thay đổi cuộc sống.
+1133|Phong cảnh|这里的景色很美。|Phong cảnh ở đây rất đẹp.
+1134|Đại sứ quán|我去大使馆办签证。|Tôi đến đại sứ quán làm visa.
+1136|Náo nhiệt|这条街很热闹。|Con phố này rất náo nhiệt.
+1137|Ngoại ô|工厂在郊区。|Nhà máy ở ngoại ô.
+1138|Ho|我咳嗽了。|Tôi bị ho.
+1140|Mặn|菜太咸了。|Món ăn mặn quá.
+1142|Hoạt bát|她很活泼。|Cô ấy rất hoạt bát.
+1143|Bưu điện|邮局几点关门？|Bưu điện mấy giờ đóng cửa?
+1144|Kem đánh răng|我买了一支牙膏。|Tôi mua một tuýp kem đánh răng.
+1145|Khí hậu|越南南方气候很热。|Khí hậu miền Nam Việt Nam rất nóng.
+1146|Cái thìa, muỗng|请给我一把勺子。|Cho tôi một cái thìa.
+1148|Cắt tóc|我去理发。|Tôi đi cắt tóc.
+1150|Từ ngữ|这些词语很常用。|Những từ ngữ này rất thông dụng.
+1151|Khen ngợi|老板表扬了他。|Sếp đã khen anh ấy.
+1152|Tiêm|孩子怕打针。|Trẻ con sợ tiêm.
+1153|Phổ biến|这个问题很普遍。|Vấn đề này rất phổ biến.
+1154|Kẹt xe|早上经常堵车。|Buổi sáng thường kẹt xe.
+1155|Lá cây|秋天叶子黄了。|Mùa thu lá cây vàng.
+1157|Sắp xếp (theo thứ tự)|按价格排列。|Sắp xếp theo giá.
+1158|Mát mẻ|今天很凉快。|Hôm nay rất mát.
+1159|Túi ni-lông|要塑料袋吗？|Có cần túi ni-lông không?
+1160|Hướng dẫn viên du lịch|导游带我们参观。|Hướng dẫn viên dẫn chúng tôi tham quan.
+1161|Món ăn vặt|越南小吃很好吃。|Đồ ăn vặt Việt Nam rất ngon.
+1162|Cà chua|我要一个西红柿炒鸡蛋。|Cho tôi một đĩa trứng xào cà chua.
+1163|Tuyển dụng|我们公司在招聘。|Công ty chúng tôi đang tuyển dụng.
+1164|Tiết kiệm|节约用水。|Tiết kiệm nước.
+1165|Thạc sĩ|她是硕士。|Cô ấy là thạc sĩ.
+1166|Bóng bàn|我们打乒乓球吧。|Chúng ta chơi bóng bàn nhé.
+1167|Tích lũy|积累经验。|Tích lũy kinh nghiệm.
+1168|Cục tẩy|借我一下橡皮。|Cho tôi mượn cục tẩy.
+1169|Ứng tuyển|我去应聘销售经理。|Tôi đi ứng tuyển quản lý bán hàng.
+1170|Nước khoáng|来一瓶矿泉水。|Cho một chai nước khoáng.
+1171|Vạn Lý Trường Thành|我去过长城。|Tôi đã đến Vạn Lý Trường Thành.
+1172|Ngữ pháp|汉语语法不太难。|Ngữ pháp tiếng Trung không khó lắm.
+1173|Chủ nhật|礼拜天休息。|Chủ nhật nghỉ.
+1174|Sủi cảo, há cảo|春节吃饺子。|Tết ăn sủi cảo.
+1175|Quốc tịch|你的国籍是什么？|Quốc tịch của bạn là gì?
+1176|Nhân viên bán hàng|售货员很热情。|Nhân viên bán hàng rất nhiệt tình.
+1177|Lưu loát|他汉语说得很流利。|Anh ấy nói tiếng Trung rất lưu loát.
+1178|Cẩu thả, sơ ý|我太粗心了。|Tôi sơ ý quá.
+1179|Hình thành (thói quen)|养成好习惯。|Hình thành thói quen tốt.
+1180|Qua loa, đại khái|工作不能马虎。|Làm việc không được qua loa.
+1181|Phần trăm|百分之三十。|30%.
+1182|Tiếng phổ thông|他的普通话很标准。|Tiếng phổ thông của anh ấy rất chuẩn.
+1183|Thẻ lên máy bay|请出示登机牌。|Vui lòng xuất trình thẻ lên máy bay.
+1185|Bánh bao|早上吃包子。|Buổi sáng ăn bánh bao.
+1186|Cầu lông|我喜欢打羽毛球。|Tôi thích chơi cầu lông.
+1187|Vịt quay|北京烤鸭很有名。|Vịt quay Bắc Kinh rất nổi tiếng.
+1188|Kỳ nghỉ đông|寒假你去哪儿？|Nghỉ đông bạn đi đâu?
+1189|Trường Giang (sông)|长江是中国最长的河。|Trường Giang là sông dài nhất Trung Quốc.
+1190|Chuẩn bị bài trước|上课前要预习。|Trước giờ học phải chuẩn bị bài.
+1191|Điền vào chỗ trống|请填空。|Vui lòng điền vào chỗ trống.
+1192|Kinh kịch|你看过京剧吗？|Bạn xem Kinh kịch chưa?
+1194|Phiên dịch|他是我的翻译。|Anh ấy là phiên dịch của tôi.
+1195|Chơi đàn piano|她会弹钢琴。|Cô ấy biết chơi piano.
+1196|Nghỉ hè|学生放暑假了。|Học sinh nghỉ hè rồi.
+1197|Ừ, ừm|嗯，我知道了。|Ừ, tôi biết rồi.
+1198|Giết|杀价。|Ép giá (mặc cả).
+1199|Sở, nơi; (所以…)|这所学校很有名。|Ngôi trường này rất nổi tiếng.
+1200|Đúng; đang; chính|正是我要的。|Chính là thứ tôi cần.
+1201|Làm, xử lý (khẩu ngữ)|这件事我来搞定。|Việc này để tôi lo.
+1202|Thân mến|亲爱的朋友。|Bạn thân mến.
+1203|Bảo bối, cục cưng|宝贝，晚安。|Cục cưng, ngủ ngon.
+1204|Súng|警察有枪。|Cảnh sát có súng.
+1205|Như thế nào (văn viết)|如何提高效率？|Làm thế nào để nâng cao hiệu suất?
+1206|Quý bà, bà (lịch sự)|女士们，先生们！|Thưa quý bà, quý ông!
+1207|Hoàn toàn, căn bản|我根本不知道。|Tôi hoàn toàn không biết.
+1208|Xác định, chắc chắn|你确定吗？|Bạn chắc chứ?
+1209|Anh em|他是我兄弟。|Cậu ấy là anh em của tôi.
+1210|Bắt, nắm|抓住机会。|Nắm lấy cơ hội.
+1211|Có lẽ|或许他忘了。|Có lẽ anh ấy quên rồi.
+1212|Cứu|救命！|Cứu với!
+1213|Duy nhất|这是唯一的办法。|Đây là cách duy nhất.
+1214|Biểu hiện, thể hiện|他的表现很好。|Anh ấy thể hiện rất tốt.
+1215|Đập; chụp (ảnh)|请拍几张照片。|Chụp vài tấm ảnh nhé.
+1216|Ngây người; ở lại|我在家呆了一天。|Tôi ở nhà cả ngày.
+1217|Tuyệt đối|绝对没问题。|Tuyệt đối không có vấn đề.
+1218|Toàn bộ, cả|整个公司都知道了。|Cả công ty đều biết rồi.
+1219|Xử lý|我马上处理。|Tôi xử lý ngay.
+1220|Hành động|我们马上行动。|Chúng ta hành động ngay.
+1221|Mất đi|失去了一个大客户。|Mất đi một khách hàng lớn.
+1222|Cử, phái|公司派我去中国。|Công ty cử tôi đi Trung Quốc.
+1223|Dựa, tựa|做生意靠信用。|Làm ăn dựa vào uy tín.
+1224|Với tư cách là; làm|作为经理，我要负责。|Là quản lý, tôi phải chịu trách nhiệm.
+1225|Đã từng|我曾经在中国工作过。|Tôi đã từng làm việc ở Trung Quốc.
+1226|Tổng thống|美国总统。|Tổng thống Mỹ.
+1227|Làm tổn thương|别伤害他。|Đừng làm tổn thương anh ấy.
+1228|Kiểm soát|控制成本。|Kiểm soát chi phí.
+1229|Trộm|他偷了我的钱包。|Hắn trộm ví của tôi.
+1230|Bài (lượng từ bài hát, thơ); đầu|一首歌。|Một bài hát.
+1231|Ha (tiếng cười)|哈哈，太好了！|Ha ha, tuyệt quá!
+1232|Hỏng bét, tệ|糟糕，我忘了带护照！|Chết rồi, tôi quên mang hộ chiếu!
+1233|Giữ, duy trì|保持联系。|Giữ liên lạc nhé.
+1234|Chứng cứ|你有证据吗？|Bạn có bằng chứng không?
+1235|Sự thật|这是事实。|Đây là sự thật.
+1236|Gia đình|我的家庭很幸福。|Gia đình tôi rất hạnh phúc.
+1237|Đựng, lắp; giả vờ|把货装进集装箱。|Đóng hàng vào container.
+1238|Bí mật|这是秘密。|Đây là bí mật.
+1239|Quả thật là, đúng là|这简直太好了！|Thật là quá tốt!
+1240|Đích thực, quả thật|他的确很忙。|Anh ấy quả thật rất bận.
+1241|Máu|他流血了。|Anh ấy chảy máu rồi.
+1242|Phương thức|付款方式是什么？|Phương thức thanh toán là gì?
+1243|Xem, nhìn (khẩu ngữ)|你瞧，他来了。|Bạn xem, anh ấy đến rồi.
+1244|Điên cuồng|疯狂购物。|Mua sắm điên cuồng.
+1245|Miếng, mảnh; phim|一片面包。|Một lát bánh mì.
+1246|Ghi chép, biên bản|请做会议记录。|Vui lòng ghi biên bản cuộc họp.
+1247|Bà, vợ (gọi phụ nữ đã có chồng)|王太太，您好！|Chào bà Vương!
+1248|Trừ phi|除非你同意，否则不签。|Trừ khi bạn đồng ý, không thì không ký.
+1249|Ngốc|别做傻事。|Đừng làm chuyện ngốc nghếch.
+1250|Ngăn cản|他想阻止我。|Anh ấy muốn ngăn tôi.

@@ -1,0 +1,237 @@
+1251|Tưởng tượng|比我想象的好。|Tốt hơn tôi tưởng tượng.
+1252|Hoàn mỹ, hoàn hảo|没有完美的产品。|Không có sản phẩm nào hoàn hảo.
+1253|Gam (gram)|一百克。|Một trăm gam.
+1255|Tinh thần|他精神很好。|Tinh thần anh ấy rất tốt.
+1256|Chạm, đụng; gặp|别碰这个。|Đừng chạm vào cái này.
+1257|Hệ thống|系统出问题了。|Hệ thống gặp sự cố rồi.
+1258|Lăn; cút|球滚走了。|Quả bóng lăn đi rồi.
+1260|Nhân loại|人类的历史。|Lịch sử nhân loại.
+1261|Xông tới; pha (trà)|冲一杯咖啡。|Pha một cốc cà phê.
+1262|Tự do|周末是自由时间。|Cuối tuần là thời gian tự do.
+1263|Bộ (lượng từ)|一套家具。|Một bộ nội thất.
+1264|Cô gái|这个姑娘很能干。|Cô gái này rất giỏi.
+1265|Phẫu thuật|他做了手术。|Anh ấy đã phẫu thuật.
+1266|Cần thiết|没有必要。|Không cần thiết.
+1267|Đau khổ|他很痛苦。|Anh ấy rất đau khổ.
+1268|Tồn tại|这个问题一直存在。|Vấn đề này luôn tồn tại.
+1269|Nhóm, tổ|我们分成三个组。|Chúng ta chia thành ba nhóm.
+1270|Và, cùng với (văn viết)|价格、质量以及服务。|Giá cả, chất lượng và dịch vụ.
+1271|Cá nhân|这是我个人的看法。|Đây là quan điểm cá nhân tôi.
+1272|Đại diện, đại biểu|我代表公司欢迎你们。|Tôi thay mặt công ty chào mừng các bạn.
+1273|Ý nghĩa|这次合作很有意义。|Lần hợp tác này rất có ý nghĩa.
+1274|Thừa nhận|他承认了错误。|Anh ấy đã thừa nhận sai lầm.
+1275|Lý do|你的理由是什么？|Lý do của bạn là gì?
+1276|Rõ ràng, hiển nhiên|显然他不同意。|Rõ ràng anh ấy không đồng ý.
+1277|Chính phủ|政府支持出口。|Chính phủ hỗ trợ xuất khẩu.
+1278|May mắn|你很幸运。|Bạn rất may mắn.
+1279|Tín nhiệm, tin tưởng|谢谢你的信任。|Cảm ơn sự tin tưởng của bạn.
+1280|Tương lai|未来的市场很大。|Thị trường tương lai rất lớn.
+1281|Rễ; cây, sợi (lượng từ)|一根绳子。|Một sợi dây.
+1282|Làm sợ, dọa|你吓死我了！|Bạn làm tôi sợ chết khiếp!
+1283|Điều trị|他在医院治疗。|Anh ấy đang điều trị ở bệnh viện.
+1284|Hành vi|这种行为不对。|Hành vi này không đúng.
+1285|Hôn lễ, đám cưới|下个月参加他的婚礼。|Tháng sau dự đám cưới anh ấy.
+1286|Tổ chức|公司组织了活动。|Công ty đã tổ chức hoạt động.
+1289|Cây, chiếc (lượng từ bút); chi|一支笔。|Một cây bút.
+1290|Vợ (khẩu ngữ)|我老婆是越南人。|Vợ tôi là người Việt.
+1291|Trung tâm|购物中心。|Trung tâm mua sắm.
+1292|Đáng sợ|太可怕了！|Đáng sợ quá!
+1293|Rõ ràng, rõ rệt|效果很明显。|Hiệu quả rất rõ rệt.
+1294|Biến mất|他突然消失了。|Anh ấy đột nhiên biến mất.
+1295|Vị trí|工厂的位置很好。|Vị trí nhà máy rất tốt.
+1296|Đồng ý, nhận lời|他答应了我们的要求。|Anh ấy đã nhận lời yêu cầu của chúng tôi.
+1297|Va, đâm|车撞了。|Xe bị đâm rồi.
+1298|Dường như|他似乎很忙。|Dường như anh ấy rất bận.
+1299|Sức mạnh, lực lượng|团结就是力量。|Đoàn kết là sức mạnh.
+1300|Mệnh lệnh|这是老板的命令。|Đây là lệnh của sếp.
+1301|Uy hiếp, đe dọa|不要威胁我。|Đừng đe dọa tôi.
+1302|Ngày tháng, cuộc sống|好日子。|Ngày tốt lành.
+1303|Hưởng thụ|享受生活。|Tận hưởng cuộc sống.
+1304|Chiến tranh|我们不要战争。|Chúng tôi không muốn chiến tranh.
+1305|Chúc mừng|恭喜发财！|Chúc phát tài!
+1306|Lợi dụng, tận dụng|利用这个机会。|Tận dụng cơ hội này.
+1307|Hận, ghét|我不恨他。|Tôi không hận anh ấy.
+1308|Huấn luyện, đào tạo|新员工要训练。|Nhân viên mới phải được đào tạo.
+1309|Quán bar|晚上去酒吧吗？|Tối đi bar không?
+1310|Thân phận, danh tính|请出示身份证。|Vui lòng xuất trình chứng minh nhân dân.
+1311|Người mẫu|她是模特。|Cô ấy là người mẫu.
+1312|Một khi|一旦签了合同，就不能改。|Một khi đã ký hợp đồng thì không đổi được.
+1313|Đuổi theo; theo đuổi|快追！|Đuổi theo mau!
+1314|Bầy, đàn, nhóm|一群人。|Một nhóm người.
+1315|Đối mặt|面对困难。|Đối mặt với khó khăn.
+1316|Lại có thể, không ngờ|他居然不知道。|Không ngờ anh ấy lại không biết.
+1317|Sấm|打雷了。|Có sấm rồi.
+1318|Chân thật|这是真实的故事。|Đây là câu chuyện có thật.
+1319|Đời người|人生很短。|Đời người rất ngắn.
+1320|Bị thương|他受伤了。|Anh ấy bị thương.
+1321|Đêm|夜里很冷。|Ban đêm rất lạnh.
+1322|Thuộc về|这个属于你。|Cái này thuộc về bạn.
+1323|Xuất sắc|他做得很出色。|Anh ấy làm rất xuất sắc.
+1324|Trước mắt, hiện nay|目前情况很好。|Hiện nay tình hình rất tốt.
+1325|Khóa|请锁门。|Vui lòng khóa cửa.
+1326|Ước mơ|我的梦想是开公司。|Ước mơ của tôi là mở công ty.
+1327|Nhân viên, nhân sự|工作人员。|Nhân viên làm việc.
+1328|Anh hùng|他是英雄。|Anh ấy là anh hùng.
+1329|Cảm nhận|说说你的感受。|Nói cảm nhận của bạn đi.
+1330|Hôn|他吻了她。|Anh ấy hôn cô ấy.
+1331|Chạy trốn|小偷逃了。|Tên trộm bỏ chạy rồi.
+1332|Đếm; số|请数一下。|Vui lòng đếm thử.
+1333|Căn hộ|我住在公寓。|Tôi sống ở căn hộ.
+1335|Tìm kiếm|我们在寻找新客户。|Chúng tôi đang tìm khách hàng mới.
+1336|Thối, nát|水果烂了。|Trái cây bị nát rồi.
+1337|Nếu không thì|快点儿，不然来不及了。|Nhanh lên, không thì không kịp.
+1338|Nợ, thiếu|我欠你一个人情。|Tôi nợ bạn một ân tình.
+1339|Phản ứng|客户的反应很好。|Phản ứng của khách hàng rất tốt.
+1340|Bất ngờ, sự cố|这是一个意外。|Đây là một sự cố bất ngờ.
+1341|Thức ăn, thực phẩm|我们出口食物。|Chúng tôi xuất khẩu thực phẩm.
+1342|Tiếc nuối|很遗憾，我不能去。|Rất tiếc, tôi không đi được.
+1343|Dù sao, đằng nào|反正还有时间。|Dù sao vẫn còn thời gian.
+1344|Thiết kế|这个设计很新。|Thiết kế này rất mới.
+1345|Say|他喝醉了。|Anh ấy say rồi.
+1346|Riêng tư, cá nhân|这是私人问题。|Đây là chuyện riêng.
+1347|Nào đó|某公司。|Một công ty nào đó.
+1348|Vĩ đại|伟大的人。|Con người vĩ đại.
+1349|Thối, hôi|太臭了！|Hôi quá!
+1350|Từ khi|自从来了越南，他很开心。|Từ khi đến Việt Nam, anh ấy rất vui.
+1352|Viên, hạt (lượng từ)|一颗糖。|Một viên kẹo.
+1353|Hướng về, triều (đại)|窗户朝南。|Cửa sổ hướng nam.
+1354|Hô hấp, thở|深呼吸。|Hít thở sâu.
+1355|Ngôi sao (người nổi tiếng)|她是电影明星。|Cô ấy là ngôi sao điện ảnh.
+1356|Siêu, siêu cấp|超级市场。|Siêu thị.
+1357|Phá hoại|不要破坏环境。|Đừng phá hoại môi trường.
+1358|Vai diễn, vai trò|他在公司扮演重要的角色。|Anh ấy đóng vai trò quan trọng trong công ty.
+1359|Bữa, trận (lượng từ)|一顿饭。|Một bữa cơm.
+1360|Thì, liền (văn viết); tiện|有问题便联系我。|Có vấn đề thì liên hệ tôi.
+1361|Bao gồm|价格包括运费。|Giá đã bao gồm phí vận chuyển.
+1362|Thời khắc|重要的时刻。|Thời khắc quan trọng.
+1363|Tương đối, khá; tương đương|价格相当高。|Giá khá cao.
+1364|Ngửi|你闻闻，很香。|Bạn ngửi xem, thơm lắm.
+1365|Công bằng|这样很公平。|Như vậy rất công bằng.
+1366|Đống|一堆文件。|Một đống tài liệu.
+1367|Câu lạc bộ|足球俱乐部。|Câu lạc bộ bóng đá.
+1368|Thông thường|通常我们用海运。|Thông thường chúng tôi dùng đường biển.
+1369|Cắn|狗咬人。|Chó cắn người.
+1370|Gây nên|造成损失。|Gây ra tổn thất.
+1371|Tín hiệu|这里没有信号。|Ở đây không có sóng.
+1372|Tràn đầy|充满信心。|Tràn đầy niềm tin.
+1373|Đứt, gãy|电话断了。|Điện thoại bị ngắt rồi.
+1374|Cướp; tranh giành|抢时间。|Tranh thủ thời gian.
+1375|Hiện thực|面对现实。|Đối mặt với hiện thực.
+1376|Khôi phục|系统已经恢复了。|Hệ thống đã khôi phục rồi.
+1378|Mang thai|她怀孕了。|Cô ấy mang thai rồi.
+1380|Hôn nhân|幸福的婚姻。|Cuộc hôn nhân hạnh phúc.
+1381|Vòng, vòng tròn|绕一圈。|Đi một vòng.
+1382|Cái đầu (khẩu ngữ)|我脑袋疼。|Tôi đau đầu.
+1383|Chia tay|他们分手了。|Họ chia tay rồi.
+1384|Tâm lý|心理压力很大。|Áp lực tâm lý rất lớn.
+1385|Hạng mục, điều (lượng từ)|这项工作很重要。|Hạng mục công việc này rất quan trọng.
+1386|Ký ức, trí nhớ|我的记忆力不好。|Trí nhớ của tôi không tốt.
+1388|Tiếp cận, gần|价格接近成本了。|Giá đã gần bằng giá vốn.
+1389|Ồn ào; cãi nhau|外面太吵了。|Bên ngoài ồn quá.
+1390|Quyền lợi|保护消费者的权利。|Bảo vệ quyền lợi người tiêu dùng.
+1391|Quán quân, vô địch|他得了冠军。|Anh ấy giành chức vô địch.
+1392|Huấn luyện viên|他是足球教练。|Ông ấy là huấn luyện viên bóng đá.
+1393|Đối phương|对方同意了。|Đối phương đã đồng ý.
+1394|Bất cứ lúc nào|有问题随时找我。|Có vấn đề cứ tìm tôi bất cứ lúc nào.
+1395|Kẻ thù|他不是敌人。|Anh ấy không phải kẻ thù.
+1396|Lưng; học thuộc|背单词。|Học thuộc từ vựng.
+1397|Nhân vật|他是重要人物。|Ông ấy là nhân vật quan trọng.
+1398|Con lợn|今年是猪年。|Năm nay là năm Hợi.
+1399|Cảm kích, biết ơn|非常感激您的帮助。|Vô cùng biết ơn sự giúp đỡ của anh/chị.
+1400|Lấy chồng|她嫁给了一个中国人。|Cô ấy lấy một người Trung Quốc.
+1401|Thử thách|这是一个挑战。|Đây là một thử thách.
+1402|Không phải; phi|非卖品。|Hàng không bán.
+1403|Trạng thái|他的工作状态很好。|Trạng thái làm việc của anh ấy rất tốt.
+1404|Đưa tin|新闻报道了这件事。|Tin tức đã đưa tin về việc này.
+1405|Tham dự|欢迎大家参与。|Hoan nghênh mọi người tham gia.
+1406|Lẫn nhau, hai bên|我们彼此信任。|Chúng ta tin tưởng lẫn nhau.
+1407|Đến nơi|货物已经到达港口。|Hàng đã đến cảng.
+1408|Hiển thị|屏幕显示错误。|Màn hình báo lỗi.
+1409|Lập tức|立刻出发！|Xuất phát ngay!
+1410|Nhổ; nôn|他吐了。|Anh ấy nôn rồi.
+1411|Hủy bỏ|会议取消了。|Cuộc họp bị hủy rồi.
+1412|Ly hôn|他们离婚了。|Họ ly hôn rồi.
+1413|Chờ đợi|等待你的回复。|Chờ hồi âm của bạn.
+1414|Cố hết sức|我会尽力的。|Tôi sẽ cố hết sức.
+1415|Chúc mừng, ăn mừng|庆祝合作成功！|Ăn mừng hợp tác thành công!
+1416|Giả vờ|他假装不知道。|Anh ấy giả vờ không biết.
+1417|Thổi|风吹得很大。|Gió thổi rất mạnh.
+1418|Quan tâm, để ý|我不在乎钱。|Tôi không quan tâm tiền.
+1419|Tình trạng|身体状况很好。|Tình trạng sức khỏe rất tốt.
+1420|Tim (tạng)|心脏病。|Bệnh tim.
+1421|Như là, giống như|他像孩子似的。|Anh ấy cứ như trẻ con.
+1422|Quốc vương, vua|国王和王后。|Vua và hoàng hậu.
+1424|Tập trung|请集中注意力。|Vui lòng tập trung chú ý.
+1425|Lời nói thật|说实话，我不喜欢。|Nói thật, tôi không thích.
+1426|Biểu cảm, nét mặt|他的表情很奇怪。|Nét mặt anh ấy rất lạ.
+1427|Mạo hiểm|这样做太冒险了。|Làm như vậy quá mạo hiểm.
+1428|Thắng lợi|我们取得了胜利。|Chúng ta đã giành thắng lợi.
+1429|Quan (chức)|他是一个大官。|Ông ấy là quan lớn.
+1430|Thẳng|一直往前走。|Cứ đi thẳng về phía trước.
+1431|Mong đợi|期待与您合作。|Mong được hợp tác với anh/chị.
+1433|Một mình, riêng|我想和你单独谈谈。|Tôi muốn nói chuyện riêng với bạn.
+1434|Chuyên gia|他是出口专家。|Ông ấy là chuyên gia xuất khẩu.
+1435|Nhanh lên|赶快走吧！|Đi nhanh lên!
+1436|Phong cách|我喜欢这种风格。|Tôi thích phong cách này.
+1437|Máy móc|这台机器很贵。|Chiếc máy này rất đắt.
+1438|Vuông; phía, bên|双方。|Hai bên.
+1440|Giá trị|这个产品很有价值。|Sản phẩm này rất có giá trị.
+1441|Cắt, thái|切水果。|Cắt trái cây.
+1442|Bức tường|墙上有一张地图。|Trên tường có một tấm bản đồ.
+1443|Triệt để|问题彻底解决了。|Vấn đề đã được giải quyết triệt để.
+1444|Lật, dịch|请翻到第十页。|Vui lòng lật đến trang 10.
+1445|Bày, đặt|把样品摆在桌子上。|Bày hàng mẫu lên bàn.
+1446|Thỉnh cầu, yêu cầu|我有一个请求。|Tôi có một thỉnh cầu.
+1447|Số phận|命运。|Số phận.
+1448|Đặc biệt, đặc thù|这是特殊情况。|Đây là trường hợp đặc biệt.
+1449|Thật thà|他很老实。|Anh ấy rất thật thà.
+1450|Thời đại, thập niên|九十年代。|Thập niên 90.
+1451|Binh lính|士兵。|Binh lính.
+1452|Từ… đến nay|十年以来。|Mười năm nay.
+1453|Căn phòng (khẩu ngữ)|屋子里很热。|Trong phòng rất nóng.
+1454|Chế tạo|中国制造。|Sản xuất tại Trung Quốc.
+1455|Lùi; trả lại|我想退货。|Tôi muốn trả hàng.
+1456|Nhẫn|结婚戒指。|Nhẫn cưới.
+1457|Lỗ, hang|墙上有个洞。|Trên tường có cái lỗ.
+1458|Tác phẩm|这是他的作品。|Đây là tác phẩm của anh ấy.
+1459|Thì (văn viết)|否则价格则另算。|Nếu không thì giá sẽ tính khác.
+1460|Qua đời|他爷爷去世了。|Ông nội anh ấy đã qua đời.
+1461|Quy tắc|遵守规则。|Tuân thủ quy tắc.
+1462|Thuyết phục|我说服了老板。|Tôi đã thuyết phục được sếp.
+1463|Sinh ra, nảy sinh|产生了很多问题。|Nảy sinh nhiều vấn đề.
+1464|Vải|这是什么布？|Đây là vải gì?
+1465|Thời đại|互联网时代。|Thời đại Internet.
+1466|Tiếp xúc|他接触过很多客户。|Anh ấy đã tiếp xúc nhiều khách hàng.
+1467|Xe tải|用卡车运货。|Chở hàng bằng xe tải.
+1468|Quy củ, phép tắc|这是公司的规矩。|Đây là quy định của công ty.
+1470|Cơ bản|基本上没问题。|Về cơ bản không có vấn đề.
+1471|Phân tích|我们分析一下市场。|Chúng ta phân tích thị trường một chút.
+1472|Khu vực|东南亚地区。|Khu vực Đông Nam Á.
+1473|Dẫn đến|导致延误。|Dẫn đến chậm trễ.
+1474|Đối xử|他对待客户很热情。|Anh ấy đối xử với khách rất nhiệt tình.
+1475|Chủ nhân, chủ nhà|主人很热情。|Chủ nhà rất nhiệt tình.
+1476|Tuyên bố|公司宣布了新价格。|Công ty đã công bố giá mới.
+1477|Không gian|空间不够。|Không gian không đủ.
+1478|Nhớ (nhung)|我很想念家人。|Tôi rất nhớ gia đình.
+1479|Trình tự, chương trình|按程序办。|Làm theo quy trình.
+1480|Xào|炒饭。|Cơm rang.
+1481|Cảm xúc|控制情绪。|Kiểm soát cảm xúc.
+1482|Sáng tạo|创造价值。|Tạo ra giá trị.
+1483|Phạm vi|这不在我的范围内。|Việc này không thuộc phạm vi của tôi.
+1484|Gọi là; cân|他被称为专家。|Anh ấy được gọi là chuyên gia.
+1485|Cố gắng hết mức|我尽量早点儿到。|Tôi sẽ cố đến sớm.
+1486|Đích thân|老板亲自来了。|Sếp đích thân đến.
+1487|Hòn đá|石头很重。|Hòn đá rất nặng.
+1488|Chi tiết|注意细节。|Chú ý chi tiết.
+1489|Đỉnh; cái (lượng từ mũ)|山顶。|Đỉnh núi.
+1490|Đạo lý, lý lẽ|你说得有道理。|Bạn nói có lý.
+1491|Vận may|运气不错。|Vận may không tệ.
+1492|Hét, gọi to|别喊了。|Đừng hét nữa.
+1493|Chế tác, làm ra|手工制作。|Làm thủ công.
+1494|Chung sống, cư xử|我们相处得很好。|Chúng tôi sống với nhau rất hòa hợp.
+1495|Trải qua (thời gian)|度过了愉快的周末。|Đã trải qua một cuối tuần vui vẻ.
+1496|Kỳ tích|这真是奇迹！|Đây thật là kỳ tích!
+1497|Truyền thông|媒体报道了。|Truyền thông đã đưa tin.
+1498|Nhanh chóng, vội|赶紧回家吧。|Mau về nhà đi.
+1499|Con (lượng từ ngựa); xấp (vải)|一匹马。|Một con ngựa.
+1500|Thành lập, xây dựng|建立长期合作关系。|Xây dựng quan hệ hợp tác lâu dài.

@@ -1,0 +1,211 @@
+1|Của (trợ từ sở hữu, nối định ngữ)|这是我的名片。|Đây là danh thiếp của tôi.
+2|Tôi|我是越南人。|Tôi là người Việt Nam.
+3|Bạn, anh, chị (ngôi thứ hai)|你是A吗？|Bạn là A phải không?
+4|Là|他是我的同事。|Anh ấy là đồng nghiệp của tôi.
+5|Rồi (trợ từ chỉ hoàn thành/thay đổi)|我吃饭了。|Tôi ăn cơm rồi.
+6|Không (phủ định)|我不喝咖啡。|Tôi không uống cà phê.
+7|Ở, tại; đang|A在办公室。|A đang ở văn phòng.
+8|Anh ấy, ông ấy|他是我们的经理。|Anh ấy là quản lý của chúng tôi.
+9|Chúng tôi, chúng ta|我们一起吃饭吧。|Chúng ta cùng ăn cơm nhé.
+10|Tốt, hay; được|这个产品很好。|Sản phẩm này rất tốt.
+11|Có|你有时间吗？|Bạn có thời gian không?
+12|Này, cái này|这是什么？|Đây là cái gì?
+13|Biết (kỹ năng); sẽ; cuộc họp|我会说一点儿汉语。|Tôi biết nói một chút tiếng Trung.
+14|Không? (trợ từ nghi vấn cuối câu)|你忙吗？|Bạn bận không?
+15|Cái gì, gì|你想喝什么？|Bạn muốn uống gì?
+16|Nói|请你再说一遍。|Bạn nói lại một lần nữa nhé.
+17|Cô ấy, chị ấy|她是我们公司的秘书。|Cô ấy là thư ký công ty chúng tôi.
+18|Muốn; nghĩ; nhớ|我想去中国。|Tôi muốn đi Trung Quốc.
+19|Một|我有一个问题。|Tôi có một câu hỏi.
+20|Rất|今天很热。|Hôm nay rất nóng.
+21|Người|你是哪国人？|Bạn là người nước nào?
+22|Kia, đó; vậy thì|那是我们的工厂。|Kia là nhà máy của chúng tôi.
+23|Đến, tới|你什么时候来越南？|Khi nào bạn đến Việt Nam?
+24|Đều, cũng đều|我们都是越南人。|Chúng tôi đều là người Việt Nam.
+25|Cái, chiếc (lượng từ chung)|我要两个。|Tôi lấy hai cái.
+26|Có thể, có khả năng|你能帮我吗？|Bạn giúp tôi được không?
+27|Đi|我明天去上海。|Mai tôi đi Thượng Hải.
+28|Và, với|我和A是同事。|Tôi và A là đồng nghiệp.
+29|Làm|你做什么工作？|Bạn làm công việc gì?
+30|Trên; lên; trước (上个月)|书在桌子上。|Sách ở trên bàn.
+31|Không có; chưa|我没有时间。|Tôi không có thời gian.
+32|Nhìn, xem; đọc|请看这个样品。|Mời xem mẫu này.
+33|Thế nào, làm sao|这个用汉语怎么说？|Cái này tiếng Trung nói thế nào?
+34|Bây giờ, hiện tại|现在几点？|Bây giờ mấy giờ?
+35|Giờ (đồng hồ); điểm; một chút|我们三点见。|Chúng ta gặp lúc 3 giờ.
+36|Thì sao? (trợ từ hỏi); đang|我很好，你呢？|Tôi khỏe, còn bạn?
+37|Quá, lắm|太贵了！|Đắt quá!
+38|Bên trong|文件在电脑里。|Tài liệu ở trong máy tính.
+39|Nghe|你听懂了吗？|Bạn nghe hiểu chưa?
+40|Ai|他是谁？|Anh ấy là ai?
+41|Nhiều; bao nhiêu (多大)|今天的工作很多。|Công việc hôm nay rất nhiều.
+42|Lúc, khi|你什么时候有空？|Lúc nào bạn rảnh?
+43|Dưới; xuống; sau (下个月)|我们下个月见。|Tháng sau chúng ta gặp.
+46|Thích|我喜欢中国菜。|Tôi thích món Trung Quốc.
+47|To, lớn|这个房间很大。|Phòng này rất rộng.
+48|Đồ vật, đồ|你买什么东西？|Bạn mua đồ gì?
+49|Nhỏ, bé|这个盒子太小了。|Cái hộp này nhỏ quá.
+51|Yêu|我爱我的家。|Tôi yêu gia đình tôi.
+52|Năm|我工作了十年。|Tôi đã làm việc mười năm.
+54|Về, quay lại; trả lời|我下午回公司。|Chiều tôi về công ty.
+56|Tiền|这个多少钱？|Cái này bao nhiêu tiền?
+57|Ăn|你吃饭了吗？|Bạn ăn cơm chưa?
+58|Mở; lái (xe); bắt đầu|请开门。|Vui lòng mở cửa.
+59|Nhà; gia đình; (lượng từ công ty)|你家在哪儿？|Nhà bạn ở đâu?
+60|Nào|你是哪国人？|Bạn là người nước nào?
+62|Mẹ|我妈妈是老师。|Mẹ tôi là giáo viên.
+64|Mấy (số nhỏ)|你有几个孩子？|Bạn có mấy đứa con?
+65|Bố|我爸爸在家。|Bố tôi ở nhà.
+66|Một vài, những|这些是样品。|Những cái này là hàng mẫu.
+67|Thế nào, ra sao|这个价格怎么样？|Giá này thế nào?
+69|Ở, sống|你住在哪儿？|Bạn sống ở đâu?
+70|Ba (số 3)|我在中国住了三年。|Tôi đã sống ở Trung Quốc ba năm.
+72|Mua|我想买这个。|Tôi muốn mua cái này.
+73|Bác sĩ|他是医生。|Anh ấy là bác sĩ.
+74|Ở đâu|洗手间在哪儿？|Nhà vệ sinh ở đâu?
+77|Ngồi; đi (xe, tàu)|请坐。|Mời ngồi.
+78|Uống|你喝茶吗？|Bạn uống trà không?
+79|Viết|请写你的名字。|Vui lòng viết tên bạn.
+80|Tháng; mặt trăng|我下个月去中国。|Tháng sau tôi đi Trung Quốc.
+81|Ngày (trong tháng); số|今天几号？|Hôm nay ngày mấy?
+82|Con chó|我家有一只狗。|Nhà tôi có một con chó.
+83|Tuổi|你孩子几岁？|Con bạn mấy tuổi?
+84|Nhìn thấy|你看见A了吗？|Bạn có thấy A không?
+87|Con trai|我儿子八岁。|Con trai tôi tám tuổi.
+88|Đẹp|这个包装很漂亮。|Bao bì này rất đẹp.
+89|Phút|请等我五分钟。|Vui lòng đợi tôi 5 phút.
+91|Quyển (lượng từ sách); vốn|我买了一本书。|Tôi mua một quyển sách.
+93|Bao nhiêu|你们需要多少？|Các bạn cần bao nhiêu?
+94|Đồng (tiền); miếng, cục|这个十块钱。|Cái này mười đồng.
+95|Con gái|她女儿很可爱。|Con gái cô ấy rất dễ thương.
+97|Quần áo|这家工厂做衣服。|Nhà máy này làm quần áo.
+98|Nước|请给我一杯水。|Cho tôi một cốc nước.
+99|Trường học|我儿子的学校很近。|Trường của con trai tôi rất gần.
+100|Phim|周末我们去看电影吧。|Cuối tuần mình đi xem phim nhé.
+101|Sách|这本书很有意思。|Quyển sách này rất hay.
+102|Bốn (số 4)|我们公司有四个部门。|Công ty chúng tôi có bốn bộ phận.
+103|Năm (số 5)|我五点下班。|Tôi tan làm lúc 5 giờ.
+104|Bệnh viện|医院离这儿远吗？|Bệnh viện cách đây xa không?
+105|Ít|今天客人很少。|Hôm nay khách rất ít.
+107|Máy bay|我坐飞机去北京。|Tôi đi máy bay đến Bắc Kinh.
+108|Hai (số 2)|二月是春节。|Tháng Hai là Tết.
+109|Tivi|晚上我看电视。|Buổi tối tôi xem tivi.
+110|Đọc|请读一下这个句子。|Vui lòng đọc câu này.
+111|Phía sau|工厂在公司后面。|Nhà máy ở phía sau công ty.
+113|Ngủ|我十一点睡觉。|Tôi đi ngủ lúc 11 giờ.
+114|Sáu (số 6)|我们六点吃晚饭。|Chúng tôi ăn tối lúc 6 giờ.
+115|Giáo viên, thầy cô|我的汉语老师是中国人。|Giáo viên tiếng Trung của tôi là người Trung Quốc.
+117|Mười (số 10)|会议十点开始。|Cuộc họp bắt đầu lúc 10 giờ.
+118|Con mèo|我喜欢猫。|Tôi thích mèo.
+120|Nóng|胡志明市很热。|TP. Hồ Chí Minh rất nóng.
+121|Học sinh, sinh viên|他是大学生。|Cậu ấy là sinh viên đại học.
+123|Chữ|这个字怎么读？|Chữ này đọc thế nào?
+124|Học, học tập|我在学习汉语。|Tôi đang học tiếng Trung.
+125|Lạnh|北京冬天很冷。|Mùa đông Bắc Kinh rất lạnh.
+126|Phía trước|银行在前面。|Ngân hàng ở phía trước.
+127|Tám (số 8)|我每天工作八个小时。|Mỗi ngày tôi làm việc tám tiếng.
+128|Trung Quốc|我想去中国出差。|Tôi muốn đi Trung Quốc công tác.
+129|Bảy (số 7)|一个星期有七天。|Một tuần có bảy ngày.
+130|Món ăn; rau|这个菜很好吃。|Món này rất ngon.
+131|Cái bàn|文件在桌子上。|Tài liệu ở trên bàn.
+132|Taxi|我们坐出租车去机场。|Chúng ta đi taxi ra sân bay.
+133|Thời tiết|今天天气很好。|Hôm nay thời tiết rất đẹp.
+135|Chín (số 9)|我九点到公司。|Tôi đến công ty lúc 9 giờ.
+136|Cửa hàng|这个商店卖什么？|Cửa hàng này bán gì?
+137|Cái ghế|请坐这把椅子。|Mời ngồi ghế này.
+138|Bạn học|他是我的大学同学。|Cậu ấy là bạn đại học của tôi.
+139|Một chút, một ít|我会说一点儿汉语。|Tôi biết nói một chút tiếng Trung.
+140|Quả táo|我每天吃一个苹果。|Mỗi ngày tôi ăn một quả táo.
+141|Nhà hàng; khách sạn|我们在饭店吃饭。|Chúng ta ăn ở nhà hàng.
+144|Hoa quả, trái cây|越南的水果很好吃。|Trái cây Việt Nam rất ngon.
+145|Cái cốc, ly|这个杯子是我的。|Cái cốc này là của tôi.
+146|Trời mưa|下雨了，带伞吧。|Trời mưa rồi, mang ô đi.
+147|Cơm|我要一碗米饭。|Tôi lấy một bát cơm.
+148|Bắc Kinh|我们公司在北京有办公室。|Công ty chúng tôi có văn phòng ở Bắc Kinh.
+149|Tiếng Hán, tiếng Trung|你的汉语说得很好。|Bạn nói tiếng Trung rất giỏi.
+151|Thì, liền; chính là; ngay|我马上就来。|Tôi đến ngay đây.
+152|Muốn; cần; sẽ|我要两杯咖啡。|Tôi muốn hai cốc cà phê.
+153|Biết|你知道他的电话吗？|Bạn có biết số điện thoại của anh ấy không?
+154|Nhé, đi (trợ từ đề nghị)|我们走吧。|Chúng ta đi thôi.
+155|Đến; tới (kết quả)|货到了吗？|Hàng đến chưa?
+156|Đúng; đối với|你说得对。|Bạn nói đúng.
+157|Cũng|我也是越南人。|Tôi cũng là người Việt Nam.
+158|Còn, vẫn|他还在开会。|Anh ấy vẫn đang họp.
+159|Để, cho, bảo (ai làm gì)|老板让我去中国。|Sếp bảo tôi đi Trung Quốc.
+160|Cho, đưa; gửi cho|请给我你的名片。|Cho tôi xin danh thiếp của bạn.
+161|Qua; đã từng (trợ từ)|我去过上海。|Tôi đã từng đi Thượng Hải.
+162|Trợ từ nối bổ ngữ mức độ|你说得很好。|Bạn nói rất hay.
+163|Thật, thật là|你的汉语真好！|Tiếng Trung của bạn giỏi thật!
+164|Đang (trợ từ chỉ trạng thái kéo dài)|门开着。|Cửa đang mở.
+165|Có thể, được|我可以进来吗？|Tôi vào được không?
+166|Đừng|别担心。|Đừng lo.
+167|Đi (bộ); rời đi|我先走了。|Tôi đi trước nhé.
+169|Bởi vì|因为下雨，我迟到了。|Vì trời mưa nên tôi đến muộn.
+170|Lại, nữa; rồi mới|请再说一遍。|Vui lòng nói lại lần nữa.
+171|Nhanh|你说得太快了。|Bạn nói nhanh quá.
+172|Nhưng|价格很好，但是数量太少。|Giá tốt, nhưng số lượng ít quá.
+174|Tại sao|你为什么不来？|Tại sao bạn không đến?
+175|Cảm thấy, thấy rằng|我觉得这个价格很合适。|Tôi thấy giá này rất hợp lý.
+176|Nó (con vật, đồ vật)|这是我的猫，它很可爱。|Đây là con mèo của tôi, nó rất dễ thương.
+177|Từ (điểm bắt đầu)|我从越南来。|Tôi đến từ Việt Nam.
+178|Tìm|你找谁？|Bạn tìm ai?
+179|Nhất (so sánh cao nhất)|这是最好的价格。|Đây là giá tốt nhất.
+180|Có thể, có lẽ|他可能不来了。|Có lẽ anh ấy không đến nữa.
+181|Lần|我去过中国三次。|Tôi đã đi Trung Quốc ba lần.
+182|Ra|他出去了。|Anh ấy ra ngoài rồi.
+183|Đứa trẻ, con cái|你有孩子吗？|Bạn có con chưa?
+184|Cho nên, vì vậy|下雨了，所以我没去。|Trời mưa nên tôi không đi.
+185|Hai (dùng với lượng từ)|我要两个。|Tôi lấy hai cái.
+186|Sai; lỗi|对不起，我错了。|Xin lỗi, tôi sai rồi.
+189|Cùng nhau|我们一起去吧。|Chúng ta cùng đi nhé.
+190|Bắt đầu|我们开始吧。|Chúng ta bắt đầu thôi.
+192|Sự việc, chuyện|你有什么事情？|Bạn có chuyện gì?
+193|Một chút, một lát (làm thử)|请等一下。|Vui lòng đợi một chút.
+194|Vô cùng, rất|非常感谢！|Vô cùng cảm ơn!
+195|Hy vọng|希望我们合作愉快。|Hy vọng chúng ta hợp tác vui vẻ.
+197|So với, hơn|今天比昨天热。|Hôm nay nóng hơn hôm qua.
+198|Hỏi|我可以问你一个问题吗？|Tôi hỏi bạn một câu được không?
+199|Chiếc, việc (lượng từ áo, sự việc)|这件事很重要。|Việc này rất quan trọng.
+201|Thứ nhất, đầu tiên|这是我第一次来中国。|Đây là lần đầu tôi đến Trung Quốc.
+202|Vào|请进！|Mời vào!
+204|Mới|这是我们的新产品。|Đây là sản phẩm mới của chúng tôi.
+206|Mặc, mang (giày)|今天穿什么？|Hôm nay mặc gì?
+207|Tặng; tiễn; giao (hàng)|我送你去机场。|Tôi tiễn bạn ra sân bay.
+208|Chơi|周末你去哪儿玩？|Cuối tuần bạn đi chơi đâu?
+209|Dài|这条路很长。|Con đường này rất dài.
+211|Xong, hết|我的工作做完了。|Tôi làm xong việc rồi.
+212|Mỗi|我每天八点上班。|Mỗi ngày tôi đi làm lúc 8 giờ.
+214|Giúp đỡ|谢谢你的帮助。|Cảm ơn sự giúp đỡ của bạn.
+215|Buổi tối|晚上一起吃饭吧。|Tối cùng ăn cơm nhé.
+216|Nói chuyện|他说话很快。|Anh ấy nói rất nhanh.
+217|Cửa|请关门。|Vui lòng đóng cửa.
+218|Nữ, con gái|我们经理是女的。|Quản lý của chúng tôi là nữ.
+220|Bán|你们卖什么产品？|Các bạn bán sản phẩm gì?
+221|Cao|价格太高了。|Giá cao quá.
+222|Phòng|你的房间在几楼？|Phòng bạn ở tầng mấy?
+223|Đường|路上堵车。|Trên đường kẹt xe.
+224|Hiểu|你懂我的意思吗？|Bạn hiểu ý tôi không?
+225|Đang (làm gì)|他正在开会。|Anh ấy đang họp.
+226|Cười|她笑得很开心。|Cô ấy cười rất vui.
+227|Xa|工厂离这儿远吗？|Nhà máy cách đây xa không?
+228|Vợ|这是我妻子。|Đây là vợ tôi.
+229|Chồng|她丈夫是工程师。|Chồng cô ấy là kỹ sư.
+230|Cách (khoảng cách)|公司离机场很近。|Công ty cách sân bay rất gần.
+231|Về phía, hướng tới|往前走，然后往左。|Đi thẳng, rồi rẽ trái.
+232|Nam, con trai|A是男的还是女的？|A là nam hay nữ?
+233|Mắt|她的眼睛很漂亮。|Mắt cô ấy rất đẹp.
+234|Vui vẻ, hạnh phúc|生日快乐！|Chúc mừng sinh nhật!
+235|Tuy rằng|虽然很忙，但是我很开心。|Tuy bận nhưng tôi rất vui.
+236|Buổi sáng sớm|早上好！|Chào buổi sáng!
+237|Thuốc|你吃药了吗？|Bạn uống thuốc chưa?
+238|Cơ thể, sức khỏe|身体好吗？|Sức khỏe tốt chứ?
+239|Đen; tối|天黑了。|Trời tối rồi.
+240|Cà phê|越南咖啡很有名。|Cà phê Việt Nam rất nổi tiếng.
+241|Ngày; mặt trời|五月一日放假。|Ngày 1 tháng 5 được nghỉ.
+243|Ngoài, bên ngoài|他在外面打电话。|Anh ấy đang gọi điện ở bên ngoài.
+244|Sinh nhật|今天是我的生日。|Hôm nay là sinh nhật tôi.
+245|Anh trai|我哥哥在美国。|Anh trai tôi ở Mỹ.
+246|Vé|我买了两张票。|Tôi mua hai vé.
+248|Rửa, giặt|我去洗手。|Tôi đi rửa tay.
+249|Khiêu vũ, nhảy múa|她喜欢跳舞。|Cô ấy thích nhảy.
+250|Em trai|我弟弟是大学生。|Em trai tôi là sinh viên.

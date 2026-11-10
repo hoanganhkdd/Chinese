@@ -1,0 +1,238 @@
+751|Tha thứ|请原谅我。|Xin hãy tha thứ cho tôi.
+752|Lộn xộn, bừa|房间很乱。|Phòng rất bừa bộn.
+753|Gần như nhau, xấp xỉ|两个价格差不多。|Hai mức giá gần như nhau.
+754|Đầy|仓库满了。|Kho đầy rồi.
+755|Giả; nghỉ (phép)|这是假的。|Cái này là đồ giả.
+756|Nghiên cứu|我们正在研究你的方案。|Chúng tôi đang nghiên cứu phương án của bạn.
+758|Chính xác, đúng|你的答案是正确的。|Câu trả lời của bạn là đúng.
+759|Nhận, thu|你收到我的邮件了吗？|Bạn nhận được email của tôi chưa?
+760|Giây|请等几秒。|Vui lòng đợi vài giây.
+761|Đồng thời|同时做两件事。|Làm hai việc cùng lúc.
+762|Cung cấp|我们可以提供样品。|Chúng tôi có thể cung cấp hàng mẫu.
+763|Thua; vận chuyển; nhập (dữ liệu)|我们输了。|Chúng ta thua rồi.
+765|Tòa, ngọn (lượng từ); chỗ ngồi|一座大楼。|Một tòa nhà lớn.
+766|Ví dụ như|比如说，价格和质量。|Ví dụ như giá và chất lượng.
+767|Nghiêm trọng|问题很严重。|Vấn đề rất nghiêm trọng.
+768|Cởi|请脱鞋。|Vui lòng cởi giày.
+769|Đi cùng, tiếp (ai)|我陪你去工厂。|Tôi đi cùng bạn đến nhà máy.
+770|Pháp luật|我们要遵守法律。|Chúng ta phải tuân thủ pháp luật.
+771|Đáng, xứng đáng|这个价格值得。|Giá này đáng đồng tiền.
+772|Sử dụng|请先看使用说明。|Vui lòng đọc hướng dẫn sử dụng trước.
+773|Phương diện, mặt|在质量方面没有问题。|Về mặt chất lượng thì không có vấn đề.
+774|Hóa ra; ban đầu|原来是你！|Hóa ra là bạn!
+776|Thuyết minh; cho thấy|请说明原因。|Vui lòng giải thích nguyên nhân.
+777|Vẫn, vẫn còn|他仍然在等。|Anh ấy vẫn đang đợi.
+778|Động tác|这个动作很难。|Động tác này rất khó.
+779|Nhận được, bị (ảnh hưởng)|受到大家的欢迎。|Được mọi người hoan nghênh.
+780|Đuổi kịp; vội|我要赶飞机。|Tôi phải vội ra máy bay.
+781|Nghi ngờ|我怀疑他说的不对。|Tôi nghi điều anh ấy nói không đúng.
+782|Từ chối|他拒绝了我们的价格。|Anh ấy từ chối mức giá của chúng tôi.
+783|Diễn viên|她是有名的演员。|Cô ấy là diễn viên nổi tiếng.
+784|Vỡ, rách, hỏng|箱子破了。|Thùng bị rách rồi.
+785|Vì vậy, do đó|因此我们决定推迟。|Vì vậy chúng tôi quyết định hoãn lại.
+786|Đáp án|答案是什么？|Đáp án là gì?
+787|Hoạt động|公司有很多活动。|Công ty có nhiều hoạt động.
+788|Đã… thì|既然你来了，就一起吃饭吧。|Đã đến rồi thì cùng ăn cơm nhé.
+790|Đành phải, buộc phải|我不得不加班。|Tôi buộc phải tăng ca.
+791|Bất luận|无论如何，我都会帮你。|Dù thế nào tôi cũng sẽ giúp bạn.
+792|Con dao|这把刀很快。|Con dao này rất sắc.
+793|Thích hợp, phù hợp|这个产品适合越南市场。|Sản phẩm này phù hợp thị trường Việt Nam.
+794|Cho phép|这里不允许抽烟。|Ở đây không được hút thuốc.
+795|Thất vọng|我很失望。|Tôi rất thất vọng.
+797|Đạt được, giành được|我们获得了很大的成功。|Chúng tôi đã đạt được thành công lớn.
+798|Nếu như|要是你不来，就告诉我。|Nếu bạn không đến thì báo tôi.
+799|Mời|我们邀请您参观工厂。|Chúng tôi mời anh/chị tham quan nhà máy.
+800|Mặc dù|尽管很累，他还在工作。|Mặc dù rất mệt, anh ấy vẫn làm việc.
+801|Lãng phí|别浪费时间。|Đừng lãng phí thời gian.
+802|Thất bại|失败是成功之母。|Thất bại là mẹ thành công.
+803|Trách nhiệm|这是我的责任。|Đây là trách nhiệm của tôi.
+804|Xinh đẹp|越南的风景很美丽。|Phong cảnh Việt Nam rất đẹp.
+805|Áp lực|工作压力很大。|Áp lực công việc rất lớn.
+806|Mùi vị|这个菜味道很好。|Món này vị rất ngon.
+807|Lợi hại, giỏi; dữ dội|你真厉害！|Bạn giỏi thật!
+808|Xuất phát|我们几点出发？|Mấy giờ chúng ta xuất phát?
+809|Hưng phấn, phấn khích|我很兴奋。|Tôi rất phấn khích.
+810|Khán giả|观众很多。|Khán giả rất đông.
+811|Phản đối|我反对这个计划。|Tôi phản đối kế hoạch này.
+812|Đặc sắc, hay|表演很精彩。|Buổi biểu diễn rất đặc sắc.
+813|Tình cảm|他们感情很好。|Tình cảm của họ rất tốt.
+814|Biểu diễn, buổi diễn|演出八点开始。|Buổi diễn bắt đầu lúc 8 giờ.
+815|Vui vẻ|周末愉快！|Cuối tuần vui vẻ!
+816|Nói đùa|别开玩笑了。|Đừng đùa nữa.
+817|Tạp chí|这本杂志很有意思。|Tạp chí này rất hay.
+818|Thích hợp, vừa|这个价格很合适。|Giá này rất hợp lý.
+819|Quảng cáo|我们在网上做广告。|Chúng tôi quảng cáo trên mạng.
+820|Tự nhiên|说得很自然。|Nói rất tự nhiên.
+821|Sâu; đậm|这条河很深。|Con sông này rất sâu.
+822|Lấy, nhận|我去银行取钱。|Tôi đi ngân hàng rút tiền.
+823|Trái đất|保护地球。|Bảo vệ trái đất.
+824|Đẹp trai|他很帅。|Anh ấy rất đẹp trai.
+825|Đẩy; đẩy lùi|请推门。|Vui lòng đẩy cửa.
+826|Then chốt, mấu chốt|质量是关键。|Chất lượng là then chốt.
+827|Trống, rỗng; rảnh|你什么时候有空？|Khi nào bạn rảnh?
+828|Ôm; bế|她抱着孩子。|Cô ấy đang bế con.
+829|Rốt cuộc, cuối cùng (văn viết)|究竟是怎么回事？|Rốt cuộc là chuyện gì?
+830|E rằng, sợ rằng|恐怕来不及了。|E rằng không kịp nữa rồi.
+831|Nằm|他躺在床上。|Anh ấy nằm trên giường.
+832|Buổi tụ họp, tiệc|周末有个聚会。|Cuối tuần có buổi tụ họp.
+833|Phương hướng|你走错方向了。|Bạn đi nhầm hướng rồi.
+834|Hạnh phúc|祝你们幸福！|Chúc hai bạn hạnh phúc!
+835|Tiếp theo, kế đó|接着说吧。|Nói tiếp đi.
+836|Kỹ thuật, công nghệ|这家工厂技术很好。|Nhà máy này kỹ thuật rất tốt.
+837|Khó khăn|有困难就告诉我。|Có khó khăn cứ nói với tôi.
+838|Vừa đúng, vừa may|你来得正好。|Bạn đến vừa đúng lúc.
+839|Nhắc nhở|请提醒我开会。|Nhắc tôi đi họp nhé.
+840|Du lịch, đi chơi xa|我们去中国旅行。|Chúng tôi đi du lịch Trung Quốc.
+841|Xúc động, kích động|他很激动。|Anh ấy rất xúc động.
+842|Tự hào, kiêu ngạo|我为你骄傲。|Tôi tự hào về bạn.
+843|Lông; hào (1/10 tệ)|五毛钱。|Năm hào.
+844|Đốt, tiết (lượng từ tiết học); lễ|一节课。|Một tiết học.
+845|Rất nhiều|许多人喜欢这个产品。|Rất nhiều người thích sản phẩm này.
+846|Thuận lợi, suôn sẻ|祝你一路顺利！|Chúc bạn thượng lộ bình an!
+847|Nghề nghiệp|你的职业是什么？|Nghề nghiệp của bạn là gì?
+849|Kiếm (tiền)|做生意赚钱不容易。|Làm ăn kiếm tiền không dễ.
+850|Thế là, vì vậy|于是我们决定合作。|Thế là chúng tôi quyết định hợp tác.
+851|Dọn dẹp, thu dọn|我在收拾行李。|Tôi đang thu dọn hành lý.
+852|Xung quanh|工厂周围有很多树。|Xung quanh nhà máy có nhiều cây.
+853|Tình yêu|这是一部爱情电影。|Đây là một bộ phim tình cảm.
+854|Rất, vô cùng|我十分感谢你。|Tôi vô cùng cảm ơn bạn.
+855|Tôn trọng|我们尊重客户的意见。|Chúng tôi tôn trọng ý kiến khách hàng.
+856|Giáo sư|他是大学教授。|Ông ấy là giáo sư đại học.
+857|Vượt quá|不能超过五公斤。|Không được vượt quá 5 kg.
+858|Gửi (bưu điện)|我给你寄样品。|Tôi gửi hàng mẫu cho bạn.
+859|Nhân tiện, tiện thể|顺便问一下。|Nhân tiện hỏi một chút.
+860|Buồn chán, nhạt nhẽo|周末很无聊。|Cuối tuần rất chán.
+861|Mục đích|这次来的目的是谈合作。|Mục đích chuyến này là bàn hợp tác.
+862|Thấp|价格很低。|Giá rất thấp.
+863|Còn lại, thừa|还剩多少？|Còn lại bao nhiêu?
+864|Phức tạp|这个问题很复杂。|Vấn đề này rất phức tạp.
+865|Xã hội|社会发展很快。|Xã hội phát triển rất nhanh.
+866|Cố ý|对不起，我不是故意的。|Xin lỗi, tôi không cố ý.
+867|Lợi ích, điểm tốt|合作对双方都有好处。|Hợp tác có lợi cho cả hai bên.
+868|Không ngờ, lại dám|他竟然忘了。|Không ngờ anh ấy lại quên.
+869|Biểu thị, bày tỏ|我表示感谢。|Tôi xin bày tỏ lòng cảm ơn.
+870|Ấn tượng|你们公司给我留下了很好的印象。|Công ty các bạn để lại cho tôi ấn tượng rất tốt.
+871|Sinh ra|我出生在河内。|Tôi sinh ra ở Hà Nội.
+872|Ước tính, đoán|我估计明天能到。|Tôi đoán mai sẽ đến.
+873|Địa điểm|会议地点在哪儿？|Địa điểm họp ở đâu?
+874|Nhẹ nhõm, thoải mái|今天工作很轻松。|Hôm nay công việc nhẹ nhàng.
+875|Tác dụng|这个药有什么作用？|Thuốc này có tác dụng gì?
+876|Giơ, nâng; tổ chức|有问题请举手。|Có câu hỏi vui lòng giơ tay.
+877|Chàng trai trẻ|这个小伙子很能干。|Chàng trai này rất giỏi.
+878|Nổi tiếng (trang trọng)|这是一个著名的品牌。|Đây là một thương hiệu nổi tiếng.
+879|Miễn phí|样品是免费的。|Hàng mẫu miễn phí.
+880|Đau lòng|别伤心了。|Đừng đau lòng nữa.
+881|Phóng viên, nhà báo|记者来采访我们。|Phóng viên đến phỏng vấn chúng tôi.
+882|Tỉ mỉ, cẩn thận|请仔细检查。|Vui lòng kiểm tra kỹ.
+883|Sô-cô-la|我喜欢吃巧克力。|Tôi thích ăn sô-cô-la.
+884|Cay|这个菜太辣了。|Món này cay quá.
+885|Lẫn nhau|我们互相帮助。|Chúng ta giúp đỡ lẫn nhau.
+886|Nhà vệ sinh (khẩu ngữ)|厕所在哪儿？|Nhà vệ sinh ở đâu?
+887|Quá trình|生产过程很重要。|Quá trình sản xuất rất quan trọng.
+888|Xin, đăng ký (đơn)|我申请了签证。|Tôi đã nộp đơn xin visa.
+889|Gây ra, dẫn tới|这引起了很多问题。|Điều này gây ra nhiều vấn đề.
+890|Phát triển|越南经济发展很快。|Kinh tế Việt Nam phát triển rất nhanh.
+891|Tốt nghiệp|我大学毕业十年了。|Tôi tốt nghiệp đại học được mười năm rồi.
+892|Chính thức|我们正式开始合作。|Chúng ta chính thức bắt đầu hợp tác.
+893|Nhà bếp|妈妈在厨房做饭。|Mẹ đang nấu cơm trong bếp.
+894|Chuyên ngành; chuyên nghiệp|他们很专业。|Họ rất chuyên nghiệp.
+895|Thu hút|这个广告很吸引人。|Quảng cáo này rất thu hút.
+896|Tâm trạng|今天心情很好。|Hôm nay tâm trạng rất tốt.
+897|Chúc mừng|祝贺你！|Chúc mừng bạn!
+898|Điều kiện|付款条件是什么？|Điều kiện thanh toán là gì?
+899|Nhất định (dặn dò), ngàn vạn|千万别忘了！|Nhất định đừng quên nhé!
+900|Đường (ăn)|咖啡不要糖。|Cà phê không đường.
+901|Chuyến, lượt|我去一趟工厂。|Tôi đi nhà máy một chuyến.
+902|Buồn ngủ|我很困。|Tôi buồn ngủ lắm.
+903|Do, bởi vì|由于天气原因，航班推迟了。|Do thời tiết, chuyến bay bị hoãn.
+904|Mật khẩu|Wi-Fi密码是多少？|Mật khẩu Wi-Fi là gì?
+905|Lần, gấp (bội)|价格涨了一倍。|Giá tăng gấp đôi.
+906|Lau, chùi|请擦一下桌子。|Lau bàn giúp nhé.
+907|Nhất là, đặc biệt|我喜欢水果，尤其是芒果。|Tôi thích trái cây, nhất là xoài.
+908|Kinh nghiệm|他有十年的出口经验。|Anh ấy có mười năm kinh nghiệm xuất khẩu.
+909|Cái hộp|一盒子饼干。|Một hộp bánh quy.
+911|Cách nhìn, quan điểm|你的看法呢？|Quan điểm của bạn thì sao?
+912|Bẩn|衣服脏了。|Quần áo bẩn rồi.
+913|Nghệ thuật|这是一件艺术品。|Đây là một tác phẩm nghệ thuật.
+914|Tốc độ|网络速度太慢了。|Tốc độ mạng chậm quá.
+915|Dũng cảm|他很勇敢。|Anh ấy rất dũng cảm.
+916|Chữ số, con số|这个数字不对。|Con số này không đúng.
+917|Tạm thời|暂时没有问题。|Tạm thời không có vấn đề.
+918|Ưu tú, xuất sắc|她是优秀的员工。|Cô ấy là nhân viên xuất sắc.
+919|Chuyện cười|他讲了一个笑话。|Anh ấy kể một chuyện cười.
+920|Đáng tiếc|真可惜！|Tiếc thật!
+921|Kêu, reo|电话响了。|Điện thoại reo rồi.
+922|Tiết kiệm; tỉnh|这样可以省很多钱。|Như vậy có thể tiết kiệm nhiều tiền.
+923|Khoa học|科学技术。|Khoa học kỹ thuật.
+924|Ngốc, đần|我真笨！|Tôi ngốc thật!
+925|Nhà hàng (trong khách sạn)|餐厅在一楼。|Nhà hàng ở tầng một.
+926|Các, mỗi|各位来宾，大家好！|Kính chào quý vị khách quý!
+927|Khoảng cách|这里距离机场很近。|Đây cách sân bay rất gần.
+928|Cửa sổ|请开窗户。|Vui lòng mở cửa sổ.
+929|Không khí|这里空气很好。|Không khí ở đây rất tốt.
+930|Y tá|她是护士。|Cô ấy là y tá.
+931|Hối hận|我很后悔。|Tôi rất hối hận.
+932|Khoảng chừng|大约十分钟。|Khoảng mười phút.
+933|Nội dung|会议内容是什么？|Nội dung cuộc họp là gì?
+934|Quy định|公司规定九点上班。|Công ty quy định 9 giờ vào làm.
+935|Hiệu quả|这个广告效果很好。|Quảng cáo này hiệu quả rất tốt.
+936|Tiền mặt|可以付现金吗？|Trả tiền mặt được không?
+937|Trẻ em|这是儿童用品。|Đây là đồ dùng trẻ em.
+938|Thuê|我想租一个仓库。|Tôi muốn thuê một cái kho.
+939|Bài (lượng từ bài văn)|一篇文章。|Một bài văn.
+940|Lãng mạn|这里很浪漫。|Ở đây rất lãng mạn.
+941|Thái độ|他的服务态度很好。|Thái độ phục vụ của anh ấy rất tốt.
+942|Tự tin|你要自信一点儿。|Bạn phải tự tin hơn chút.
+943|Nhẹ|这个箱子很轻。|Thùng này rất nhẹ.
+944|Ngạc nhiên|我很吃惊。|Tôi rất ngạc nhiên.
+945|Quen thuộc|我对这里很熟悉。|Tôi rất quen nơi này.
+946|Theo, dựa theo|按照合同办。|Làm theo hợp đồng.
+947|Thế kỷ|二十一世纪。|Thế kỷ 21.
+948|Hồi tưởng, kỷ niệm|美好的回忆。|Kỷ niệm đẹp.
+949|Giống nhau|两个样品相同。|Hai mẫu giống nhau.
+950|Trọng điểm|这是今天会议的重点。|Đây là trọng tâm cuộc họp hôm nay.
+951|Giáo dục|他很重视孩子的教育。|Anh ấy rất coi trọng việc giáo dục con cái.
+952|Không chịu nổi|天气热得受不了。|Trời nóng không chịu nổi.
+953|Da|她的皮肤很好。|Da cô ấy rất đẹp.
+954|Sự khác biệt|这两个有什么区别？|Hai cái này khác nhau thế nào?
+955|Khoảng, chừng; trái phải|三十岁左右。|Khoảng 30 tuổi.
+956|Ánh nắng|今天阳光很好。|Hôm nay nắng đẹp.
+957|Trang|请看第五页。|Mời xem trang 5.
+958|Bài văn, bài viết|这篇文章写得很好。|Bài viết này viết rất hay.
+959|Ngôn ngữ|你会几种语言？|Bạn biết mấy ngôn ngữ?
+960|Tiêu chuẩn|我们的产品符合国际标准。|Sản phẩm của chúng tôi đạt tiêu chuẩn quốc tế.
+961|Quản lý|他负责管理仓库。|Anh ấy phụ trách quản lý kho.
+962|Hiểu lầm|别误会，我不是这个意思。|Đừng hiểu lầm, tôi không có ý đó.
+963|Cây cầu|这座桥很长。|Cây cầu này rất dài.
+964|Tổ chức, cử hành|会议在河内举行。|Hội nghị được tổ chức ở Hà Nội.
+965|Bụng|我肚子疼。|Tôi đau bụng.
+966|Không chỉ|这不仅是价格的问题。|Đây không chỉ là vấn đề giá.
+967|Bánh quy|来点儿饼干吧。|Ăn chút bánh quy nhé.
+968|Quốc tế|这是国际展会。|Đây là triển lãm quốc tế.
+969|Lòng tin, tự tin|我对我们的产品有信心。|Tôi có niềm tin vào sản phẩm của chúng tôi.
+970|Khiêng, ngẩng|请抬一下这个箱子。|Khiêng giúp cái thùng này.
+972|Canh, súp|我想喝汤。|Tôi muốn ăn canh.
+973|Nhà văn|他是著名作家。|Ông ấy là nhà văn nổi tiếng.
+974|Thành thật|做生意要诚实。|Làm ăn phải thành thật.
+976|Gửi (tiền), lưu|我去银行存钱。|Tôi đi ngân hàng gửi tiền.
+977|Thơm|这个菜真香！|Món này thơm quá!
+979|Trang điểm, ăn diện|她打扮得很漂亮。|Cô ấy ăn diện rất đẹp.
+980|Tiểu thuyết|我喜欢看小说。|Tôi thích đọc tiểu thuyết.
+981|Tuổi tác|年龄不是问题。|Tuổi tác không phải vấn đề.
+982|Phù hợp (yêu cầu, tiêu chuẩn)|产品符合要求。|Sản phẩm phù hợp yêu cầu.
+983|Giao thông|这里交通很方便。|Giao thông ở đây rất thuận tiện.
+984|Chung, cùng|这是我们的共同目标。|Đây là mục tiêu chung của chúng ta.
+985|Hơi, một chút|请稍微等一下。|Vui lòng đợi một chút.
+986|Tăng thêm|今年销售增加了百分之二十。|Năm nay doanh số tăng 20%.
+987|Gõ (cửa)|有人敲门。|Có người gõ cửa.
+988|Thích ứng|我已经适应了这里的生活。|Tôi đã thích nghi với cuộc sống ở đây.
+989|Nhưng, tuy nhiên|然而，问题还没解决。|Tuy nhiên vấn đề vẫn chưa được giải quyết.
+991|Tương lai|将来我想开公司。|Tương lai tôi muốn mở công ty.
+992|Kiên nhẫn|请耐心等待。|Vui lòng kiên nhẫn đợi.
+993|Ghế sofa|请坐沙发。|Mời ngồi sofa.
+994|Tốt nhất là|你最好明天来。|Tốt nhất là mai bạn đến.
+995|Cấm|禁止抽烟。|Cấm hút thuốc.
+996|Kinh tế|越南经济增长很快。|Kinh tế Việt Nam tăng trưởng rất nhanh.
+997|Chỗ ngồi|这是你的座位。|Đây là chỗ ngồi của bạn.
+998|Mua sắm|周末去购物吧。|Cuối tuần đi mua sắm nhé.
+999|Hút thuốc|这里不能抽烟。|Ở đây không được hút thuốc.
