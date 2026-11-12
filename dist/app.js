@@ -190,11 +190,18 @@ function charRadicals(ch){
     .map(r=>({r, hv:RADICALS[r].hv, m:RADICALS[r].m}));
 }
 // Build per-character breakdown for any word (kể cả từ mới ngoài kho)
+// Tượng hình — tóm tắt mặt chữ (offline, từ picto.js)
+function pictoHint(ch){ try{ return (window.PICTO_HINT||{})[ch]||null; }catch(e){ return null; } }
+function pictoHTML(ch){
+  const p=pictoHint(ch); if(!p) return "";
+  const e=p.e||"🖼️";
+  return `<div class="picto-hint"><span class="picto-emoji">${e}</span><span class="picto-txt"><b>Mặt chữ:</b> ${esc(p.s||"")}</span></div>`;
+}
 function charBreakdownHTML(han){
   const rows=[...han].filter(ch=>D.charPinyin[ch]).map(ch=>{
     const info=charInfo(ch), py=D.charPinyin[ch], rads=charRadicals(ch);
     const radLine = rads.length
-      ? `<div class="sub" style="margin-top:3px">🌿 Bộ thủ: ${rads.map(x=>`<b>${esc(x.r)}</b> ${esc(x.hv)} <span style="opacity:.8">(${esc(x.m)})</span>`).join(" · ")}</div>`
+      ? `<div class="sub" style="margin-top:3px">🌿 Bộ thủ: ${rads.map(x=>{const h=pictoHint(x.r);return `${h&&h.e?h.e+" ":""}<b>${esc(x.r)}</b> ${esc(x.hv)} <span style="opacity:.8">(${esc(x.m)})</span>`;}).join(" · ")}</div>`
       : "";
     return `<div style="display:flex;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line)">
       <div class="han-cell" style="font-size:30px;min-width:42px">${esc(ch)}</div>
@@ -203,6 +210,7 @@ function charBreakdownHTML(han){
           ${info?`· <b>${esc(info.hv)}</b> (Hán-Việt)`:''}
           <button class="mini" style="margin-left:6px" onclick="speak('${esc(ch)}')">🔊</button></div>
         <div class="sub" style="margin:2px 0 0">${info?esc(info.g):'<i>Nghĩa gốc: (chưa có sẵn — dùng 💡 Cách nhớ để phân tích chi tiết)</i>'}</div>
+        ${pictoHTML(ch)}
         ${radLine}
       </div></div>`;
   }).join("");
