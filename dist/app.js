@@ -25,6 +25,7 @@ progress.dailyList = progress.dailyList || {date:"", words:[], sents:[]};
 progress.links = progress.links || [];           // [{title,url,type,note,tag,date}] tài liệu/link nhanh
 progress.examBest = progress.examBest || 0;      // % cao nhất bài thi thử
 progress.saved = progress.saved || {};           // han -> {han,pinyin,vi,mnemonic,date} từ đã lưu (mọi từ)
+progress.roadmap = progress.roadmap || {start:"", perDay:1, done:{}};  // lộ trình video: {start, perDay, done:{videoId:true}}
 if(!progress.settings) progress.settings = {};
 if(progress.settings.reminderOn==null) progress.settings.reminderOn=false;
 if(!progress.settings.reminderTime) progress.settings.reminderTime="08:00";
@@ -798,6 +799,7 @@ function toast(msg){
 /* ---------- Navigation ---------- */
 const PAGES = [
   {id:"home",   ico:"🏠", name:"Tổng quan"},
+  {id:"roadmap",ico:"🗺️", name:"Lộ trình video"},
   {id:"srs",    ico:"🧠", name:"Ôn tập ghi nhớ"},
   {id:"sentsrs",ico:"📖", name:"Ôn câu ví dụ"},
   {id:"listen", ico:"🎧", name:"Luyện nghe"},
@@ -2938,6 +2940,132 @@ $("#themeBtn").onclick=()=>{
 $("#menuBtn").onclick=()=>$("#sidebar").classList.toggle("open");
 
 /* ---------- Boot ---------- */
+/* ================= LỘ TRÌNH VIDEO (HSK 1-2) ================= */
+const VIDS = (window.VIDEOS || []);
+const ytThumb = id => `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
+function rmFmtDur(s){ const m=Math.floor(s/60), ss=s%60; return m+':'+String(ss).padStart(2,'0'); }
+function rmLocalStr(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function rmToday(){ return rmLocalStr(new Date()); }
+function rmAddDays(dateStr, n){ const d=new Date(dateStr+'T00:00:00'); d.setDate(d.getDate()+n); return rmLocalStr(d); }
+function rmFmtDate(dateStr){ const d=new Date(dateStr+'T00:00:00'); return d.toLocaleDateString('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit'}); }
+
+RENDER.roadmap = () => {
+  if(!VIDS.length){ $("#view").innerHTML=`<div class="panel"><h3>Chưa có dữ liệu video</h3></div>`; return; }
+  const rm=progress.roadmap; if(!rm.start) rm.start=rmToday();
+  const today=rmToday();
+  const perDay=rm.perDay||1;
+  const doneCount=VIDS.filter(v=>rm.done[v.id]).length;
+  const totalDays=Math.ceil(VIDS.length/perDay);
+  let cards='';
+  for(let d=0; d<totalDays; d++){
+    const dayVids=VIDS.slice(d*perDay,(d+1)*perDay);
+    const date=rmAddDays(rm.start,d);
+    const allDone=dayVids.every(v=>rm.done[v.id]);
+    const isToday=date===today;
+    cards+=`<div class="rm-day ${allDone?'done':''} ${isToday?'today':''}">
+      <div class="rm-daynum"><span>Ngày ${d+1}</span><small>${rmFmtDate(date)}</small></div>
+      <div class="rm-vids">
+        ${dayVids.map(v=>`<div class="rm-vid" data-vid="${v.id}">
+          <div class="rm-thumb" style="background-image:url('${ytThumb(v.id)}')">
+            <span class="rm-emo">${v.emo||'🎬'}</span>
+            ${rm.done[v.id]?'<span class="rm-check">✓</span>':'<span class="rm-play">▶</span>'}
+            <span class="rm-time">${rmFmtDur(v.dur)}</span>
+          </div>
+          <div class="rm-info"><b>${esc(v.vt)}</b><div class="sub">${esc(v.lv)} · ${v.n} câu · ${v.vocab.length} từ mới</div></div>
+        </div>`).join('')}
+      </div></div>`;
+  }
+  $("#view").innerHTML=`
+    <h2 class="section-h">🗺️ Lộ trình học qua video (HSK 1-2)</h2>
+    <p class="sub">Xem truyện chậm tiếng Trung mỗi ngày. Bấm 1 video để xem kèm phụ đề <b>Trung / Việt / Từ mới</b> tự <b>sáng theo lời đang nói</b>.</p>
+    <div class="panel">
+      <div class="toolbar">
+        <label class="sub">📅 Ngày bắt đầu <input class="txt" id="rmStart" type="date" value="${rm.start}"></label>
+        <label class="sub">🎬 Video/ngày
+          <select class="txt" id="rmPer">${[1,2,3].map(n=>`<option value="${n}" ${n===perDay?'selected':''}>${n}</option>`).join('')}</select></label>
+        <span class="sub">→ Lộ trình <b>${totalDays} ngày</b> · ${VIDS.length} video</span>
+      </div>
+      <div class="progress-bar" style="margin-top:10px"><i style="width:${Math.round(doneCount/VIDS.length*100)}%"></i></div>
+      <div class="sub" style="margin-top:4px">Đã hoàn thành <b>${doneCount}/${VIDS.length}</b> video</div>
+    </div>
+    <div class="rm-grid">${cards}</div>`;
+  $("#rmStart").onchange=e=>{ rm.start=e.target.value||rmToday(); save(); RENDER.roadmap(); };
+  $("#rmPer").onchange=e=>{ rm.perDay=parseInt(e.target.value)||1; save(); RENDER.roadmap(); };
+  $$(".rm-vid").forEach(el=>el.onclick=()=>openVideoStudy(el.dataset.vid));
+};
+
+/* ---- Màn học video: player + 3 panel + highlight đồng bộ ---- */
+let _ytPlayer=null, _syncTimer=null, _curVideo=null, _activeIdx=-1, _vsTab='bi';
+function loadYT(cb){
+  if(window.YT && window.YT.Player){ cb(); return; }
+  if(!document.getElementById('ytapi')){ const s=document.createElement('script'); s.id='ytapi'; s.src='https://www.youtube.com/iframe_api'; document.head.appendChild(s); }
+  const prev=window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady=()=>{ if(prev)prev(); cb(); };
+}
+function openVideoStudy(vid){
+  const v=VIDS.find(x=>x.id===vid); if(!v) return;
+  stopSync(); try{ _ytPlayer&&_ytPlayer.destroy&&_ytPlayer.destroy(); }catch(e){} _ytPlayer=null;
+  _curVideo=v; _activeIdx=-1; _vsTab='bi';
+  let ov=document.getElementById('vstudy');
+  if(!ov){ ov=document.createElement('div'); ov.id='vstudy'; document.body.appendChild(ov); }
+  ov.className='vstudy open';
+  ov.innerHTML=`
+    <div class="vs-head">
+      <button class="vs-x" id="vsClose">‹ Lộ trình</button>
+      <div class="vs-title">${v.emo||'🎬'} ${esc(v.vt)} <span class="sub">· ${esc(v.lv)}</span></div>
+      <button class="btn sm ${progress.roadmap.done[v.id]?'primary':''}" id="vsDone">${progress.roadmap.done[v.id]?'✓ Đã học':'Đánh dấu học'}</button>
+    </div>
+    <div class="vs-player"><div id="vsPlayer"></div></div>
+    <div class="vs-now" id="vsNow"><div class="sub" style="text-align:center">▶ Bấm phát — câu đang nói sẽ hiện ở đây</div></div>
+    <div class="vs-tabs">
+      <button class="vs-tab active" data-tab="bi">Song ngữ</button>
+      <button class="vs-tab" data-tab="zh">中 Trung</button>
+      <button class="vs-tab" data-tab="vi">Việt</button>
+      <button class="vs-tab" data-tab="vo">📘 Từ mới ${v.vocab.length}</button>
+    </div>
+    <div class="vs-body" id="vsBody"></div>`;
+  document.body.style.overflow='hidden';
+  $("#vsClose").onclick=closeVideoStudy;
+  $("#vsDone").onclick=()=>{ const on=!progress.roadmap.done[v.id]; if(on)progress.roadmap.done[v.id]=true; else delete progress.roadmap.done[v.id]; save(); const b=$("#vsDone"); b.textContent=on?'✓ Đã học':'Đánh dấu học'; b.classList.toggle('primary',on); };
+  $$(".vs-tab",ov).forEach(b=>b.onclick=()=>{ $$(".vs-tab",ov).forEach(x=>x.classList.remove('active')); b.classList.add('active'); _vsTab=b.dataset.tab; drawVsBody(); });
+  drawVsBody();
+  loadYT(()=>{ if(!document.getElementById('vsPlayer')) return;
+    _ytPlayer=new YT.Player('vsPlayer',{videoId:v.id, playerVars:{rel:0,modestbranding:1,playsinline:1}, events:{onReady:startSync, onStateChange:()=>highlightNow(false)}}); });
+}
+function drawVsBody(){ const v=_curVideo; if(!v) return;
+  if(_vsTab==='vo'){
+    $("#vsBody").innerHTML=`<div class="vs-vocab">${v.vocab.map(x=>`<div class="vo-item" data-w="${esc(x.w)}"><span class="vo-w">${esc(x.w)}</span><span class="vo-p">${esc(x.p)}</span><span class="vo-vi">${esc(x.vi||'—')}</span><button class="mini" data-speak="${esc(x.w)}">🔊</button></div>`).join('')}</div>`;
+  } else {
+    $("#vsBody").innerHTML=`<div class="vs-lines">${v.lines.map((l,i)=>{
+      const py=l.py?`<span class="l-py">${esc(l.py)}</span>`:'', zh=`<span class="l-zh">${esc(l.zh)}</span>`, vi=`<span class="l-vi">${esc(l.vi)}</span>`;
+      const inner=_vsTab==='zh'?py+zh:_vsTab==='vi'?vi:py+zh+vi;
+      return `<div class="vs-line" data-i="${i}" data-t="${l.t}">${inner}</div>`;
+    }).join('')}</div>`;
+  }
+  $$("#vsBody .vs-line").forEach(el=>el.onclick=()=>{ const t=parseFloat(el.dataset.t); if(_ytPlayer&&_ytPlayer.seekTo){ _ytPlayer.seekTo(t,true); _ytPlayer.playVideo&&_ytPlayer.playVideo(); } });
+  $$("#vsBody [data-speak]").forEach(b=>b.onclick=(e)=>{ e.stopPropagation(); speak(b.dataset.speak); });
+  highlightNow(true);
+}
+function startSync(){ stopSync(); _syncTimer=setInterval(()=>highlightNow(false),200); }
+function stopSync(){ if(_syncTimer){ clearInterval(_syncTimer); _syncTimer=null; } }
+function highlightNow(force){
+  if(!_curVideo||!_ytPlayer||!_ytPlayer.getCurrentTime) return;
+  let t; try{ t=_ytPlayer.getCurrentTime(); }catch(e){ return; }
+  const L=_curVideo.lines; let idx=-1;
+  for(let i=0;i<L.length;i++){ if(L[i].t<=t+0.15) idx=i; else break; }
+  if(idx===_activeIdx && !force) return;
+  _activeIdx=idx;
+  const l=L[idx];
+  const now=$("#vsNow");
+  if(now){ now.innerHTML=l?`<div class="now-zh">${esc(l.zh)}</div>${l.py?`<div class="now-py">${esc(l.py)}</div>`:''}<div class="now-vi">${esc(l.vi)}</div>`:`<div class="sub" style="text-align:center">▶ Bấm phát để bắt đầu</div>`; }
+  $$("#vsBody .vs-line").forEach(el=>{ const on=+el.dataset.i===idx; if(on!==el.classList.contains('active')){ el.classList.toggle('active',on); if(on) el.scrollIntoView({block:'center',behavior:'smooth'}); } });
+  if(l){ $$("#vsBody .vo-item").forEach(el=>el.classList.toggle('active', l.zh.includes(el.dataset.w))); }
+}
+function closeVideoStudy(){ stopSync(); try{ _ytPlayer&&_ytPlayer.destroy&&_ytPlayer.destroy(); }catch(e){} _ytPlayer=null; _curVideo=null;
+  const ov=document.getElementById('vstudy'); if(ov){ ov.classList.remove('open'); ov.innerHTML=''; }
+  document.body.style.overflow=''; if(current==='roadmap') RENDER.roadmap(); }
+window.openVideoStudy=openVideoStudy;
+
 initTheme();
 buildNav();
 go(location.hash.slice(1) && PAGES.some(p=>p.id===location.hash.slice(1)) ? location.hash.slice(1) : "home");
