@@ -2995,7 +2995,7 @@ RENDER.roadmap = () => {
 };
 
 /* ---- Màn học video: player + 3 panel + highlight đồng bộ ---- */
-let _ytPlayer=null, _syncTimer=null, _curVideo=null, _activeIdx=-1, _vsTab='bi';
+let _ytPlayer=null, _syncTimer=null, _curVideo=null, _activeIdx=-1;
 function loadYT(cb){
   if(window.YT && window.YT.Player){ cb(); return; }
   if(!document.getElementById('ytapi')){ const s=document.createElement('script'); s.id='ytapi'; s.src='https://www.youtube.com/iframe_api'; document.head.appendChild(s); }
@@ -3005,7 +3005,7 @@ function loadYT(cb){
 function openVideoStudy(vid){
   const v=VIDS.find(x=>x.id===vid); if(!v) return;
   stopSync(); try{ _ytPlayer&&_ytPlayer.destroy&&_ytPlayer.destroy(); }catch(e){} _ytPlayer=null;
-  _curVideo=v; _activeIdx=-1; _vsTab='bi';
+  _curVideo=v; _activeIdx=-1;
   let ov=document.getElementById('vstudy');
   if(!ov){ ov=document.createElement('div'); ov.id='vstudy'; document.body.appendChild(ov); }
   ov.className='vstudy open';
@@ -3016,34 +3016,37 @@ function openVideoStudy(vid){
       <button class="btn sm ${progress.roadmap.done[v.id]?'primary':''}" id="vsDone">${progress.roadmap.done[v.id]?'✓ Đã học':'Đánh dấu học'}</button>
     </div>
     <div class="vs-player"><div id="vsPlayer"></div></div>
-    <div class="vs-now" id="vsNow"><div class="sub" style="text-align:center">▶ Bấm phát — câu đang nói sẽ hiện ở đây</div></div>
-    <div class="vs-tabs">
-      <button class="vs-tab active" data-tab="bi">Song ngữ</button>
-      <button class="vs-tab" data-tab="zh">中 Trung</button>
-      <button class="vs-tab" data-tab="vi">Việt</button>
-      <button class="vs-tab" data-tab="vo">📘 Từ mới ${v.vocab.length}</button>
+    <div class="vs-now" id="vsNow"><div class="sub" style="text-align:center">▶ Bấm phát — câu đang nói sẽ sáng lên ở các cột bên dưới</div></div>
+    <div class="vs-toolbar">
+      <label class="vs-chk"><input type="checkbox" id="vsPy" checked> Pinyin</label>
+      <label class="vs-chk"><input type="checkbox" id="vsVocabTgl" checked> Từ mới (${v.vocab.length})</label>
+      <span class="sub vs-hint">Trung · Việt · Từ mới hiện song song — bấm 1 câu để tua</span>
     </div>
-    <div class="vs-body" id="vsBody"></div>`;
+    <div class="vs-split" id="vsSplit">
+      <div class="vs-script" id="vsBody"></div>
+      <div class="vs-vocab-pane" id="vsVocab"></div>
+    </div>`;
   document.body.style.overflow='hidden';
   $("#vsClose").onclick=closeVideoStudy;
   $("#vsDone").onclick=()=>{ const on=!progress.roadmap.done[v.id]; if(on)progress.roadmap.done[v.id]=true; else delete progress.roadmap.done[v.id]; save(); const b=$("#vsDone"); b.textContent=on?'✓ Đã học':'Đánh dấu học'; b.classList.toggle('primary',on); };
-  $$(".vs-tab",ov).forEach(b=>b.onclick=()=>{ $$(".vs-tab",ov).forEach(x=>x.classList.remove('active')); b.classList.add('active'); _vsTab=b.dataset.tab; drawVsBody(); });
+  $("#vsPy").onchange=()=>ov.classList.toggle('no-py', !$("#vsPy").checked);
+  $("#vsVocabTgl").onchange=()=>$("#vsSplit").classList.toggle('hide-vocab', !$("#vsVocabTgl").checked);
   drawVsBody();
   loadYT(()=>{ if(!document.getElementById('vsPlayer')) return;
     _ytPlayer=new YT.Player('vsPlayer',{videoId:v.id, playerVars:{rel:0,modestbranding:1,playsinline:1}, events:{onReady:startSync, onStateChange:()=>highlightNow(false)}}); });
 }
 function drawVsBody(){ const v=_curVideo; if(!v) return;
-  if(_vsTab==='vo'){
-    $("#vsBody").innerHTML=`<div class="vs-vocab">${v.vocab.map(x=>`<div class="vo-item" data-w="${esc(x.w)}"><span class="vo-w">${esc(x.w)}</span><span class="vo-p">${esc(x.p)}</span><span class="vo-vi">${esc(x.vi||'—')}</span><button class="mini" data-speak="${esc(x.w)}">🔊</button></div>`).join('')}</div>`;
-  } else {
-    $("#vsBody").innerHTML=`<div class="vs-lines">${v.lines.map((l,i)=>{
-      const py=l.py?`<span class="l-py">${esc(l.py)}</span>`:'', zh=`<span class="l-zh">${esc(l.zh)}</span>`, vi=`<span class="l-vi">${esc(l.vi)}</span>`;
-      const inner=_vsTab==='zh'?py+zh:_vsTab==='vi'?vi:py+zh+vi;
-      return `<div class="vs-line" data-i="${i}" data-t="${l.t}">${inner}</div>`;
-    }).join('')}</div>`;
-  }
+  // Cột script: mỗi câu = Trung (pinyin+hán) | Việt, hiện SONG SONG
+  $("#vsBody").innerHTML = `<div class="vs-colhead"><span>中文 · pinyin</span><span>Tiếng Việt</span></div>`
+    + v.lines.map((l,i)=>`<div class="vs-line" data-i="${i}" data-t="${l.t}">
+        <div class="cell-zh">${l.py?`<span class="l-py">${esc(l.py)}</span>`:''}<span class="l-zh">${esc(l.zh)}</span></div>
+        <div class="cell-vi">${esc(l.vi)}</div>
+      </div>`).join('');
+  // Cột từ mới (luôn hiện)
+  $("#vsVocab").innerHTML = `<div class="vo-head">📘 Từ mới · ${v.vocab.length}</div>`
+    + v.vocab.map(x=>`<div class="vo-item" data-w="${esc(x.w)}"><span class="vo-w">${esc(x.w)}</span><span class="vo-p">${esc(x.p)}</span><span class="vo-vi">${esc(x.vi||'—')}</span><button class="mini" data-speak="${esc(x.w)}">🔊</button></div>`).join('');
   $$("#vsBody .vs-line").forEach(el=>el.onclick=()=>{ const t=parseFloat(el.dataset.t); if(_ytPlayer&&_ytPlayer.seekTo){ _ytPlayer.seekTo(t,true); _ytPlayer.playVideo&&_ytPlayer.playVideo(); } });
-  $$("#vsBody [data-speak]").forEach(b=>b.onclick=(e)=>{ e.stopPropagation(); speak(b.dataset.speak); });
+  $$("#vsVocab [data-speak]").forEach(b=>b.onclick=(e)=>{ e.stopPropagation(); speak(b.dataset.speak); });
   highlightNow(true);
 }
 function startSync(){ stopSync(); _syncTimer=setInterval(()=>highlightNow(false),200); }
@@ -3059,7 +3062,7 @@ function highlightNow(force){
   const now=$("#vsNow");
   if(now){ now.innerHTML=l?`<div class="now-zh">${esc(l.zh)}</div>${l.py?`<div class="now-py">${esc(l.py)}</div>`:''}<div class="now-vi">${esc(l.vi)}</div>`:`<div class="sub" style="text-align:center">▶ Bấm phát để bắt đầu</div>`; }
   $$("#vsBody .vs-line").forEach(el=>{ const on=+el.dataset.i===idx; if(on!==el.classList.contains('active')){ el.classList.toggle('active',on); if(on) el.scrollIntoView({block:'center',behavior:'smooth'}); } });
-  if(l){ $$("#vsBody .vo-item").forEach(el=>el.classList.toggle('active', l.zh.includes(el.dataset.w))); }
+  if(l){ $$("#vsVocab .vo-item").forEach(el=>{ const on=l.zh.includes(el.dataset.w); if(on!==el.classList.contains('active')){ el.classList.toggle('active',on); if(on) el.scrollIntoView({block:'nearest'}); } }); }
 }
 function closeVideoStudy(){ stopSync(); try{ _ytPlayer&&_ytPlayer.destroy&&_ytPlayer.destroy(); }catch(e){} _ytPlayer=null; _curVideo=null;
   const ov=document.getElementById('vstudy'); if(ov){ ov.classList.remove('open'); ov.innerHTML=''; }

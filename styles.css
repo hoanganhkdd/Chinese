@@ -270,27 +270,41 @@ textarea.ta{width:100%;min-height:120px;padding:12px;border:1px solid var(--line
 .now-zh{font-size:24px;font-weight:700;line-height:1.3}
 .now-py{font-size:13px;opacity:.9}
 .now-vi{font-size:15px;opacity:.96;margin-top:2px}
-.vs-tabs{display:flex;gap:6px;padding:8px 14px 0;overflow-x:auto;background:var(--panel)}
-.vs-tab{flex-shrink:0;padding:7px 12px;border:1px solid var(--line);border-bottom:none;background:var(--panel2);color:var(--ink);
-  border-radius:10px 10px 0 0;font-size:13px;font-weight:600;cursor:pointer}
-.vs-tab.active{background:var(--brand);color:#fff;border-color:var(--brand)}
-.vs-body{flex:1;overflow-y:auto;padding:6px 10px 40px;background:var(--panel)}
-.vs-lines{display:flex;flex-direction:column}
-.vs-line{padding:9px 12px;border-radius:10px;cursor:pointer;border-bottom:1px solid var(--line);transition:background .15s}
+.vs-toolbar{display:flex;align-items:center;gap:14px;padding:7px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.vs-chk{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--ink);cursor:pointer;font-weight:600}
+.vs-hint{font-size:12px}
+@media(max-width:560px){.vs-hint{display:none}}
+/* bố cục SONG SONG: cột script (Trung|Việt) + cột Từ mới */
+.vs-split{flex:1;display:grid;grid-template-columns:1fr 290px;min-height:0;background:var(--panel)}
+.vs-split.hide-vocab{grid-template-columns:1fr}
+.vs-split.hide-vocab .vs-vocab-pane{display:none}
+.vs-script{overflow-y:auto;padding:0 4px 40px;border-right:1px solid var(--line)}
+.vs-colhead{position:sticky;top:0;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:7px 12px;
+  background:var(--panel2);border-bottom:1px solid var(--line);font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+.vs-line{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:9px 12px;cursor:pointer;border-bottom:1px solid var(--line);transition:background .12s;align-items:start}
 .vs-line:hover{background:var(--panel2)}
-.vs-line.active{background:rgba(215,38,61,.12);border-left:4px solid var(--brand);box-shadow:inset 0 0 0 1px rgba(215,38,61,.25)}
+.vs-line.active{background:rgba(215,38,61,.12);box-shadow:inset 3px 0 0 var(--brand)}
+.cell-zh,.cell-vi{min-width:0}
 .l-py{display:block;font-size:12px;color:var(--muted)}
-.l-zh{display:block;font-size:19px;font-weight:600;line-height:1.5}
-.l-vi{display:block;font-size:14px;color:var(--ink);opacity:.85;margin-top:1px}
-.vs-line.active .l-vi{opacity:1}
-.vs-vocab{display:flex;flex-direction:column}
-.vo-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid var(--line);border-radius:8px}
-.vo-item.active{background:rgba(37,99,235,.12);border-left:4px solid var(--accent)}
-.vo-w{font-size:19px;font-weight:700;flex:0 0 auto}
-.vo-p{font-size:12.5px;color:var(--warn);flex:0 0 auto}
-.vo-vi{flex:1;font-size:13.5px;color:var(--ink)}
+.vstudy.no-py .l-py{display:none}
+.l-zh{display:block;font-size:18px;font-weight:600;line-height:1.5}
+.cell-vi{font-size:14.5px;color:var(--ink);opacity:.82;padding-top:1px}
+.vs-line.active .cell-vi{opacity:1}
+.vs-vocab-pane{overflow-y:auto;padding:0 6px 40px;background:var(--panel)}
+.vo-head{position:sticky;top:0;z-index:2;background:var(--panel2);padding:7px 10px;font-size:12px;font-weight:700;color:var(--accent);border-bottom:1px solid var(--line)}
+.vo-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-bottom:1px solid var(--line)}
+.vo-item.active{background:rgba(37,99,235,.14);box-shadow:inset 3px 0 0 var(--accent)}
+.vo-w{font-size:17px;font-weight:700;flex:0 0 auto}
+.vo-p{font-size:12px;color:var(--warn);flex:0 0 auto}
+.vo-vi{flex:1;font-size:12.5px;color:var(--ink);min-width:0}
+@media(max-width:720px){
+  .vs-split{grid-template-columns:1fr;grid-template-rows:1fr auto}
+  .vs-vocab-pane{max-height:34vh;border-top:2px solid var(--line)}
+  .vs-split.hide-vocab{grid-template-rows:1fr}
+}
 @media(max-width:560px){
   .rm-thumb{flex-basis:92px;height:52px}
-  .vs-player{max-height:32vh}
-  .now-zh{font-size:21px}
+  .vs-player{max-height:30vh}
+  .now-zh{font-size:20px}
+  .vs-line{gap:8px}.l-zh{font-size:16px}.cell-vi{font-size:13px}
 }
