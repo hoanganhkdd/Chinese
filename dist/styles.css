@@ -308,3 +308,13 @@ textarea.ta{width:100%;min-height:120px;padding:12px;border:1px solid var(--line
   .now-zh{font-size:20px}
   .vs-line{gap:8px}.l-zh{font-size:16px}.cell-vi{font-size:13px}
 }
+
+/* Bảng "Đã học rồi" */
+.rm-learned{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:10px}
+.rm-learned-card{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;padding:7px;cursor:pointer;box-shadow:var(--shadow);opacity:.9}
+.rm-learned-card:hover{opacity:1;border-color:var(--ok)}
+.rm-learned-card .rm-thumb{flex:0 0 76px;height:44px}
+.rm-learned-card .rm-info{flex:1;min-width:0}
+.rm-learned-card .rm-info b{font-size:13px}
+.rm-redo{flex:0 0 auto;border-color:var(--warn)}

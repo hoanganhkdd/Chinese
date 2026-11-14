@@ -2954,44 +2954,60 @@ RENDER.roadmap = () => {
   const rm=progress.roadmap; if(!rm.start) rm.start=rmToday();
   const today=rmToday();
   const perDay=rm.perDay||1;
-  const doneCount=VIDS.filter(v=>rm.done[v.id]).length;
-  const totalDays=Math.ceil(VIDS.length/perDay);
+  const pending=VIDS.filter(v=>!rm.done[v.id]);       // chưa học → xếp vào lịch
+  const learned=VIDS.filter(v=>rm.done[v.id]);        // đã học → sang bảng riêng
+  const doneCount=learned.length;
+  const totalDays=Math.ceil(Math.max(pending.length,1)/perDay);
   let cards='';
-  for(let d=0; d<totalDays; d++){
-    const dayVids=VIDS.slice(d*perDay,(d+1)*perDay);
+  if(!pending.length){
+    cards=`<div class="panel" style="text-align:center"><h3>🎉 Đã học hết ${VIDS.length} video!</h3><p class="sub">Có thể mở lại bất kỳ video nào ở bảng "Đã học rồi" bên dưới để ôn lại.</p></div>`;
+  }
+  for(let d=0; d<totalDays && pending.length; d++){
+    const dayVids=pending.slice(d*perDay,(d+1)*perDay);
+    if(!dayVids.length) break;
     const date=rmAddDays(rm.start,d);
-    const allDone=dayVids.every(v=>rm.done[v.id]);
     const isToday=date===today;
-    cards+=`<div class="rm-day ${allDone?'done':''} ${isToday?'today':''}">
+    cards+=`<div class="rm-day ${isToday?'today':''}">
       <div class="rm-daynum"><span>Ngày ${d+1}</span><small>${rmFmtDate(date)}</small></div>
       <div class="rm-vids">
         ${dayVids.map(v=>`<div class="rm-vid" data-vid="${v.id}">
           <div class="rm-thumb" style="background-image:url('${ytThumb(v.id)}')">
             <span class="rm-emo">${v.emo||'🎬'}</span>
-            ${rm.done[v.id]?'<span class="rm-check">✓</span>':'<span class="rm-play">▶</span>'}
+            <span class="rm-play">▶</span>
             <span class="rm-time">${rmFmtDur(v.dur)}</span>
           </div>
           <div class="rm-info"><b>${esc(v.vt)}</b><div class="sub">${esc(v.lv)} · ${v.n} câu · ${v.vocab.length} từ mới</div></div>
         </div>`).join('')}
       </div></div>`;
   }
+  const learnedHTML = learned.length ? `
+    <h3 class="section-h" style="margin-top:22px">📚 Đã học rồi (${learned.length})</h3>
+    <div class="rm-learned">
+      ${learned.map(v=>`<div class="rm-learned-card" data-vid="${v.id}">
+        <div class="rm-thumb" style="background-image:url('${ytThumb(v.id)}')"><span class="rm-check">✓</span></div>
+        <div class="rm-info"><b>${esc(v.vt)}</b><div class="sub">${esc(v.lv)}</div></div>
+        <button class="mini rm-redo" data-redo="${v.id}" title="Bỏ đánh dấu, học lại">↩</button>
+      </div>`).join('')}
+    </div>` : '';
   $("#view").innerHTML=`
     <h2 class="section-h">🗺️ Lộ trình học qua video (HSK 1-2)</h2>
-    <p class="sub">Xem truyện chậm tiếng Trung mỗi ngày. Bấm 1 video để xem kèm phụ đề <b>Trung / Việt / Từ mới</b> tự <b>sáng theo lời đang nói</b>.</p>
+    <p class="sub">Xem hội thoại người thật mỗi ngày. Bấm 1 video để xem kèm phụ đề <b>Trung / Việt / Từ mới</b> song song, tự <b>sáng theo lời đang nói</b>. Học xong, video tự sang bảng <b>Đã học rồi</b>.</p>
     <div class="panel">
       <div class="toolbar">
         <label class="sub">📅 Ngày bắt đầu <input class="txt" id="rmStart" type="date" value="${rm.start}"></label>
         <label class="sub">🎬 Video/ngày
           <select class="txt" id="rmPer">${[1,2,3].map(n=>`<option value="${n}" ${n===perDay?'selected':''}>${n}</option>`).join('')}</select></label>
-        <span class="sub">→ Lộ trình <b>${totalDays} ngày</b> · ${VIDS.length} video</span>
+        <span class="sub">→ Còn <b>${pending.length}</b> video · ${totalDays} ngày</span>
       </div>
       <div class="progress-bar" style="margin-top:10px"><i style="width:${Math.round(doneCount/VIDS.length*100)}%"></i></div>
-      <div class="sub" style="margin-top:4px">Đã hoàn thành <b>${doneCount}/${VIDS.length}</b> video</div>
+      <div class="sub" style="margin-top:4px">Đã học <b>${doneCount}/${VIDS.length}</b> video</div>
     </div>
-    <div class="rm-grid">${cards}</div>`;
+    <div class="rm-grid">${cards}</div>
+    ${learnedHTML}`;
   $("#rmStart").onchange=e=>{ rm.start=e.target.value||rmToday(); save(); RENDER.roadmap(); };
   $("#rmPer").onchange=e=>{ rm.perDay=parseInt(e.target.value)||1; save(); RENDER.roadmap(); };
-  $$(".rm-vid").forEach(el=>el.onclick=()=>openVideoStudy(el.dataset.vid));
+  $$(".rm-vid, .rm-learned-card").forEach(el=>el.onclick=(e)=>{ if(e.target.closest('[data-redo]'))return; openVideoStudy(el.dataset.vid); });
+  $$("[data-redo]").forEach(b=>b.onclick=(e)=>{ e.stopPropagation(); delete progress.roadmap.done[b.dataset.redo]; save(); RENDER.roadmap(); });
 };
 
 /* ---- Màn học video: player + 3 panel + highlight đồng bộ ---- */
